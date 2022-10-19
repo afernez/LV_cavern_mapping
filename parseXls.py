@@ -2,6 +2,14 @@
 Parse the input cavern mapping
 """
 import pandas, os, fnmatch
+import warnings # pandas FutureWarnings are annoying...
+warnings.simplefilter(action='ignore', category=FutureWarning)
+from argparse import ArgumentParser
+
+### grab command line args
+parser = ArgumentParser(description='Produce computer-readable cavern mappings')
+parser.add_argument('mapping', help='specify cavern mapping to be used as input')
+args = parser.parse_args()
 
 ### global variables in script
 dfDCBs = {}
@@ -17,13 +25,14 @@ pepiType['IP/AT'] = 'True'
 pepiType['Mag/AB'] = 'True'
 pepiType['Mag/AT'] = 'Mirror'
 
-# pandas.set_option('max_rows', 2000 )
+# pandas.set_option('max_rows', 2000 ) # deprecated
 pandas.set_option("expand_frame_repr", False)
 ## suppresses the following warning:
 ## A value is trying to be set on a copy of a slice from a DataFrame.
 pandas.options.mode.chained_assignment = None
 
-fileIn = 'LVR_PPP_Underground_Mapping_PPPSorted_Samtec_cables__01-04-22.xlsx'
+# set input mapping file
+fileIn = args.mapping
 xls = pandas.ExcelFile( fileIn )
 sheets = xls.sheet_names
 #sheets.sort(reverse=True)
@@ -170,8 +179,9 @@ def mergePEPI( pepi ):
 
 ## merge files and write output
 
-writerC = pandas.ExcelWriter('Cavern_LV_Mapping_MT_Formatting_C_side.xlsx', engine='xlsxwriter')
-writerA = pandas.ExcelWriter('Cavern_LV_Mapping_MT_Formatting_A_side.xlsx', engine='xlsxwriter')
+# TODO: should edit directory structure so that these files get saved to an "output" folder
+writerC = pandas.ExcelWriter('output/Cavern_LV_Mapping_MT_Formatting_C_side.xlsx', engine='xlsxwriter')
+writerA = pandas.ExcelWriter('output/Cavern_LV_Mapping_MT_Formatting_A_side.xlsx', engine='xlsxwriter')
 
 #dfPEPI = {}
 for pepi in sorted(pepiType):

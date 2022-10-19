@@ -8,22 +8,28 @@
 # the mapping may change (depending on what is easiest to fix the cavern
 # cables), the script will try to be flexible to using other input files
 # (hopefully with minimal fixes required; a function will have to be added to
-# parse any new input file, though).
+# parse any new input file if it has a different format, though).
 # Note: LVR info is ignored throughout. To check cavern LVR info is correct
 # in current mapping, need some file that associates lines with LVR directly
 # from Phoebe's mapping...
 
 import pandas, os, fnmatch
-import warnings # pandas FutureWarnings are annoying...
-warnings.simplefilter(action='ignore', category=FutureWarning)
+from argparse import ArgumentParser
 from parseXls import * # steal what Mark did to parse the cavern file
 
+### grab command line args
+parser = ArgumentParser(description='Produce computer-readable cavern mappings')
 # designate nominal and cavern mappings
+parser.add_argument('mapping', help='specify cavern mapping to be used as input')
+args = parser.parse_args()
 # note that only C side needs to be compared; A side mapping is equivalent
 nominal = 'surface_LV_power_tests_PMH_Formatting_wflex_flat_C_side.xlsx'
 cavern = 'LVR_PPP_Underground_Mapping_PPPSorted_Samtec_cables__01-04-22.xlsx'
-compare = os.listdir('compare')
-do_compare = True
+# also set sheets that will be compared for consistency
+compare = []
+if (args.doCompare).lower()=='true':
+    compare = os.listdir('compare')
+    compare = ['compare/'+file for file in compare]
 
 # basic class that will uniquely identify (C-side) power lines, along with
 # PPP connector and pin; LVR info isn't included for now
@@ -43,6 +49,11 @@ class line:
                 self.flex==other.flex and self.load==other.load and
                 self.msa==other.msa and self.ppp==other.ppp and
                 self.ppp_pin==other.ppp_pin)
+
+####### Helpers
+
+
+####### Main Checking Functions
 
 def cavern_typo_check():
     return True
