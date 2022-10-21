@@ -17,6 +17,9 @@ import pandas, os, fnmatch, math
 import csv
 from argparse import ArgumentParser
 
+# problem seems to be restricted to hybrid mag mirror (stereo+straight)
+only_hyb_mag_mir = True
+
 ### grab command line args
 parser = ArgumentParser(description='Check and fix cavern mapping')
 # designate nominal and cavern mappings
@@ -53,12 +56,24 @@ class line:
         self.msa = msa
         self.ppp = ppp
         self.ppp_pin = ppp_pin
+        self.length_c = '-1' # set this explicitly later
+        self.length_a = '-1' # set this explicitly later
+        self.lvr = '-1' # set this explicitly later
+        self.lvr_ch = '-1' # set this explicitly later
 
     def equal_minus_ppp(self, other):
         return (self.x==other.x and self.y==other.y and self.z==other.z and
                 self.bp==other.bp and self.bp_con==other.bp_con and
                 self.ibbp2b2==other.ibbp2b2 and self.flex==other.flex and
                 self.load==other.load and self.msa==other.msa)
+
+    def set_length(self, length_c, length_a):
+        self.length_c = str(length_c)
+        self.length_a = str(length_a)
+
+    def set_lvr(self, lvr, lvr_ch):
+        self.lvr = str(lvr)
+        self.lvr_ch = str(lvr_ch)
 
     def __eq__(self, other):
         return (self.x==other.x and self.y==other.y and self.z==other.z and
@@ -69,7 +84,8 @@ class line:
 
     def __hash__(self):
         return hash(self.x+self.y+self.z+self.bp+self.bp_con+self.ibbp2b2+
-                    self.flex+self.load+self.msa+self.ppp+self.ppp_pin)
+                    self.flex+self.load+self.msa+self.ppp+self.ppp_pin+
+                    self.length_c+self.length_a+self.lvr+self.lvr_ch)
 
 
 ####### Helpers
@@ -81,9 +97,9 @@ class line:
 # This part is common to the hybrids and DCBs
 #
 def parseSheet( xls, sheet ):
-    dfIn = pandas.read_excel(xls, sheet , usecols="C:G", skiprows=[0,1] )
+    dfIn = pandas.read_excel(xls, sheet , usecols="C:G,N:O", skiprows=[0,1] )
     cols = list(dfIn.columns)
-    cols[-1] = 'LVR'
+    cols[-3] = 'LVR'
     dfIn.columns = cols
     # get rid of empty rows
     dfIn = dfIn.dropna(subset=['LVR'])
@@ -215,12 +231,17 @@ def parse_surface(file):
     sheets = xlsx.sheet_names
     lines = []
     for sheet in sheets:
+        if only_hyb_mag_mir:
+            if not 'C-mag-bot' in sheet:
+                continue
         sheet_info = sheet.split('-')
         x, y, z, bp = sheet_info[0], sheet_info[2], sheet_info[1], sheet_info[3]
         df = pandas.read_excel(xlsx, sheet, usecols='A:G')
         # get rid of empty rows
         df = df.dropna(how='all')
         for ind, row in df.iterrows():
+            if only_hyb_mag_mir:
+                if 'JD' in row['BP Connector']: continue
             flex = row['SBC FLEX NAME']
             if isinstance(flex, float) and math.isnan(flex): flex='n/a'
             l=line(x, y, z, bp, row['BP Connector'],
@@ -241,6 +262,7 @@ def parse_cavern(file):
 
     lines = []
     for dcb_sheet in dcb_sheets:
+        if only_hyb_mag_mir: continue
         x = 'C' # take advantage of only doing C-side...
         sheet_info = dcb_sheet.split(' - ')
         y, z = z_truemir_to_y_z(sheet_info[1], sheet_info[2])
@@ -272,9 +294,13 @@ def parse_cavern(file):
             ppp = row['PPP Positronic']
             ppp_pin = row['PPP Src/Ret'][0]
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
+            l.set_length(row['C L (m)'], row['A L (m)'])
+            l.set_lvr(row['LVR ID'], row['LVR Channel'])
             lines.append(l)
 
     for hyb_sheet in hyb_sheets:
+        if only_hyb_mag_mir:
+            if not 'Hybrid - Mag - Mirror' in hyb_sheet: continue
         x = 'C' # take advantage of only doing C-side...
         sheet_info = hyb_sheet.split(' - ')
         y, z = z_truemir_to_y_z(sheet_info[1], sheet_info[2])
@@ -295,6 +321,8 @@ def parse_cavern(file):
             ppp = row['PPP Positronic']
             ppp_pin = row['PPP Src/Ret'][0]
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
+            l.set_length(row['C L (m)'], row['A L (m)'])
+            l.set_lvr(row['LVR ID'], row['LVR Channel'])
             lines.append(l)
 
     return lines
@@ -320,6 +348,49 @@ for file in files:
     else: print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
 
 
+# def print_ppp_corrected_cavern_lines(xlfile, cav_to_nom):
+#     return True
+
+def sort_by_surf_ppp_layer(lines, pos_ind, pins_ind, layer_ind):
+    # lines is just 2D array; should return 2D array sorted by positronic info
+    # and separating stereo and straight
+    # also, add an empty row between each ppp
+    lines = sorted(lines, key=lambda l:l[pins_ind])
+    lines_with_layer_refcol = [l+[int(l[pos_ind][1:])] for l in lines]
+    lines = sorted(lines_with_layer_refcol, key=lambda l:l[-1])
+    lines = [l[:-1] for l in lines] # drop refcol
+    lines_with_layer_refcol = [l + [l[layer_ind][0]] for l in lines]
+    lines = sorted(lines_with_layer_refcol, key=lambda l:l[-1])
+    lines = [l[:-1] for l in lines] # drop refcol
+    row_len = len(lines[0])
+    empty_row = [' ' for j in range(row_len)]
+    prev_ppp = 'P0'
+    rows_to_insert_empty_row = []
+    for i in range(len(lines)):
+        l = lines[i]
+        ppp = l[pos_ind]
+        if ppp != prev_ppp: rows_to_insert_empty_row.append(i)
+        prev_ppp = ppp
+    offset = 0 # each time adding an empty row, lines grows
+    for i in rows_to_insert_empty_row:
+        lines.insert(i+offset, empty_row)
+        offset += 1
+
+    return lines
+
+def count_positronic(lines, pos, pos_ind, len_ind):
+    # counts the occurrence of positronic pos at len_ind col in lens, not
+    # adding to count when the line is spliced
+    count = 0
+    for l in lines:
+        if pos == l[pos_ind] and l[len_ind] != 'splice': count += 1
+    return count
+
+def add_pop_col(lines, pos_ind, len_ind):
+    # adds a col to lines that counts the number of populated pins for the
+    # associated PPP positronic
+    return [l+[count_positronic(lines, l[pos_ind], pos_ind, len_ind)] for l \
+                                                                       in lines]
 
 ####### Main Checking Functions
 
@@ -346,49 +417,110 @@ def cavern_check_fix():
     print(f'\n\nChecking {nominal} vs {cavern}...\n\n')
     nominal_lines = parse_func[nominal](nominal)
     cavern_lines = parse_func[cavern](cavern)
-    ppp_wrong_cavern_lines = {} # map from nom line to cav line
-    for nom_line in nominal_lines:
-        cav_line = None
-        found = 0
-        for cl in cavern_lines:
-            if cl.equal_minus_ppp(nom_line):
-                cav_line = cl
-                found += 1
-        if found==0 : print(f'Couldn\'t find '+
-                      f'{nom_line.x+nom_line.y+nom_line.z+nom_line.bp}'+
-                      f'{nom_line.bp_con+nom_line.ibbp2b2+nom_line.flex}'+
-                      f'{nom_line.load+nom_line.msa}???')
-        # finding more than 1 is ok if hybrid M/s (spliced at LVR, but cavern
-        # mapping includes both lines coming out of LVR); if not west/east pair
-        # printed, then you should be worried...
-        if found > 1: print(f'Found more than 1 '+
-                      f'{nom_line.x+nom_line.y+nom_line.z+nom_line.bp}'+
-                      f'{nom_line.bp_con+nom_line.ibbp2b2+nom_line.flex}'+
-                      f'{nom_line.load+nom_line.msa}???')
-        if not cav_line==nom_line:
-            print(f'\nFound cavern line with wrong PPP!\n')
-            ppp_wrong_cavern_lines[nom_line] = cav_line
+    # ppp_wrong_cavern_lines = {} # map from nom line to cav line
+    # for nom_line in nominal_lines:
+    #     cav_line = None
+    #     found = 0
+    #     for cl in cavern_lines:
+    #         if cl.equal_minus_ppp(nom_line):
+    #             cav_line = cl
+    #             found += 1
+    #     if found==0 : print(f'Couldn\'t find '+
+    #                   f'{nom_line.x+nom_line.y+nom_line.z+nom_line.bp}'+
+    #                   f'{nom_line.bp_con+nom_line.ibbp2b2+nom_line.flex}'+
+    #                   f'{nom_line.load+nom_line.msa}???')
+    #     # finding more than 1 is ok if hybrid M/s (spliced at LVR, but cavern
+    #     # mapping includes both lines coming out of LVR); if not west/east pair
+    #     # printed, then you should be worried...
+    #     if found > 1: print(f'Found more than 1 '+
+    #                   f'{nom_line.x+nom_line.y+nom_line.z+nom_line.bp}'+
+    #                   f'{nom_line.bp_con+nom_line.ibbp2b2+nom_line.flex}'+
+    #                   f'{nom_line.load+nom_line.msa}???')
+    #     if not cav_line==nom_line:
+    #         print(f'\nFound cavern line with wrong PPP!\n')
+    #         ppp_wrong_cavern_lines[nom_line] = cav_line
 
     # write out all the wrong lines, and what they should be!
     # TODO use pandas...
-    fixme_lines = []
-    fixme_lines.append(['True/Mir', 'Mag/IP', 'BP', 'BP Connector',
-                        'iBB/P2B2 Connector', 'SBC Flex Name',
-                        '4-asic group / DCB power', 'M/S/A',
-                        'Cav. Map. PPP Positronic', 'Cav. Map. PPP Pins',
-                        'Surf. Map. (Correct) PPP Positronic',
-                        'Surf. Map. (Correct) PPP Pins'])
-    for nl in ppp_wrong_cavern_lines:
-        fixme_lines.append([true_mirror(nl.x, nl.y, nl.z), nl.z, nl.bp,
-                            nl.bp_con, nl.ibbp2b2, nl.flex, nl.load,
-                            nl.msa, ppp_wrong_cavern_lines[nl].ppp,
-                            ppp_wrong_cavern_lines[nl].ppp_pin + ',' +
-                            ppp_ret_pin(ppp_wrong_cavern_lines[nl].ppp_pin),
-                            nl.ppp, nl.ppp_pin + ',' + ppp_ret_pin(nl.ppp_pin)])
-    fixme_ppp_csv = open('fixme/ppp_fixes.csv', 'w')
-    writer = csv.writer(fixme_ppp_csv)
-    for row in fixme_lines: writer.writerow(row)
-    fixme_ppp_csv.close()
+    # fixme_lines = []
+    # fixme_lines.append(['True/Mir', 'Mag/IP', 'BP', 'BP Connector',
+    #                     'iBB/P2B2 Connector', 'SBC Flex Name',
+    #                     '4-asic group / DCB power', 'M/S/A',
+    #                     'Cav. Map. PPP Positronic', 'Cav. Map. PPP Pins',
+    #                     'Surf. Map. PPP Positronic',
+    #                     'Surf. Map. PPP Pins'])
+    # for nl in ppp_wrong_cavern_lines:
+    #     fixme_lines.append([true_mirror(nl.x, nl.y, nl.z), nl.z, nl.bp,
+    #                         nl.bp_con, nl.ibbp2b2, nl.flex, nl.load,
+    #                         nl.msa, ppp_wrong_cavern_lines[nl].ppp,
+    #                         ppp_wrong_cavern_lines[nl].ppp_pin + ',' +
+    #                         ppp_ret_pin(ppp_wrong_cavern_lines[nl].ppp_pin),
+    #                         nl.ppp, nl.ppp_pin + ',' + ppp_ret_pin(nl.ppp_pin)])
+    # fixme_ppp_csv = open('fixme/ppp_fixes.csv', 'w')
+    # writer = csv.writer(fixme_ppp_csv)
+    # for row in fixme_lines: writer.writerow(row)
+    # fixme_ppp_csv.close()
+    ppp_wrong_cavern_lines = {} # map from (wrong) cav line to nom line
+    ppp_corrected_cavern_lines = {} # from (all) cav line to nom line
+    for cav_line in cavern_lines:
+        nom_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na',
+                        'na', 'na')
+        found = 0
+        for nl in nominal_lines:
+            if nl.equal_minus_ppp(cav_line):
+                found += 1
+                nom_line = nl
+        if found==0: print(f'Couldn\'t find '+
+                           f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
+                           f'{cav_line.bp_con+cav_line.ibbp2b2+cav_line.flex}'+
+                           f'{cav_line.load+cav_line.msa}???')
+        if found>1: print(f'Found more than one '+
+                          f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
+                          f'{cav_line.bp_con+cav_line.ibbp2b2+cav_line.flex}'+
+                          f'{cav_line.load+cav_line.msa}???')
+        if not cav_line==nom_line:
+            print(f'\nFound cavern line with wrong PPP!\n')
+            ppp_wrong_cavern_lines[cav_line] = nom_line
+        ppp_corrected_cavern_lines[cav_line] = nom_line
+
+
+    # write out all cavern lines
+    # print_ppp_corrected_cavern_lines('fixme/cavern_mapping_ppp_fixes.xlsx',
+    #                                  ppp_corrected_cavern_lines)
+    cav_lines = []
+    cav_lines.append(['True/Mir', 'Mag/IP', 'BP', 'BP Con.',
+                      'iBB/P2B2 Con.', 'SBC Flex Name',
+                      '4-asic group / DCB power', 'M/S/A',
+                      'Cav. Map. PPP Pos.', 'Cav. Map. PPP Pins',
+                      'Surf. Map. PPP Pos.',
+                      'Surf. Map. PPP Pins', 'LVR', 'LVR Ch.',
+                      'C Len (m)', 'A Len (m)'])
+    for cl in ppp_corrected_cavern_lines:
+        cav_lines.append([true_mirror(cl.x, cl.y, cl.z), cl.z, cl.bp,
+                          cl.bp_con, cl.ibbp2b2, cl.flex, cl.load,
+                          cl.msa, cl.ppp, cl.ppp_pin + ',' +
+                          ppp_ret_pin(cl.ppp_pin),
+                          ppp_corrected_cavern_lines[cl].ppp,
+                          ppp_corrected_cavern_lines[cl].ppp_pin + ',' +
+                          ppp_ret_pin(ppp_corrected_cavern_lines[cl].ppp_pin),
+                          cl.lvr, cl.lvr_ch, cl.length_c, cl.length_a])
+    cav_lines = [cav_lines[0] + ['Cav. Map. PPP Pop.']] + \
+                 add_pop_col(cav_lines[1:],
+                      cav_lines[0].index('Cav. Map. PPP Pos.'),
+                      cav_lines[0].index('C Len (m)'))
+    cav_lines = [cav_lines[0] + ['Surf. Map. PPP Pop.']] + \
+                 add_pop_col(cav_lines[1:],
+                      cav_lines[0].index('Surf. Map. PPP Pos.'),
+                      cav_lines[0].index('C Len (m)'))
+    cav_lines = [cav_lines[0]] + sort_by_surf_ppp_layer(cav_lines[1:],
+                      cav_lines[0].index('Surf. Map. PPP Pos.'),
+                      cav_lines[0].index('Surf. Map. PPP Pins'),
+                      cav_lines[0].index('SBC Flex Name'))
+
+    fixme = open('fixme/ppp_fixes.csv', 'w')
+    writer = csv.writer(fixme)
+    for row in cav_lines: writer.writerow(row)
+    fixme.close()
 
     for comp in compare:
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
