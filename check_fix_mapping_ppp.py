@@ -76,7 +76,12 @@ class line:
 
     def set_length(self, length_c, length_a):
         self.length_c = str(length_c)
+        if (not self.length_c == 'splice') and (not '|' in self.length_c):
+            # not sure what python is doing with floats here...
+            self.length_c = one_dec_str(self.length_c)
         self.length_a = str(length_a)
+        if (not self.length_a == 'splice') and (not '|' in self.length_a):
+            self.length_a = one_dec_str(self.length_a)
 
     def set_lvr(self, lvr, lvr_ch):
         self.lvr = str(lvr)
@@ -121,6 +126,9 @@ class line:
 
 
 ####### Helpers
+
+def one_dec_str(float_str):
+    return str(round(float(float_str), 1))
 
 # stealing my old code from generating the surface mappings
 def bp_con_JP_to_alt(JP, mirror): # converts JP # to alt BP connector notation
