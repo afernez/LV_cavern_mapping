@@ -152,9 +152,9 @@ def bp_con_alt_to_JP(alt, mirror): # converts alt BP connector notation to JP #
 # This part is common to the hybrids and DCBs
 #
 def parseSheet( xls, sheet ):
-    dfIn = pandas.read_excel(xls, sheet , usecols="C:G,N:O", skiprows=[0,1] )
+    dfIn = pandas.read_excel(xls, sheet , usecols="C:G,L,N:O", skiprows=[0,1] )
     cols = list(dfIn.columns)
-    cols[-3] = 'LVR'
+    cols[-4] = 'LVR'
     dfIn.columns = cols
     # get rid of empty rows
     dfIn = dfIn.dropna(subset=['LVR'])
@@ -233,12 +233,12 @@ def parseHybrids( xls, sheet ):
 
     # delete columns with duplicate/unnecessary information
     del dfIn['Pos']
-    del dfIn['LVR']
-    del dfIn['LVR ID - Connector - Pin']
-    del dfIn['PPP Connector - Pin']
+    # del dfIn['LVR']
+    # del dfIn['LVR ID - Connector - Pin']
+    # del dfIn['PPP Connector - Pin']
     return dfIn
 
-# for C side
+# for C side only
 def z_truemir_to_y_z(z, truemir):
     z = z.lower()
     truemir = truemir.lower()
@@ -351,6 +351,12 @@ def parse_cavern(file):
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
             l.set_length(row['C L (m)'], row['A L (m)'])
             l.set_lvr(row['LVR ID'], row['LVR Channel'])
+            ppp_label = row['PPP Connector - Pin'] + ' / ' + \
+                        (row['LVR Name']).replace('_LV_SRC/RET','')
+            lvr_label = row['LVR ID - Connector - Pin'] + ' ' + \
+                        row['SBC section'] + ' / ' + \
+                        (row['LVR Name']).replace('_LV_SRC/RET','')
+            l.set_labels(ppp_label, lvr_label)
             lines.append(l)
 
     for hyb_sheet in hyb_sheets:
@@ -378,6 +384,12 @@ def parse_cavern(file):
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
             l.set_length(row['C L (m)'], row['A L (m)'])
             l.set_lvr(row['LVR ID'], row['LVR Channel'])
+            ppp_label = row['PPP Connector - Pin'] + ' / ' + \
+                        (row['LVR Name']).replace('_LV_SRC/RET','')
+            lvr_label = row['LVR ID - Connector - Pin'] + ' ' + \
+                        row['SBC section'] + ' / ' + \
+                        (row['LVR Name']).replace('_LV_SRC/RET','')
+            l.set_labels(ppp_label, lvr_label)
             lines.append(l)
 
     return lines
@@ -414,7 +426,7 @@ def parse_cable_test(file):
     return lines
 
 
-### Associate files with a function for parsing
+# Associate files with a function for parsing
 parse_func = {}
 files = [nominal, cavern, swap_pos] + compare
 for file in files:
@@ -537,12 +549,12 @@ def cavern_check_fix():
     # writer = csv.writer(fixme_ppp_csv)
     # for row in fixme_lines: writer.writerow(row)
     # fixme_ppp_csv.close()
-    ppp_wrong_cavern_lines = {} # map from (wrong) cav line to nom line
+    # ppp_wrong_cavern_lines = {} # map from (wrong) cav line to nom line
     ppp_corrected_cavern_lines = {} # from (all) cav line to nom line
     # also do comparison with all cavern lines flipped stereo<->straight
     # note: for this, compare against nominal line matched to non-flipped
     # cavern line!
-    ppp_wrong_cavern_lines_flip = {}
+    # ppp_wrong_cavern_lines_flip = {}
     ppp_corrected_cavern_lines_flip = {}
     for cav_line in cavern_lines:
         nom_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na',
@@ -565,13 +577,13 @@ def cavern_check_fix():
                           f'{cav_line.load+cav_line.msa}???')
         if not cav_line==nom_line:
             print(f'\nFound cavern line with wrong PPP!\n')
-            ppp_wrong_cavern_lines[cav_line] = nom_line
+            # ppp_wrong_cavern_lines[cav_line] = nom_line
         ppp_corrected_cavern_lines[cav_line] = nom_line
         if check_stereo_straight_flip:
             cav_line_flip = cav_line.flip_stereo_straight_line()
             if not cav_line_flip==nom_line:
                 print(f'\nFound flipped cavern line with wrong PPP!\n')
-                ppp_wrong_cavern_lines_flip[cav_line_flip] = nom_line
+                # ppp_wrong_cavern_lines_flip[cav_line_flip] = nom_line
             ppp_corrected_cavern_lines_flip[cav_line_flip] = nom_line
 
     # also, if the user is specifying where the positronic are being swapped
@@ -580,6 +592,13 @@ def cavern_check_fix():
     # cables going into the given PPP location are the correct lines/LVRs)
     if swap_pos != 'NA':
         moved_cavern_lines = parse_func[swap_pos](swap_pos, cavern_lines)
+        # old label info all stored in moved_cavern_lines
+        for cav_line in moved_cavern_lines:
+            # should have already checked above (with print statements) that
+            # a unique nom_line is found for each cav_line; correct line info
+            # is at ppp_corrected_cavern_lines[cav_line], regardless of fact
+            # that positronic has been moved by user
+            continue
 
 
     # write out all cavern lines
