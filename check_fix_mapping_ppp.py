@@ -1,17 +1,10 @@
 # Check the cavern mapping for typos (that can't be easily handled), then (once
 # user fixes typos) check the surface mapping vs the cavern mapping (and also
 # against any other references, eg. the sheet used to test the produced PEPI
-# cables) PPP info. Output typos and cavern differences to files in fixme
-# folder. Also produce new cavern sheet(s) with fixes implemented in
-# unformatted_fixed_cavern folder.
-# The surface mapping is being used for the nominal PPP mapping for now, but as
-# the mapping may change (depending on what is easiest to fix the cavern
-# cables), the script will try to be flexible to using other input files
-# (hopefully with minimal fixes required; a function will have to be added to
-# parse any new input file if it has a different format, though).
-# Note: LVR info is ignored throughout. To check cavern LVR info is correct
-# in current mapping, need some file that associates lines with LVR directly
-# from Phoebe's mapping...
+# cables) PPP info. Output cavern differences to files in fixme folder,
+# including directions for shifters fixing the cables by moving labels.
+# Note: it is assumed here that the LVR info in the cavern mapping is correct;
+# another script would need to be prepared to check this vs Phoebe's schematic.
 
 import pandas, os, fnmatch, math
 import csv
@@ -19,6 +12,9 @@ from argparse import ArgumentParser
 
 # problem seems to be restricted to hybrid mag mirror (stereo+straight)
 only_hyb_mag_mir = True
+
+# see if flipping stereo<->straight helps
+check_stereo_straight_flip = False
 
 ### grab command line args
 parser = ArgumentParser(description='Check and fix cavern mapping')
@@ -28,6 +24,7 @@ parser.add_argument('cavern', help='specify cavern mapping to be used as input')
 # note that only C side needs to be compared; A side mapping is equivalent
 # also set sheets that will be compared for consistency
 parser.add_argument('doCompare', help='specify if compare mappings should be checked')
+parser.add_argument('swap', default='NA', help='specify how Posistronix are swapping')
 args = parser.parse_args()
 nominal = args.nominal
 cavern = args.cavern
@@ -35,12 +32,14 @@ compare = []
 if (args.doCompare).lower()=='true':
     compare = os.listdir('compare')
     compare = ['compare/'+file for file in compare]
+swap_pos = args.swap
 
 # from parseXls import * # steal what Mark did to parse the cavern file
 # actually, don't import here; messes up argparse, and I'm too lazy to debug it
 
 # basic class that will uniquely identify (with redundancy) power lines, along
-# with PPP connector and pin; LVR info isn't included for now
+# with PPP connector and pin; LVR/length info not available in all sheets, so
+# don't set those variables on construction
 class line:
 
     def __init__(self, x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp,
@@ -60,12 +59,20 @@ class line:
         self.length_a = '-1' # set this explicitly later
         self.lvr = '-1' # set this explicitly later
         self.lvr_ch = '-1' # set this explicitly later
+        self.ppp_label = 'NA' # Petr's PPP label for cavern; redundant info
+        self.lvr_label = 'NA' # Petr's LVR label for cavern; redundant info
 
     def equal_minus_ppp(self, other):
         return (self.x==other.x and self.y==other.y and self.z==other.z and
                 self.bp==other.bp and self.bp_con==other.bp_con and
                 self.ibbp2b2==other.ibbp2b2 and self.flex==other.flex and
                 self.load==other.load and self.msa==other.msa)
+
+    # want to be able to identify line by PPP too; need to take lengths into
+    # account because of splices (multiple LVR outputs for one PPP pin)
+    def equal_ppp_length(self, other):
+        return (self.ppp==other.ppp and self.ppp_pin==other.ppp_pin and
+                self.length_c==other.length_c and self.length_a==other.length_a)
 
     def set_length(self, length_c, length_a):
         self.length_c = str(length_c)
@@ -74,6 +81,31 @@ class line:
     def set_lvr(self, lvr, lvr_ch):
         self.lvr = str(lvr)
         self.lvr_ch = str(lvr_ch)
+
+    def set_labels(self, ppp_label, lvr_label):
+        self.ppp_label = ppp_label
+        self.lvr_label = lvr_label
+
+    def flip_stereo_straight_line(self):
+        # leave all other info the same, just change flex and BP con
+        if "JD" in self.bp_con: return self # leave DCBs alone
+        mirror=False
+        if self.x=='C' and ((self.y=='bot' and self.z=='mag') or
+                            (self.y=='top' and self.z=='ip')):
+            mirror = True
+        if self.x=='A' and ((self.y=='bot' and self.z=='ip') or
+                            (self.y=='top' and self.z=='mag')):
+            mirror = True
+        new_flex = self.flex
+        if new_flex[0]=='X': new_flex = 'S'+new_flex[1:]
+        else: new_flex = 'X'+new_flex[1:]
+        new_bp_con = bp_con_alt_to_JP(new_flex, mirror)
+        new_line = line(self.x, self.y, self.z, self.bp, new_bp_con,
+                        self.ibbp2b2, new_flex, self.load, self.msa,
+                        self.ppp, self.ppp_pin)
+        new_line.set_length(self.length_c, self.length_a)
+        new_line.set_lvr(self.lvr, self.lvr_ch)
+        return new_line
 
     def __eq__(self, other):
         return (self.x==other.x and self.y==other.y and self.z==other.z and
@@ -90,9 +122,24 @@ class line:
 
 ####### Helpers
 
-# just going to copy & paste to steal Mark's parsing functions...
-# ideally would be importing these... TODO
+# stealing my old code from generating the surface mappings
+def bp_con_JP_to_alt(JP, mirror): # converts JP # to alt BP connector notation
+  index=int(JP[2:])
+  if mirror:
+    if (index//2)%2==0: index+=2
+    else: index-=2
+  alt_labels = ["X0M","X0S","S0S","S0M","X1M","X1S","S1S","S1M","X2M","X2S",
+                "S2S","S2M"]
+  return alt_labels[index]
 
+def bp_con_alt_to_JP(alt, mirror): # converts alt BP connector notation to JP #
+  # take advantage of mapping being 1-to-1
+  for JP in range(12):
+    if bp_con_JP_to_alt("JP"+str(JP), mirror)==alt: return "JP"+str(JP)
+  return None # should never return here
+
+# just going to copy & paste to steal Mark's parsing functions... and edit
+# slightly
 #
 # This part is common to the hybrids and DCBs
 #
@@ -327,6 +374,27 @@ def parse_cavern(file):
 
     return lines
 
+# return the cavern_lines with PPP positronic swapped according to input file
+def parse_swap_pos(file, cavern_lines):
+    xlsx = pandas.ExcelFile(file)
+    sheets = xlsx.sheet_names
+    lines = []
+    swap_sheet = sheets[0] # only 1 sheet
+    df = pandas.read_excel(xlsx, swap_sheet, usecols='A,D')
+    for ind, row in df.iterrows():
+        old_pos = 'P'+str(int(row['Positronic']))
+        new_pos = 'P'+str(int(row['Swap to']))
+        for l in cavern_lines:
+            if l.ppp == old_pos:
+                nl = line(l.x, l.y, l.z, l.bp, l.bp_con, l.ibbp2b2, l.flex,
+                          l.load, l.msa, new_pos, l.ppp_pin)
+                nl.set_lvr(l.lvr, l.lvr_ch)
+                nl.set_length(l.length_c, l.length_a)
+                lines.append(nl)
+                # print(l.x+l.y+l.z+l.bp+l.bp_con+l.ibbp2b2+l.flex+l.load+l.msa+
+                #       l.ppp+l.ppp_pin+'  '+nl.x+nl.y+nl.z+nl.bp+nl.bp_con+
+                #       nl.ibbp2b2+nl.flex+nl.load+nl.msa+nl.ppp+nl.ppp_pin)
+    return lines
 
 # returns a list of lines for cable test mapping
 def parse_cable_test(file):
@@ -340,11 +408,12 @@ def parse_cable_test(file):
 
 ### Associate files with a function for parsing
 parse_func = {}
-files = [nominal, cavern] + compare
+files = [nominal, cavern, swap_pos] + compare
 for file in files:
     if 'surface_LV_power_tests' in file: parse_func[file]=parse_surface
     elif 'LVR_PPP_Underground' in file: parse_func[file]=parse_cavern
     elif 'lvr_testing' in file: parse_func[file]=parse_cable_test
+    elif 'swap_positronic' in file: parse_func[file]=parse_swap_pos
     else: print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
 
 
@@ -397,7 +466,7 @@ def add_pop_col(lines, pos_ind, len_ind):
 def cavern_typo_check():
     print(f'\n\nChecking {cavern} for typos...\n\n')
     nominal_lines = parse_func[nominal](nominal)
-    cavern_lines = parse_func[cavern](cavern) # parse func will do some checks TODO
+    cavern_lines = parse_func[cavern](cavern) # parse func will do some checks (TODO)
     # now, make sure you can find every line in cavern lines! (but, don't
     # require the PPP to be the same; this will be checked later)
     found_all_lines_ok = True
@@ -462,6 +531,11 @@ def cavern_check_fix():
     # fixme_ppp_csv.close()
     ppp_wrong_cavern_lines = {} # map from (wrong) cav line to nom line
     ppp_corrected_cavern_lines = {} # from (all) cav line to nom line
+    # also do comparison with all cavern lines flipped stereo<->straight
+    # note: for this, compare against nominal line matched to non-flipped
+    # cavern line!
+    ppp_wrong_cavern_lines_flip = {}
+    ppp_corrected_cavern_lines_flip = {}
     for cav_line in cavern_lines:
         nom_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na',
                         'na', 'na')
@@ -469,6 +543,9 @@ def cavern_check_fix():
         for nl in nominal_lines:
             if nl.equal_minus_ppp(cav_line):
                 found += 1
+                # also, set the LVR info and lengths while you're at it
+                nl.set_lvr(cav_line.lvr, cav_line.lvr_ch)
+                nl.set_length(cav_line.length_c, cav_line.length_a)
                 nom_line = nl
         if found==0: print(f'Couldn\'t find '+
                            f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
@@ -482,9 +559,23 @@ def cavern_check_fix():
             print(f'\nFound cavern line with wrong PPP!\n')
             ppp_wrong_cavern_lines[cav_line] = nom_line
         ppp_corrected_cavern_lines[cav_line] = nom_line
+        if check_stereo_straight_flip:
+            cav_line_flip = cav_line.flip_stereo_straight_line()
+            if not cav_line_flip==nom_line:
+                print(f'\nFound flipped cavern line with wrong PPP!\n')
+                ppp_wrong_cavern_lines_flip[cav_line_flip] = nom_line
+            ppp_corrected_cavern_lines_flip[cav_line_flip] = nom_line
+
+    # also, if the user is specifying where the positronic are being swapped
+    # to, output a file that tells the shifters where the move the LVR labels
+    # accordingly (so that, with moving positronic taken into account, the
+    # cables going into the given PPP location are the correct lines/LVRs)
+    if swap_pos != 'NA':
+        moved_cavern_lines = parse_func[swap_pos](swap_pos, cavern_lines)
 
 
     # write out all cavern lines
+    # TODO should put this in a separate function...
     # print_ppp_corrected_cavern_lines('fixme/cavern_mapping_ppp_fixes.xlsx',
     #                                  ppp_corrected_cavern_lines)
     cav_lines = []
@@ -522,12 +613,49 @@ def cavern_check_fix():
     for row in cav_lines: writer.writerow(row)
     fixme.close()
 
+    # write out all flipped cavern lines
+    if check_stereo_straight_flip:
+        cav_lines_flip = []
+        cav_lines_flip.append(['True/Mir', 'Mag/IP', 'BP', 'BP Con.',
+                               'iBB/P2B2 Con.', 'SBC Flex Name',
+                               '4-asic group / DCB power', 'M/S/A',
+                               'Cav. Map. PPP Pos.', 'Cav. Map. PPP Pins',
+                               'Surf. Map. PPP Pos.',
+                               'Surf. Map. PPP Pins', 'LVR', 'LVR Ch.',
+                               'C Len (m)', 'A Len (m)'])
+        for cl in ppp_corrected_cavern_lines_flip:
+            cav_lines_flip.append([true_mirror(cl.x, cl.y, cl.z), cl.z, cl.bp,
+                                   cl.bp_con, cl.ibbp2b2, cl.flex, cl.load,
+                                   cl.msa, cl.ppp, cl.ppp_pin + ',' +
+                                   ppp_ret_pin(cl.ppp_pin),
+                                   ppp_corrected_cavern_lines_flip[cl].ppp,
+                                   ppp_corrected_cavern_lines_flip[cl].ppp_pin + ',' +
+                                   ppp_ret_pin(ppp_corrected_cavern_lines_flip[cl].ppp_pin),
+                                   cl.lvr, cl.lvr_ch, cl.length_c, cl.length_a])
+        cav_lines_flip = [cav_lines_flip[0] + ['Cav. Map. PPP Pop.']] + \
+                          add_pop_col(cav_lines_flip[1:],
+                               cav_lines_flip[0].index('Cav. Map. PPP Pos.'),
+                               cav_lines_flip[0].index('C Len (m)'))
+        cav_lines_flip = [cav_lines_flip[0] + ['Surf. Map. PPP Pop.']] + \
+                          add_pop_col(cav_lines_flip[1:],
+                               cav_lines_flip[0].index('Surf. Map. PPP Pos.'),
+                               cav_lines_flip[0].index('C Len (m)'))
+        cav_lines_flip = [cav_lines_flip[0]] + sort_by_surf_ppp_layer(cav_lines_flip[1:],
+                          cav_lines_flip[0].index('Surf. Map. PPP Pos.'),
+                          cav_lines_flip[0].index('Surf. Map. PPP Pins'),
+                          cav_lines_flip[0].index('SBC Flex Name'))
+
+        fixme_flip = open('fixme/ppp_fixes_flipped.csv', 'w')
+        writer_flip = csv.writer(fixme_flip)
+        for row in cav_lines_flip: writer_flip.writerow(row)
+        fixme_flip.close()
+
     for comp in compare:
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
         # TODO comparisons...
 
-    print(f'\n\nWriting (unformatted) fixed cavern mapping...\n\n')
-    fixed = 'fixed-'+cavern
+    # print(f'\n\nWriting (unformatted) fixed cavern mapping...\n\n')
+    # fixed = 'fixed-'+cavern
 
 
 no_typos = cavern_typo_check()
