@@ -1,183 +1,163 @@
 True/Mir,Mag/IP,BP,BP Con.,iBB/P2B2 Con.,SBC Flex Name,4-asic group / DCB power,M/S/A,Cav. Map. PPP Pos.,Cav. Map. PPP Pins,Surf. Map. PPP Pos.,Surf. Map. PPP Pins,LVR,LVR Ch.,C Len (m),A Len (m),Cav. Map. PPP Pop.,Surf. Map. PPP Pop.
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP0,JPU0,S0S,P1W,M,P3,"4,12",P1,"1,9",22,3.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P1W,M,P3,"4,12",P1,"1,9",22,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P2E,M,P3,"5,13",P1,"2,10",21,4.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P2E,M,P3,"5,13",P1,"2,10",21,2.0,splice,splice,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P3,A,P3,"6,14",P1,"3,11",15,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P1W,M,P3,"1,9",P1,"4,12",22,7.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P1W,M,P3,"1,9",P1,"4,12",22,5.0,splice,splice,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P2E,A,P3,"2,10",P1,"5,13",18,4.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P3,A,P3,"3,11",P1,"6,14",15,1.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P1E,S,P3,"8,16",P1,"7,15",22,4.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P1E,S,P3,"8,16",P1,"7,15",22,2.0,splice,splice,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P1E,S,P3,"7,15",P1,"8,16",22,8.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP1,JPU0,S0M,P1E,S,P3,"7,15",P1,"8,16",22,6.0,splice,splice,8,8
+Mirror,mag,alpha,JP0,JPU0,S0S,P1W,M,P3,"4,12",P1,"1,9",22,3 Y 1,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP0,JPU0,S0S,P2E,M,P3,"5,13",P1,"2,10",21,4 Y 2,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP0,JPU0,S0S,P3,A,P3,"6,14",P1,"3,11",15,3,7.2,7.8,8,8
+Mirror,mag,alpha,JP1,JPU0,S0M,P1W,M,P3,"1,9",P1,"4,12",22,7 Y 5,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP1,JPU0,S0M,P2E,A,P3,"2,10",P1,"5,13",18,4,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP1,JPU0,S0M,P3,A,P3,"3,11",P1,"6,14",15,1,7.2,7.8,8,8
+Mirror,mag,alpha,JP0,JPU0,S0S,P1E,S,P3,"8,16",P1,"7,15",22,4 Y 2,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP1,JPU0,S0M,P1E,S,P3,"7,15",P1,"8,16",22,8 Y 6,7.6,|8.4|,8,8
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP4,JPU1,S1S,P1W,M,P2,"4,12",P2,"1,9",21,7.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP4,JPU1,S1S,P1W,M,P2,"4,12",P2,"1,9",21,5.0,splice,splice,8,8
-Mirror,mag,alpha,JP4,JPU1,S1S,P2E,A,P2,"5,13",P2,"2,10",15,4.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP4,JPU1,S1S,P3,A,P2,"6,14",P2,"3,11",13,3.0,|6.8|,7.2,8,8
-Mirror,mag,alpha,JP5,JPU1,S1M,P1W,M,P2,"1,9",P2,"4,12",23,3.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP5,JPU1,S1M,P1W,M,P2,"1,9",P2,"4,12",23,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP5,JPU0,S1M,P2E,A,P2,"2,10",P2,"5,13",18,3.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP5,JPU1,S1M,P3,A,P2,"3,11",P2,"6,14",15,2.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P2W,S,P2,"7,15",P2,"7,15",21,3.0,7.6,|8.4|,8,8
-Mirror,mag,alpha,JP0,JPU0,S0S,P2W,S,P2,"7,15",P2,"7,15",21,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP5,JPU1,S1M,P1E,S,P1,"7,15",P2,"8,16",23,4.0,7.6,|8.4|,6,8
-Mirror,mag,alpha,JP5,JPU1,S1M,P1E,S,P1,"7,15",P2,"8,16",23,2.0,splice,splice,6,8
+Mirror,mag,alpha,JP4,JPU1,S1S,P1W,M,P2,"4,12",P2,"1,9",21,7 Y 5,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP4,JPU1,S1S,P2E,A,P2,"5,13",P2,"2,10",15,4,7.2,7.8,8,8
+Mirror,mag,alpha,JP4,JPU1,S1S,P3,A,P2,"6,14",P2,"3,11",13,3,|6.8|,7.2,8,8
+Mirror,mag,alpha,JP5,JPU1,S1M,P1W,M,P2,"1,9",P2,"4,12",23,3 Y 1,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP5,JPU0,S1M,P2E,A,P2,"2,10",P2,"5,13",18,3,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP5,JPU1,S1M,P3,A,P2,"3,11",P2,"6,14",15,2,7.2,7.8,8,8
+Mirror,mag,alpha,JP0,JPU0,S0S,P2W,S,P2,"7,15",P2,"7,15",21,3 Y 1,7.6,|8.4|,8,8
+Mirror,mag,alpha,JP5,JPU1,S1M,P1E,S,P1,"7,15",P2,"8,16",23,4 Y 2,7.6,|8.4|,6,8
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP8,JPU2,S2S,P1W,A,P1,"4,12",P3,"1,9",18,1.0,7.6,|8.4|,6,7
-Mirror,mag,alpha,JP8,JPU2,S2S,P2E,A,P1,"5,13",P3,"2,10",15,7.0,7.2,7.8,6,7
-Mirror,mag,alpha,JP8,JPU2,S2S,P3,A,P1,"6,14",P3,"3,11",13,4.0,|6.8|,7.2,6,7
-Mirror,mag,alpha,JP9,JPU2,S2M,P1W,A,P1,"1,9",P3,"4,12",23,5.0,7.6,|8.4|,6,7
-Mirror,mag,alpha,JP9,JPU2,S2M,P2E,A,P1,"2,10",P3,"5,13",18,2.0,7.6,|8.4|,6,7
-Mirror,mag,alpha,JP9,JPU2,S2M,P3,A,P22,"4,12",P3,"6,14",15,5.0,7.6,7.8,5,7
-Mirror,mag,alpha,JP4,JPU1,S1S,P1E,S,P2,"8,16",P3,"7,15",21,8.0,7.6,|8.4|,8,7
-Mirror,mag,alpha,JP4,JPU1,S1S,P1E,S,P2,"8,16",P3,"7,15",21,6.0,splice,splice,8,7
+Mirror,mag,alpha,JP8,JPU2,S2S,P1W,A,P1,"4,12",P3,"1,9",18,1,7.6,|8.4|,6,7
+Mirror,mag,alpha,JP8,JPU2,S2S,P2E,A,P1,"5,13",P3,"2,10",15,7,7.2,7.8,6,7
+Mirror,mag,alpha,JP8,JPU2,S2S,P3,A,P1,"6,14",P3,"3,11",13,4,|6.8|,7.2,6,7
+Mirror,mag,alpha,JP9,JPU2,S2M,P1W,A,P1,"1,9",P3,"4,12",23,5,7.6,|8.4|,6,7
+Mirror,mag,alpha,JP9,JPU2,S2M,P2E,A,P1,"2,10",P3,"5,13",18,2,7.6,|8.4|,6,7
+Mirror,mag,alpha,JP9,JPU2,S2M,P3,A,P22,"4,12",P3,"6,14",15,5,7.6,7.8,5,7
+Mirror,mag,alpha,JP4,JPU1,S1S,P1E,S,P2,"8,16",P3,"7,15",21,8 Y 6,7.6,|8.4|,8,7
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP0,JPU0,S0S,P1W,A,P9,"4,12",P7,"1,9",19,8.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP0,JPU0,S0S,P2E,A,P9,"5,13",P7,"2,10",19,5.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP0,JPU0,S0S,P3,A,P9,"6,14",P7,"3,11",16,3.0,7.2,7.8,6,6
-Mirror,mag,beta,JP1,JPU0,S0M,P1W,A,P9,"1,9",P7,"4,12",24,4.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP1,JPU0,S0M,P2E,A,P9,"2,10",P7,"5,13",19,4.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP1,JPU0,S0M,P3,A,P9,"3,11",P7,"6,14",16,1.0,7.2,7.8,6,6
+Mirror,mag,beta,JP0,JPU0,S0S,P1W,A,P9,"4,12",P7,"1,9",19,8,7.6,|8.4|,6,6
+Mirror,mag,beta,JP0,JPU0,S0S,P2E,A,P9,"5,13",P7,"2,10",19,5,7.6,|8.4|,6,6
+Mirror,mag,beta,JP0,JPU0,S0S,P3,A,P9,"6,14",P7,"3,11",16,3,7.2,7.8,6,6
+Mirror,mag,beta,JP1,JPU0,S0M,P1W,A,P9,"1,9",P7,"4,12",24,4,7.6,|8.4|,6,6
+Mirror,mag,beta,JP1,JPU0,S0M,P2E,A,P9,"2,10",P7,"5,13",19,4,7.6,|8.4|,6,6
+Mirror,mag,beta,JP1,JPU0,S0M,P3,A,P9,"3,11",P7,"6,14",16,1,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP4,JPU1,S1S,P1W,A,P8,"4,12",P8,"1,9",19,6.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP4,JPU1,S1S,P2E,A,P8,"5,13",P8,"2,10",16,4.0,7.2,7.8,6,6
-Mirror,mag,beta,JP4,JPU1,S1S,P3,A,P8,"6,14",P8,"3,11",14,3.0,|6.8|,7.2,6,6
-Mirror,mag,beta,JP5,JPU1,S1M,P1W,A,P8,"1,9",P8,"4,12",24,1.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP5,JPU1,S1M,P2E,A,P8,"2,10",P8,"5,13",19,3.0,7.6,|8.4|,6,6
-Mirror,mag,beta,JP5,JPU1,S1M,P3,A,P8,"3,11",P8,"6,14",16,2.0,7.2,7.8,6,6
+Mirror,mag,beta,JP4,JPU1,S1S,P1W,A,P8,"4,12",P8,"1,9",19,6,7.6,|8.4|,6,6
+Mirror,mag,beta,JP4,JPU1,S1S,P2E,A,P8,"5,13",P8,"2,10",16,4,7.2,7.8,6,6
+Mirror,mag,beta,JP4,JPU1,S1S,P3,A,P8,"6,14",P8,"3,11",14,3,|6.8|,7.2,6,6
+Mirror,mag,beta,JP5,JPU1,S1M,P1W,A,P8,"1,9",P8,"4,12",24,1,7.6,|8.4|,6,6
+Mirror,mag,beta,JP5,JPU1,S1M,P2E,A,P8,"2,10",P8,"5,13",19,3,7.6,|8.4|,6,6
+Mirror,mag,beta,JP5,JPU1,S1M,P3,A,P8,"3,11",P8,"6,14",16,2,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP8,JPU2,S2S,P1W,A,P7,"4,12",P9,"1,9",19,1.0,7.6,|8.4|,5,6
-Mirror,mag,beta,JP8,JPU2,S2S,P2E,A,P7,"5,13",P9,"2,10",16,7.0,7.2,7.8,5,6
-Mirror,mag,beta,JP8,JPU2,S2S,P3,A,P7,"6,14",P9,"3,11",14,4.0,|6.8|,7.2,5,6
-Mirror,mag,beta,JP9,JPU2,S2M,P1W,A,P7,"1,9",P9,"4,12",24,2.0,7.6,|8.4|,5,6
-Mirror,mag,beta,JP9,JPU2,S2M,P2E,A,P7,"2,10",P9,"5,13",19,2.0,7.6,|8.4|,5,6
-Mirror,mag,beta,JP9,JPU2,S2M,P3,A,P28,"4,12",P9,"6,14",16,5.0,7.6,7.8,4,6
+Mirror,mag,beta,JP8,JPU2,S2S,P1W,A,P7,"4,12",P9,"1,9",19,1,7.6,|8.4|,5,6
+Mirror,mag,beta,JP8,JPU2,S2S,P2E,A,P7,"5,13",P9,"2,10",16,7,7.2,7.8,5,6
+Mirror,mag,beta,JP8,JPU2,S2S,P3,A,P7,"6,14",P9,"3,11",14,4,|6.8|,7.2,5,6
+Mirror,mag,beta,JP9,JPU2,S2M,P1W,A,P7,"1,9",P9,"4,12",24,2,7.6,|8.4|,5,6
+Mirror,mag,beta,JP9,JPU2,S2M,P2E,A,P7,"2,10",P9,"5,13",19,2,7.6,|8.4|,5,6
+Mirror,mag,beta,JP9,JPU2,S2M,P3,A,P28,"4,12",P9,"6,14",16,5,7.6,7.8,4,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP0,JPU0,S0S,P1W,A,P15,"4,12",P13,"1,9",20,8.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP0,JPU0,S0S,P2E,A,P15,"5,13",P13,"2,10",20,5.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP0,JPU0,S0S,P3,A,P15,"6,14",P13,"3,11",17,3.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP1,JPU0,S0M,P1W,A,P15,"1,9",P13,"4,12",24,8.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP1,JPU0,S0M,P2E,A,P15,"2,10",P13,"5,13",20,4.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP1,JPU0,S0M,P3,A,P15,"3,11",P13,"6,14",17,1.0,7.2,7.8,6,6
+Mirror,mag,gamma,JP0,JPU0,S0S,P1W,A,P15,"4,12",P13,"1,9",20,8,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP0,JPU0,S0S,P2E,A,P15,"5,13",P13,"2,10",20,5,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP0,JPU0,S0S,P3,A,P15,"6,14",P13,"3,11",17,3,7.2,7.8,6,6
+Mirror,mag,gamma,JP1,JPU0,S0M,P1W,A,P15,"1,9",P13,"4,12",24,8,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP1,JPU0,S0M,P2E,A,P15,"2,10",P13,"5,13",20,4,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP1,JPU0,S0M,P3,A,P15,"3,11",P13,"6,14",17,1,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP4,JPU1,S1S,P1W,A,P14,"4,12",P14,"1,9",20,6.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP4,JPU1,S1S,P2E,A,P14,"5,13",P14,"2,10",17,4.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP4,JPU1,S1S,P3,A,P14,"6,14",P14,"3,11",14,7.0,|6.8|,7.2,6,6
-Mirror,mag,gamma,JP5,JPU1,S1M,P1W,A,P14,"1,9",P14,"4,12",24,5.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP5,JPU1,S1M,P2E,A,P14,"2,10",P14,"5,13",20,3.0,7.6,|8.4|,6,6
-Mirror,mag,gamma,JP5,JPU1,S1M,P3,A,P14,"3,11",P14,"6,14",17,2.0,7.2,7.8,6,6
+Mirror,mag,gamma,JP4,JPU1,S1S,P1W,A,P14,"4,12",P14,"1,9",20,6,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP4,JPU1,S1S,P2E,A,P14,"5,13",P14,"2,10",17,4,7.2,7.8,6,6
+Mirror,mag,gamma,JP4,JPU1,S1S,P3,A,P14,"6,14",P14,"3,11",14,7,|6.8|,7.2,6,6
+Mirror,mag,gamma,JP5,JPU1,S1M,P1W,A,P14,"1,9",P14,"4,12",24,5,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP5,JPU1,S1M,P2E,A,P14,"2,10",P14,"5,13",20,3,7.6,|8.4|,6,6
+Mirror,mag,gamma,JP5,JPU1,S1M,P3,A,P14,"3,11",P14,"6,14",17,2,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP8,JPU2,S2S,P1W,A,P13,"4,12",P15,"1,9",20,1.0,7.6,|8.4|,5,6
-Mirror,mag,gamma,JP8,JPU2,S2S,P2E,A,P13,"5,13",P15,"2,10",17,7.0,7.2,7.8,5,6
-Mirror,mag,gamma,JP8,JPU2,S2S,P3,A,P13,"6,14",P15,"3,11",14,8.0,|6.8|,7.2,5,6
-Mirror,mag,gamma,JP9,JPU2,S2M,P1W,A,P13,"1,9",P15,"4,12",24,6.0,7.6,|8.4|,5,6
-Mirror,mag,gamma,JP9,JPU2,S2M,P2E,A,P13,"2,10",P15,"5,13",20,2.0,7.6,|8.4|,5,6
-Mirror,mag,gamma,JP9,JPU2,S2M,P3,A,P34,"4,12",P15,"6,14",17,5.0,7.6,7.8,4,6
+Mirror,mag,gamma,JP8,JPU2,S2S,P1W,A,P13,"4,12",P15,"1,9",20,1,7.6,|8.4|,5,6
+Mirror,mag,gamma,JP8,JPU2,S2S,P2E,A,P13,"5,13",P15,"2,10",17,7,7.2,7.8,5,6
+Mirror,mag,gamma,JP8,JPU2,S2S,P3,A,P13,"6,14",P15,"3,11",14,8,|6.8|,7.2,5,6
+Mirror,mag,gamma,JP9,JPU2,S2M,P1W,A,P13,"1,9",P15,"4,12",24,6,7.6,|8.4|,5,6
+Mirror,mag,gamma,JP9,JPU2,S2M,P2E,A,P13,"2,10",P15,"5,13",20,2,7.6,|8.4|,5,6
+Mirror,mag,gamma,JP9,JPU2,S2M,P3,A,P34,"4,12",P15,"6,14",17,5,7.6,7.8,4,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP1,JPL0,S0M,P4,A,P22,"1,9",P19,"1,9",13,1.0,|7.6|,7.6,5,4
-Mirror,mag,alpha,JP5,JPL1,S1M,P4,A,P22,"2,10",P19,"2,10",13,2.0,|7.6|,7.6,5,4
-Mirror,mag,alpha,JP9,JPL2,S2M,P4,A,P22,"3,11",P19,"3,11",13,5.0,|7.6|,7.6,5,4
-Mirror,mag,alpha,JP0,JPL0,S0S,P4,A,P22,"5,13",P19,"5,13",13,7.0,|7.6|,7.6,5,4
+Mirror,mag,alpha,JP1,JPL0,S0M,P4,A,P22,"1,9",P19,"1,9",13,1,|7.6|,7.6,5,4
+Mirror,mag,alpha,JP5,JPL1,S1M,P4,A,P22,"2,10",P19,"2,10",13,2,|7.6|,7.6,5,4
+Mirror,mag,alpha,JP9,JPL2,S2M,P4,A,P22,"3,11",P19,"3,11",13,5,|7.6|,7.6,5,4
+Mirror,mag,alpha,JP0,JPL0,S0S,P4,A,P22,"5,13",P19,"5,13",13,7,|7.6|,7.6,5,4
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP1,JPL0,S0M,P4,A,P28,"1,9",P25,"1,9",14,1.0,|7.6|,7.6,4,3
-Mirror,mag,beta,JP5,JPL1,S1M,P4,A,P28,"2,10",P25,"2,10",14,2.0,|7.6|,7.6,4,3
-Mirror,mag,beta,JP9,JPL2,S2M,P4,A,P28,"3,11",P25,"3,11",13,6.0,|7.6|,7.6,4,3
+Mirror,mag,beta,JP1,JPL0,S0M,P4,A,P28,"1,9",P25,"1,9",14,1,|7.6|,7.6,4,3
+Mirror,mag,beta,JP5,JPL1,S1M,P4,A,P28,"2,10",P25,"2,10",14,2,|7.6|,7.6,4,3
+Mirror,mag,beta,JP9,JPL2,S2M,P4,A,P28,"3,11",P25,"3,11",13,6,|7.6|,7.6,4,3
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP1,JPL0,S0M,P4,A,P34,"1,9",P31,"1,9",14,5.0,|7.6|,7.6,4,3
-Mirror,mag,gamma,JP5,JPL1,S1M,P4,A,P34,"2,10",P31,"2,10",14,6.0,|7.6|,7.6,4,3
-Mirror,mag,gamma,JP9,JPL2,S2M,P4,A,P34,"3,11",P31,"3,11",13,8.0,|7.6|,7.6,4,3
+Mirror,mag,gamma,JP1,JPL0,S0M,P4,A,P34,"1,9",P31,"1,9",14,5,|7.6|,7.6,4,3
+Mirror,mag,gamma,JP5,JPL1,S1M,P4,A,P34,"2,10",P31,"2,10",14,6,|7.6|,7.6,4,3
+Mirror,mag,gamma,JP9,JPL2,S2M,P4,A,P34,"3,11",P31,"3,11",13,8,|7.6|,7.6,4,3
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP3,JPU0,X0S,P1W,M,P6,"4,12",P4,"1,9",10,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU0,X0S,P1W,M,P6,"4,12",P4,"1,9",10,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP3,JPU0,X0S,P2E,M,P6,"5,13",P4,"2,10",9,4.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU0,X0S,P2E,M,P6,"5,13",P4,"2,10",9,2.0,splice,splice,8,8
-Mirror,mag,alpha,JP3,JPU1,X0S,P3,A,P6,"6,14",P4,"3,11",3,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P1W,M,P6,"1,9",P4,"4,12",10,7.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P1W,M,P6,"1,9",P4,"4,12",10,5.0,splice,splice,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P2E,A,P6,"2,10",P4,"5,13",6,4.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P3,A,P6,"3,11",P4,"6,14",3,1.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU1,X0S,P1E,S,P6,"8,16",P4,"7,15",10,4.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU1,X0S,P1E,S,P6,"8,16",P4,"7,15",10,2.0,splice,splice,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P1E,S,P6,"7,15",P4,"8,16",10,8.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP2,JPU0,X0M,P1E,S,P6,"7,15",P4,"8,16",10,6.0,splice,splice,8,8
+Mirror,mag,alpha,JP3,JPU0,X0S,P1W,M,P6,"4,12",P4,"1,9",10,3 Y 1,7.2,7.8,8,8
+Mirror,mag,alpha,JP3,JPU0,X0S,P2E,M,P6,"5,13",P4,"2,10",9,4 Y 2,7.2,7.8,8,8
+Mirror,mag,alpha,JP3,JPU1,X0S,P3,A,P6,"6,14",P4,"3,11",3,3,7.2,7.8,8,8
+Mirror,mag,alpha,JP2,JPU0,X0M,P1W,M,P6,"1,9",P4,"4,12",10,7 Y 5,7.2,7.8,8,8
+Mirror,mag,alpha,JP2,JPU0,X0M,P2E,A,P6,"2,10",P4,"5,13",6,4,7.2,7.8,8,8
+Mirror,mag,alpha,JP2,JPU0,X0M,P3,A,P6,"3,11",P4,"6,14",3,1,7.2,7.8,8,8
+Mirror,mag,alpha,JP3,JPU1,X0S,P1E,S,P6,"8,16",P4,"7,15",10,4 Y 2,7.2,7.8,8,8
+Mirror,mag,alpha,JP2,JPU0,X0M,P1E,S,P6,"7,15",P4,"8,16",10,8 Y 6,7.2,7.8,8,8
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP7,JPU1,X1S,P1W,M,P5,"4,12",P5,"1,9",9,7.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP7,JPU1,X1S,P1W,M,P5,"4,12",P5,"1,9",9,5.0,splice,splice,8,8
-Mirror,mag,alpha,JP7,JPU1,X1S,P2E,A,P5,"5,13",P5,"2,10",3,4.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP7,JPU1,X1S,P3,A,P5,"6,14",P5,"3,11",1,3.0,|6.8|,7.2,8,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P1W,M,P5,"1,9",P5,"4,12",11,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P1W,M,P5,"1,9",P5,"4,12",11,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P2E,A,P5,"2,10",P5,"5,13",6,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P3,A,P5,"3,11",P5,"6,14",3,2.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU1,X0S,P2W,S,P5,"7,15",P5,"7,15",9,3.0,7.2,7.8,8,8
-Mirror,mag,alpha,JP3,JPU1,X0S,P2W,S,P5,"7,15",P5,"7,15",9,1.0,splice,splice,8,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P1E,S,P4,"7,15",P5,"8,16",11,4.0,7.2,7.8,7,8
-Mirror,mag,alpha,JP6,JPU1,X1M,P1E,S,P4,"7,15",P5,"8,16",11,2.0,splice,splice,7,8
+Mirror,mag,alpha,JP7,JPU1,X1S,P1W,M,P5,"4,12",P5,"1,9",9,7 Y 5,7.2,7.8,8,8
+Mirror,mag,alpha,JP7,JPU1,X1S,P2E,A,P5,"5,13",P5,"2,10",3,4,7.2,7.8,8,8
+Mirror,mag,alpha,JP7,JPU1,X1S,P3,A,P5,"6,14",P5,"3,11",1,3,|6.8|,7.2,8,8
+Mirror,mag,alpha,JP6,JPU1,X1M,P1W,M,P5,"1,9",P5,"4,12",11,3 Y 1,7.2,7.8,8,8
+Mirror,mag,alpha,JP6,JPU1,X1M,P2E,A,P5,"2,10",P5,"5,13",6,3,7.2,7.8,8,8
+Mirror,mag,alpha,JP6,JPU1,X1M,P3,A,P5,"3,11",P5,"6,14",3,2,7.2,7.8,8,8
+Mirror,mag,alpha,JP3,JPU1,X0S,P2W,S,P5,"7,15",P5,"7,15",9,3 Y 1,7.2,7.8,8,8
+Mirror,mag,alpha,JP6,JPU1,X1M,P1E,S,P4,"7,15",P5,"8,16",11,4 Y 2,7.2,7.8,7,8
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP11,JPU2,X2S,P1W,A,P4,"4,12",P6,"1,9",6,1.0,7.2,7.8,7,6
-Mirror,mag,alpha,JP11,JPU2,X2S,P2E,A,P4,"5,13",P6,"2,10",3,7.0,7.2,7.8,7,6
-Mirror,mag,alpha,JP10,JPU2,X2M,P1W,A,P4,"1,9",P6,"4,12",11,5.0,7.2,7.8,7,6
-Mirror,mag,alpha,JP10,JPU2,X2M,P2E,A,P4,"2,10",P6,"5,13",6,2.0,7.2,7.8,7,6
-Mirror,mag,alpha,JP10,JPU2,X2M,P3,A,P4,"3,11",P6,"6,14",3,5.0,7.2,7.8,7,6
-Mirror,mag,alpha,JP7,JPU1,X1S,P1E,S,P5,"8,16",P6,"7,15",9,8.0,7.2,7.8,8,6
-Mirror,mag,alpha,JP7,JPU1,X1S,P1E,S,P5,"8,16",P6,"7,15",9,6.0,splice,splice,8,6
+Mirror,mag,alpha,JP11,JPU2,X2S,P1W,A,P4,"4,12",P6,"1,9",6,1,7.2,7.8,7,6
+Mirror,mag,alpha,JP11,JPU2,X2S,P2E,A,P4,"5,13",P6,"2,10",3,7,7.2,7.8,7,6
+Mirror,mag,alpha,JP10,JPU2,X2M,P1W,A,P4,"1,9",P6,"4,12",11,5,7.2,7.8,7,6
+Mirror,mag,alpha,JP10,JPU2,X2M,P2E,A,P4,"2,10",P6,"5,13",6,2,7.2,7.8,7,6
+Mirror,mag,alpha,JP10,JPU2,X2M,P3,A,P4,"3,11",P6,"6,14",3,5,7.2,7.8,7,6
+Mirror,mag,alpha,JP7,JPU1,X1S,P1E,S,P5,"8,16",P6,"7,15",9,8 Y 6,7.2,7.8,8,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP3,JPU0,X0S,P1W,A,P12,"4,12",P10,"1,9",7,8.0,7.2,7.8,6,6
-Mirror,mag,beta,JP3,JPU1,X0S,P2E,A,P12,"5,13",P10,"2,10",7,5.0,7.2,7.8,6,6
-Mirror,mag,beta,JP3,JPU1,X0S,P3,A,P12,"6,14",P10,"3,11",4,3.0,7.2,7.8,6,6
-Mirror,mag,beta,JP2,JPU0,X0M,P1W,A,P12,"1,9",P10,"4,12",12,4.0,7.2,7.8,6,6
-Mirror,mag,beta,JP2,JPU0,X0M,P2E,A,P12,"2,10",P10,"5,13",7,4.0,7.2,7.8,6,6
-Mirror,mag,beta,JP2,JPU0,X0M,P3,A,P12,"3,11",P10,"6,14",4,1.0,7.2,7.8,6,6
+Mirror,mag,beta,JP3,JPU0,X0S,P1W,A,P12,"4,12",P10,"1,9",7,8,7.2,7.8,6,6
+Mirror,mag,beta,JP3,JPU1,X0S,P2E,A,P12,"5,13",P10,"2,10",7,5,7.2,7.8,6,6
+Mirror,mag,beta,JP3,JPU1,X0S,P3,A,P12,"6,14",P10,"3,11",4,3,7.2,7.8,6,6
+Mirror,mag,beta,JP2,JPU0,X0M,P1W,A,P12,"1,9",P10,"4,12",12,4,7.2,7.8,6,6
+Mirror,mag,beta,JP2,JPU0,X0M,P2E,A,P12,"2,10",P10,"5,13",7,4,7.2,7.8,6,6
+Mirror,mag,beta,JP2,JPU0,X0M,P3,A,P12,"3,11",P10,"6,14",4,1,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP7,JPU1,X1S,P1W,A,P11,"4,12",P11,"1,9",7,6.0,7.2,7.8,6,6
-Mirror,mag,beta,JP7,JPU1,X1S,P2E,A,P11,"5,13",P11,"2,10",4,4.0,7.2,7.8,6,6
-Mirror,mag,beta,JP7,JPU1,X1S,P3,A,P11,"6,14",P11,"3,11",2,3.0,|6.8|,7.2,6,6
-Mirror,mag,beta,JP6,JPU1,X1M,P1W,A,P11,"1,9",P11,"4,12",12,1.0,7.2,7.8,6,6
-Mirror,mag,beta,JP6,JPU1,X1M,P2E,A,P11,"2,10",P11,"5,13",7,3.0,7.2,7.8,6,6
-Mirror,mag,beta,JP6,JPU1,X1M,P3,A,P11,"3,11",P11,"6,14",4,2.0,7.2,7.8,6,6
+Mirror,mag,beta,JP7,JPU1,X1S,P1W,A,P11,"4,12",P11,"1,9",7,6,7.2,7.8,6,6
+Mirror,mag,beta,JP7,JPU1,X1S,P2E,A,P11,"5,13",P11,"2,10",4,4,7.2,7.8,6,6
+Mirror,mag,beta,JP7,JPU1,X1S,P3,A,P11,"6,14",P11,"3,11",2,3,|6.8|,7.2,6,6
+Mirror,mag,beta,JP6,JPU1,X1M,P1W,A,P11,"1,9",P11,"4,12",12,1,7.2,7.8,6,6
+Mirror,mag,beta,JP6,JPU1,X1M,P2E,A,P11,"2,10",P11,"5,13",7,3,7.2,7.8,6,6
+Mirror,mag,beta,JP6,JPU1,X1M,P3,A,P11,"3,11",P11,"6,14",4,2,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP11,JPU2,X2S,P1W,A,P10,"4,12",P12,"1,9",7,1.0,7.2,7.8,6,5
-Mirror,mag,beta,JP11,JPU2,X2S,P2E,A,P10,"5,13",P12,"2,10",4,7.0,7.2,7.8,6,5
-Mirror,mag,beta,JP10,JPU2,X2M,P1W,A,P10,"1,9",P12,"4,12",12,2.0,7.2,7.8,6,5
-Mirror,mag,beta,JP10,JPU2,X2M,P2E,A,P10,"2,10",P12,"5,13",7,2.0,7.2,7.8,6,5
-Mirror,mag,beta,JP10,JPU2,X2M,P3,A,P10,"3,11",P12,"6,14",4,5.0,7.2,7.8,6,5
+Mirror,mag,beta,JP11,JPU2,X2S,P1W,A,P10,"4,12",P12,"1,9",7,1,7.2,7.8,6,5
+Mirror,mag,beta,JP11,JPU2,X2S,P2E,A,P10,"5,13",P12,"2,10",4,7,7.2,7.8,6,5
+Mirror,mag,beta,JP10,JPU2,X2M,P1W,A,P10,"1,9",P12,"4,12",12,2,7.2,7.8,6,5
+Mirror,mag,beta,JP10,JPU2,X2M,P2E,A,P10,"2,10",P12,"5,13",7,2,7.2,7.8,6,5
+Mirror,mag,beta,JP10,JPU2,X2M,P3,A,P10,"3,11",P12,"6,14",4,5,7.2,7.8,6,5
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP3,JPU0,X0S,P1W,A,P18,"4,12",P16,"1,9",8,8.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP3,JPU1,X0S,P2E,A,P18,"5,13",P16,"2,10",8,5.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP3,JPU1,X0S,P3,A,P18,"6,14",P16,"3,11",5,3.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP2,JPU0,X0M,P1W,A,P18,"1,9",P16,"4,12",12,8.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP2,JPU0,X0M,P2E,A,P18,"2,10",P16,"5,13",8,4.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP2,JPU0,X0M,P3,A,P18,"3,11",P16,"6,14",5,1.0,7.2,7.8,6,6
+Mirror,mag,gamma,JP3,JPU0,X0S,P1W,A,P18,"4,12",P16,"1,9",8,8,7.2,7.8,6,6
+Mirror,mag,gamma,JP3,JPU1,X0S,P2E,A,P18,"5,13",P16,"2,10",8,5,7.2,7.8,6,6
+Mirror,mag,gamma,JP3,JPU1,X0S,P3,A,P18,"6,14",P16,"3,11",5,3,7.2,7.8,6,6
+Mirror,mag,gamma,JP2,JPU0,X0M,P1W,A,P18,"1,9",P16,"4,12",12,8,7.2,7.8,6,6
+Mirror,mag,gamma,JP2,JPU0,X0M,P2E,A,P18,"2,10",P16,"5,13",8,4,7.2,7.8,6,6
+Mirror,mag,gamma,JP2,JPU0,X0M,P3,A,P18,"3,11",P16,"6,14",5,1,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP7,JPU1,X1S,P1W,A,P17,"4,12",P17,"1,9",8,6.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP7,JPU1,X1S,P2E,A,P17,"5,13",P17,"2,10",5,4.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP7,JPU1,X1S,P3,A,P17,"6,14",P17,"3,11",2,7.0,|6.8|,7.2,6,6
-Mirror,mag,gamma,JP6,JPU1,X1M,P1W,A,P17,"1,9",P17,"4,12",12,5.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP6,JPU1,X1M,P2E,A,P17,"2,10",P17,"5,13",8,3.0,7.2,7.8,6,6
-Mirror,mag,gamma,JP6,JPU1,X1M,P3,A,P17,"3,11",P17,"6,14",5,2.0,7.2,7.8,6,6
+Mirror,mag,gamma,JP7,JPU1,X1S,P1W,A,P17,"4,12",P17,"1,9",8,6,7.2,7.8,6,6
+Mirror,mag,gamma,JP7,JPU1,X1S,P2E,A,P17,"5,13",P17,"2,10",5,4,7.2,7.8,6,6
+Mirror,mag,gamma,JP7,JPU1,X1S,P3,A,P17,"6,14",P17,"3,11",2,7,|6.8|,7.2,6,6
+Mirror,mag,gamma,JP6,JPU1,X1M,P1W,A,P17,"1,9",P17,"4,12",12,5,7.2,7.8,6,6
+Mirror,mag,gamma,JP6,JPU1,X1M,P2E,A,P17,"2,10",P17,"5,13",8,3,7.2,7.8,6,6
+Mirror,mag,gamma,JP6,JPU1,X1M,P3,A,P17,"3,11",P17,"6,14",5,2,7.2,7.8,6,6
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP11,JPU2,X2S,P1W,A,P16,"4,12",P18,"1,9",8,1.0,7.2,7.8,6,5
-Mirror,mag,gamma,JP11,JPU2,X2S,P2E,A,P16,"5,13",P18,"2,10",5,7.0,7.2,7.8,6,5
-Mirror,mag,gamma,JP10,JPU2,X2M,P1W,A,P16,"1,9",P18,"4,12",12,6.0,7.2,7.8,6,5
-Mirror,mag,gamma,JP10,JPU2,X2M,P2E,A,P16,"2,10",P18,"5,13",8,2.0,7.2,7.8,6,5
-Mirror,mag,gamma,JP10,JPU2,X2M,P3,A,P16,"3,11",P18,"6,14",5,5.0,7.2,7.8,6,5
+Mirror,mag,gamma,JP11,JPU2,X2S,P1W,A,P16,"4,12",P18,"1,9",8,1,7.2,7.8,6,5
+Mirror,mag,gamma,JP11,JPU2,X2S,P2E,A,P16,"5,13",P18,"2,10",5,7,7.2,7.8,6,5
+Mirror,mag,gamma,JP10,JPU2,X2M,P1W,A,P16,"1,9",P18,"4,12",12,6,7.2,7.8,6,5
+Mirror,mag,gamma,JP10,JPU2,X2M,P2E,A,P16,"2,10",P18,"5,13",8,2,7.2,7.8,6,5
+Mirror,mag,gamma,JP10,JPU2,X2M,P3,A,P16,"3,11",P18,"6,14",5,5,7.2,7.8,6,5
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP2,JPL0,X0M,P4,A,P19,"1,9",P22,"1,9",1,1.0,|7.6|,7.6,4,5
-Mirror,mag,alpha,JP6,JPL1,X1M,P4,A,P19,"2,10",P22,"2,10",1,2.0,|7.6|,7.6,4,5
-Mirror,mag,alpha,JP10,JPL2,X2M,P4,A,P19,"3,11",P22,"3,11",1,5.0,|7.6|,7.6,4,5
-Mirror,mag,alpha,JP11,JPL2,X2S,P3,A,P4,"6,14",P22,"4,12",1,4.0,|6.8|,7.2,7,5
-Mirror,mag,alpha,JP3,JPL1,X0S,P4,A,P19,"5,13",P22,"5,13",1,7.0,|7.6|,7.6,4,5
+Mirror,mag,alpha,JP2,JPL0,X0M,P4,A,P19,"1,9",P22,"1,9",1,1,|7.6|,7.6,4,5
+Mirror,mag,alpha,JP6,JPL1,X1M,P4,A,P19,"2,10",P22,"2,10",1,2,|7.6|,7.6,4,5
+Mirror,mag,alpha,JP10,JPL2,X2M,P4,A,P19,"3,11",P22,"3,11",1,5,|7.6|,7.6,4,5
+Mirror,mag,alpha,JP11,JPL2,X2S,P3,A,P4,"6,14",P22,"4,12",1,4,|6.8|,7.2,7,5
+Mirror,mag,alpha,JP3,JPL1,X0S,P4,A,P19,"5,13",P22,"5,13",1,7,|7.6|,7.6,4,5
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP2,JPL1,X0M,P4,A,P25,"1,9",P28,"1,9",2,1.0,|7.6|,7.6,3,4
-Mirror,mag,beta,JP6,JPL1,X1M,P4,A,P25,"2,10",P28,"2,10",2,2.0,|7.6|,7.6,3,4
-Mirror,mag,beta,JP10,JPL2,X2M,P4,A,P25,"3,11",P28,"3,11",1,6.0,|7.6|,7.6,3,4
-Mirror,mag,beta,JP11,JPL2,X2S,P3,A,P10,"6,14",P28,"4,12",2,4.0,|6.8|,7.2,6,4
+Mirror,mag,beta,JP2,JPL1,X0M,P4,A,P25,"1,9",P28,"1,9",2,1,|7.6|,7.6,3,4
+Mirror,mag,beta,JP6,JPL1,X1M,P4,A,P25,"2,10",P28,"2,10",2,2,|7.6|,7.6,3,4
+Mirror,mag,beta,JP10,JPL2,X2M,P4,A,P25,"3,11",P28,"3,11",1,6,|7.6|,7.6,3,4
+Mirror,mag,beta,JP11,JPL2,X2S,P3,A,P10,"6,14",P28,"4,12",2,4,|6.8|,7.2,6,4
  , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP2,JPL1,X0M,P4,A,P31,"1,9",P34,"1,9",2,5.0,|7.6|,7.6,3,4
-Mirror,mag,gamma,JP6,JPU1,X1M,P4,A,P31,"2,10",P34,"2,10",2,6.0,|7.6|,7.6,3,4
-Mirror,mag,gamma,JP10,JPL2,X2M,P4,A,P31,"3,11",P34,"3,11",1,8.0,|7.6|,7.6,3,4
-Mirror,mag,gamma,JP11,JPU2,X2S,P3,A,P16,"6,14",P34,"4,12",2,8.0,|6.8|,7.2,6,4
+Mirror,mag,gamma,JP2,JPL1,X0M,P4,A,P31,"1,9",P34,"1,9",2,5,|7.6|,7.6,3,4
+Mirror,mag,gamma,JP6,JPU1,X1M,P4,A,P31,"2,10",P34,"2,10",2,6,|7.6|,7.6,3,4
+Mirror,mag,gamma,JP10,JPL2,X2M,P4,A,P31,"3,11",P34,"3,11",1,8,|7.6|,7.6,3,4
+Mirror,mag,gamma,JP11,JPU2,X2S,P3,A,P16,"6,14",P34,"4,12",2,8,|6.8|,7.2,6,4

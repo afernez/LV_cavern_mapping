@@ -68,11 +68,9 @@ class line:
                 self.ibbp2b2==other.ibbp2b2 and self.flex==other.flex and
                 self.load==other.load and self.msa==other.msa)
 
-    # want to be able to identify line by PPP too; need to take lengths into
-    # account because of splices (multiple LVR outputs for one PPP pin)
-    def equal_ppp_length(self, other):
-        return (self.ppp==other.ppp and self.ppp_pin==other.ppp_pin and
-                self.length_c==other.length_c and self.length_a==other.length_a)
+    def equal_pepi_ppp(self, other):
+        return (self.x==other.x and self.y==other.y and self.z==other.z and
+                self.ppp==other.ppp and self.ppp_pin==other.ppp_pin)
 
     def set_length(self, length_c, length_a):
         self.length_c = str(length_c)
@@ -383,16 +381,31 @@ def parse_cavern(file):
             ppp_pin = row['PPP Src/Ret'][0]
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
             l.set_length(row['C L (m)'], row['A L (m)'])
-            l.set_lvr(row['LVR ID'], row['LVR Channel'])
-            ppp_label = row['PPP Connector - Pin'] + ' / ' + \
+            l.set_lvr(row['LVR ID'], int(row['LVR Channel']))
+            ppp_label = row['PPP Connector - Pin'] + ' | ' + \
                         (row['LVR Name']).replace('_LV_SRC/RET','')
             lvr_label = row['LVR ID - Connector - Pin'] + ' ' + \
-                        row['SBC section'] + ' / ' + \
+                        row['SBC section'] + ' | ' + \
                         (row['LVR Name']).replace('_LV_SRC/RET','')
             l.set_labels(ppp_label, lvr_label)
             lines.append(l)
 
-    return lines
+    # combine splice lines by going through lines, checking which are have
+    # length = 'splice', and adding LVR ch to other spliced line. then, go
+    # through lines and delete redundant splice lines
+    combined_splice_lines = []
+    for cl in lines:
+        if cl.length_c == 'splice':
+            splice_found = 0
+            for other_cl in lines:
+                if (other_cl == cl) and (other_cl.length_c != cl.length_c):
+                    splice_found += 1
+                    other_cl.set_lvr(other_cl.lvr, other_cl.lvr_ch+' Y '+cl.lvr_ch)
+            if splice_found==0 or splice_found>1: print(f'Splice problem??')
+    for cl in lines:
+        if not cl.length_c == 'splice': combined_splice_lines.append(cl)
+
+    return combined_splice_lines
 
 # return the cavern_lines with PPP positronic swapped according to input file
 def parse_swap_pos(file, cavern_lines):
@@ -556,6 +569,7 @@ def cavern_check_fix():
     # cavern line!
     # ppp_wrong_cavern_lines_flip = {}
     ppp_corrected_cavern_lines_flip = {}
+    ppp_corrected_cavern_lines_moved = {}
     for cav_line in cavern_lines:
         nom_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na',
                         'na', 'na')
@@ -563,9 +577,13 @@ def cavern_check_fix():
         for nl in nominal_lines:
             if nl.equal_minus_ppp(cav_line):
                 found += 1
-                # also, set the LVR info and lengths while you're at it
+                # also, set the LVR info, lengths, and labels while you're at it
                 nl.set_lvr(cav_line.lvr, cav_line.lvr_ch)
                 nl.set_length(cav_line.length_c, cav_line.length_a)
+                cav_ppp_label = cav_line.ppp_label.split(' | ')
+                ppp_label = nl.ppp + ' - ' + nl.ppp_pin + '/' + \
+                            ppp_ret_pin(nl.ppp_pin) + ' | ' + cav_ppp_label[1]
+                nl.set_labels(ppp_label, cav_line.lvr_label)
                 nom_line = nl
         if found==0: print(f'Couldn\'t find '+
                            f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
@@ -587,19 +605,32 @@ def cavern_check_fix():
             ppp_corrected_cavern_lines_flip[cav_line_flip] = nom_line
 
     # also, if the user is specifying where the positronic are being swapped
-    # to, output a file that tells the shifters where the move the LVR labels
-    # accordingly (so that, with moving positronic taken into account, the
+    # to, want to figure out where shifters should move the LVR/PPP labels
+    # (so that, with the pre-moved positronics taken into account, the
     # cables going into the given PPP location are the correct lines/LVRs)
     if swap_pos != 'NA':
         moved_cavern_lines = parse_func[swap_pos](swap_pos, cavern_lines)
-        # old label info all stored in moved_cavern_lines
         for cav_line in moved_cavern_lines:
             # should have already checked above (with print statements) that
-            # a unique nom_line is found for each cav_line; correct line info
-            # is at ppp_corrected_cavern_lines[cav_line], regardless of fact
-            # that positronic has been moved by user
-            continue
-
+            # a unique nom_line is found for each cav_line, but need to recreate
+            # the map from cavern lines to nominal lines because of changed PPP
+            # Note that labels for nominal lines are already set above!
+            nom_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na',
+                            'na', 'na')
+            found = 0
+            for nl in nominal_lines:
+                if nl.equal_pepi_ppp(cav_line):
+                    found += 1
+                    nom_line = nl
+            if found==0: print(f'Couldn\'t find nominal line at '+
+                               f'{cav_line.x+cav_line.y+cav_line.z}'+
+                               f'{cav_line.ppp+cav_line.ppp_pin}???')
+            if found>1: print(f'Found more than one nominal line at '+
+                              f'{cav_line.x+cav_line.y+cav_line.z}'+
+                              f'{cav_line.ppp+cav_line.ppp_pin}???')
+            if not cav_line==nom_line:
+                print(f'\nFound (moved) cavern line with wrong PPP!\n')
+            ppp_corrected_cavern_lines_moved[cav_line] = nom_line
 
     # write out all cavern lines
     # TODO should put this in a separate function...
@@ -676,6 +707,41 @@ def cavern_check_fix():
         writer_flip = csv.writer(fixme_flip)
         for row in cav_lines_flip: writer_flip.writerow(row)
         fixme_flip.close()
+
+    # write out where labels should move to
+    if swap_pos != 'NA':
+        cav_lines_moved = []
+        # keep a few extra columns just for sorting, and after sorting, delete
+        # them before creating csv
+        cav_lines_moved.append(['True/Mir', 'Mag/IP', 'SBC Flex Name',
+                               'Surf. Map. PPP Pos.',
+                               'Surf. Map. PPP Pins',
+                               'Cav. Map. PPP Label (After Moving Pos.)',
+                               'Replace w/ PPP Label',
+                               'Cav. Map. LVR Label (After Moving Pos.)',
+                               'Replace w/ LVR Label'])
+        for cl in ppp_corrected_cavern_lines_moved:
+            nl = ppp_corrected_cavern_lines_moved[cl]
+            # find the old cavern_line that's located where the nominal line
+            # is supposed to be in the PPP
+            # found = 0
+            # old_cavern_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na',
+            #                        'na', 'na', 'na', 'na')
+            # for old_cl in moved_cavern_lines:
+            #     if nl.equal_pepi_ppp_length(old_cl, cl.length_c, cl.length_a):
+            #         found += 1
+            #         old_cavern_line = old_cl
+            # if found==0: print(f'Couldn\'t find wrong line that becomes '+
+            #                    f'{nl.x+nl.y+nl.z+nl.bp}'+
+            #                    f'{nl.bp_con+nl.ibbp2b2+nl.flex}'+
+            #                    f'{nl.load+nl.msa} (after moving)???')
+            # if found>1: print(f'Found more than one wrong line that becomes '+
+            #                   f'{nl.x+nl.y+nl.z+nl.bp}'+
+            #                   f'{nl.bp_con+nl.ibbp2b2+nl.flex}'+
+            #                   f'{nl.load+nl.msa} (after moving)???')
+
+
+
 
     for comp in compare:
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
