@@ -401,6 +401,8 @@ def parse_cavern(file):
                 if (other_cl == cl) and (other_cl.length_c != cl.length_c):
                     splice_found += 1
                     other_cl.set_lvr(other_cl.lvr, other_cl.lvr_ch+' Y '+cl.lvr_ch)
+                    other_cl.set_labels(other_cl.ppp_label, other_cl.lvr_label+\
+                                        '   Y   '+cl.lvr_label)
             if splice_found==0 or splice_found>1: print(f'Splice problem??')
     for cl in lines:
         if not cl.length_c == 'splice': combined_splice_lines.append(cl)
@@ -419,11 +421,12 @@ def parse_swap_pos(file, cavern_lines):
         new_pos = 'P'+str(int(row['Swap to']))
         for l in cavern_lines:
             if l.ppp == old_pos:
-                nl = line(l.x, l.y, l.z, l.bp, l.bp_con, l.ibbp2b2, l.flex,
+                ml = line(l.x, l.y, l.z, l.bp, l.bp_con, l.ibbp2b2, l.flex,
                           l.load, l.msa, new_pos, l.ppp_pin)
-                nl.set_lvr(l.lvr, l.lvr_ch)
-                nl.set_length(l.length_c, l.length_a)
-                lines.append(nl)
+                ml.set_lvr(l.lvr, l.lvr_ch)
+                ml.set_length(l.length_c, l.length_a)
+                ml.set_labels(l.ppp_label, l.lvr_label) # don't move ppp_label!
+                lines.append(ml)
                 # print(l.x+l.y+l.z+l.bp+l.bp_con+l.ibbp2b2+l.flex+l.load+l.msa+
                 #       l.ppp+l.ppp_pin+'  '+nl.x+nl.y+nl.z+nl.bp+nl.bp_con+
                 #       nl.ibbp2b2+nl.flex+nl.load+nl.msa+nl.ppp+nl.ppp_pin)
@@ -661,7 +664,8 @@ def cavern_check_fix():
                  add_pop_col(cav_lines[1:],
                       cav_lines[0].index('Surf. Map. PPP Pos.'),
                       cav_lines[0].index('C Len (m)'))
-    cav_lines = [cav_lines[0]] + sort_by_surf_ppp_layer(cav_lines[1:],
+    cav_lines = [cav_lines[0]] + \
+                 sort_by_surf_ppp_layer(cav_lines[1:],
                       cav_lines[0].index('Surf. Map. PPP Pos.'),
                       cav_lines[0].index('Surf. Map. PPP Pins'),
                       cav_lines[0].index('SBC Flex Name'))
@@ -698,10 +702,11 @@ def cavern_check_fix():
                           add_pop_col(cav_lines_flip[1:],
                                cav_lines_flip[0].index('Surf. Map. PPP Pos.'),
                                cav_lines_flip[0].index('C Len (m)'))
-        cav_lines_flip = [cav_lines_flip[0]] + sort_by_surf_ppp_layer(cav_lines_flip[1:],
-                          cav_lines_flip[0].index('Surf. Map. PPP Pos.'),
-                          cav_lines_flip[0].index('Surf. Map. PPP Pins'),
-                          cav_lines_flip[0].index('SBC Flex Name'))
+        cav_lines_flip = [cav_lines_flip[0]] + \
+                          sort_by_surf_ppp_layer(cav_lines_flip[1:],
+                             cav_lines_flip[0].index('Surf. Map. PPP Pos.'),
+                             cav_lines_flip[0].index('Surf. Map. PPP Pins'),
+                             cav_lines_flip[0].index('SBC Flex Name'))
 
         fixme_flip = open('fixme/ppp_fixes_flipped.csv', 'w')
         writer_flip = csv.writer(fixme_flip)
@@ -713,33 +718,33 @@ def cavern_check_fix():
         cav_lines_moved = []
         # keep a few extra columns just for sorting, and after sorting, delete
         # them before creating csv
-        cav_lines_moved.append(['True/Mir', 'Mag/IP', 'SBC Flex Name',
-                               'Surf. Map. PPP Pos.',
-                               'Surf. Map. PPP Pins',
-                               'Cav. Map. PPP Label (After Moving Pos.)',
-                               'Replace w/ PPP Label',
-                               'Cav. Map. LVR Label (After Moving Pos.)',
-                               'Replace w/ LVR Label'])
+        cav_lines_moved.append(['True/Mir', 'Mag/IP', 'BP', 'BP Con.',
+                                'iBB/P2B2 Con.', 'SBC Flex Name',
+                                '4-asic group / DCB power', 'M/S/A',
+                                'PPP Pos. (Correct)', 'PPP Pins (Correct)',
+                                'LVR', 'LVR Ch.', 'C Len (m)', 'A Len (m)',
+                                'Cav. Map. PPP Label (After Moving Pos.)',
+                                'Replace w/ PPP Label',
+                                'Cav. Map. LVR Label (After Moving Pos.)',
+                                'Replace w/ LVR Label'])
         for cl in ppp_corrected_cavern_lines_moved:
             nl = ppp_corrected_cavern_lines_moved[cl]
-            # find the old cavern_line that's located where the nominal line
-            # is supposed to be in the PPP
-            # found = 0
-            # old_cavern_line = line('na', 'na', 'na', 'na', 'na', 'na', 'na',
-            #                        'na', 'na', 'na', 'na')
-            # for old_cl in moved_cavern_lines:
-            #     if nl.equal_pepi_ppp_length(old_cl, cl.length_c, cl.length_a):
-            #         found += 1
-            #         old_cavern_line = old_cl
-            # if found==0: print(f'Couldn\'t find wrong line that becomes '+
-            #                    f'{nl.x+nl.y+nl.z+nl.bp}'+
-            #                    f'{nl.bp_con+nl.ibbp2b2+nl.flex}'+
-            #                    f'{nl.load+nl.msa} (after moving)???')
-            # if found>1: print(f'Found more than one wrong line that becomes '+
-            #                   f'{nl.x+nl.y+nl.z+nl.bp}'+
-            #                   f'{nl.bp_con+nl.ibbp2b2+nl.flex}'+
-            #                   f'{nl.load+nl.msa} (after moving)???')
+            cav_lines_moved.append([true_mirror(nl.x, nl.y, nl.z), nl.z, nl.bp,
+                              nl.bp_con, nl.ibbp2b2, nl.flex, nl.load,
+                              nl.msa, nl.ppp, nl.ppp_pin + ',' +
+                              ppp_ret_pin(nl.ppp_pin), nl.lvr, nl.lvr_ch,
+                              nl.length_c, nl.length_a, cl.ppp_label,
+                              nl.ppp_label, cl.lvr_label, nl.lvr_label])
+        cav_lines_moved = [cav_lines_moved[0]] + \
+                           sort_by_surf_ppp_layer(cav_lines_moved[1:],
+                              cav_lines_moved[0].index('PPP Pos. (Correct)'),
+                              cav_lines_moved[0].index('PPP Pins (Correct)'),
+                              cav_lines_moved[0].index('SBC Flex Name'))
 
+        fixme_moved = open('fixme/move_labels.csv', 'w')
+        writer_moved = csv.writer(fixme_moved)
+        for row in cav_lines_moved: writer_moved.writerow(row)
+        fixme_moved.close()
 
 
 
