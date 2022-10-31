@@ -716,13 +716,14 @@ def cavern_check_fix():
     # write out where labels should move to
     if swap_pos != 'NA':
         cav_lines_moved = []
-        # keep a few extra columns just for sorting, and after sorting, delete
-        # them before creating csv
+        # keep a few extra columns (mostly just for sorting)
+        # also keep track of actual cable lengths, not just required!
         cav_lines_moved.append(['True/Mir', 'Mag/IP', 'BP', 'BP Con.',
                                 'iBB/P2B2 Con.', 'SBC Flex Name',
                                 '4-asic group / DCB power', 'M/S/A',
                                 'PPP Pos. (Correct)', 'PPP Pins (Correct)',
-                                'LVR', 'LVR Ch.', 'C Len (m)', 'A Len (m)',
+                                'LVR', 'LVR Ch.', 'Actual C L (m)',
+                                'Actual A L (m)', 'C Len (m)', 'A Len (m)',
                                 'Cav. Map. PPP Label (After Moving Pos.)',
                                 'Replace w/ PPP Label',
                                 'Cav. Map. LVR Label (After Moving Pos.)',
@@ -733,8 +734,9 @@ def cavern_check_fix():
                               nl.bp_con, nl.ibbp2b2, nl.flex, nl.load,
                               nl.msa, nl.ppp, nl.ppp_pin + ',' +
                               ppp_ret_pin(nl.ppp_pin), nl.lvr, nl.lvr_ch,
-                              nl.length_c, nl.length_a, cl.ppp_label,
-                              nl.ppp_label, cl.lvr_label, nl.lvr_label])
+                              cl.length_c, cl.length_a, nl.length_c,
+                              nl.length_a, cl.ppp_label, nl.ppp_label,
+                              cl.lvr_label, nl.lvr_label])
         cav_lines_moved = [cav_lines_moved[0]] + \
                            sort_by_surf_ppp_layer(cav_lines_moved[1:],
                               cav_lines_moved[0].index('PPP Pos. (Correct)'),

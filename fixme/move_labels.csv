@@ -1,163 +1,163 @@
-True/Mir,Mag/IP,BP,BP Con.,iBB/P2B2 Con.,SBC Flex Name,4-asic group / DCB power,M/S/A,PPP Pos. (Correct),PPP Pins (Correct),LVR,LVR Ch.,C Len (m),A Len (m),Cav. Map. PPP Label (After Moving Pos.),Replace w/ PPP Label,Cav. Map. LVR Label (After Moving Pos.),Replace w/ LVR Label
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP0,JPU0,S0S,P1W,M,P1,"1,9",22,3 Y 1,7.6,|8.4|,P3 - 1/9 | PT_b_alpha_S0M_P1W,P1 - 1/9 | PT_b_alpha_S0S_P1W,22 - J13 - 4/3 1b | PT_b_alpha_S0M_P1W   Y   22 - J13 - 8/7 1b | PT_b_alpha_S0M_P1W,22 - J12 - 4/3 1b | PT_b_alpha_S0S_P1W   Y   22 - J12 - 8/7 1b | PT_b_alpha_S0S_P1W
-Mirror,mag,alpha,JP0,JPU0,S0S,P2E,M,P1,"2,10",21,4 Y 2,7.6,|8.4|,P3 - 2/10 | PT_b_alpha_S0M_P2E,P1 - 2/10 | PT_b_alpha_S0S_P2E,18 - J12 - 2/1 1b | PT_b_alpha_S0M_P2E,21 - J12 - 2/1 1b | PT_b_alpha_S0S_P2E   Y   21 - J12 - 6/5 1b | PT_b_alpha_S0S_P2E
-Mirror,mag,alpha,JP0,JPU0,S0S,P3,A,P1,"3,11",15,3,7.2,7.8,P3 - 3/11 | PT_b_alpha_S0M_P3,P1 - 3/11 | PT_b_alpha_S0S_P3,15 - J12 - 8/7 2a | PT_b_alpha_S0M_P3,15 - J12 - 4/3 2a | PT_b_alpha_S0S_P3
-Mirror,mag,alpha,JP1,JPU0,S0M,P1W,M,P1,"4,12",22,7 Y 5,7.6,|8.4|,P3 - 4/12 | PT_b_alpha_S0S_P1W,P1 - 4/12 | PT_b_alpha_S0M_P1W,22 - J12 - 4/3 1b | PT_b_alpha_S0S_P1W   Y   22 - J12 - 8/7 1b | PT_b_alpha_S0S_P1W,22 - J13 - 4/3 1b | PT_b_alpha_S0M_P1W   Y   22 - J13 - 8/7 1b | PT_b_alpha_S0M_P1W
-Mirror,mag,alpha,JP1,JPU0,S0M,P2E,A,P1,"5,13",18,4,7.6,|8.4|,P3 - 5/13 | PT_b_alpha_S0S_P2E,P1 - 5/13 | PT_b_alpha_S0M_P2E,21 - J12 - 2/1 1b | PT_b_alpha_S0S_P2E   Y   21 - J12 - 6/5 1b | PT_b_alpha_S0S_P2E,18 - J12 - 2/1 1b | PT_b_alpha_S0M_P2E
-Mirror,mag,alpha,JP1,JPU0,S0M,P3,A,P1,"6,14",15,1,7.2,7.8,P3 - 6/14 | PT_b_alpha_S0S_P3,P1 - 6/14 | PT_b_alpha_S0M_P3,15 - J12 - 4/3 2a | PT_b_alpha_S0S_P3,15 - J12 - 8/7 2a | PT_b_alpha_S0M_P3
-Mirror,mag,alpha,JP0,JPU0,S0S,P1E,S,P1,"7,15",22,4 Y 2,7.6,|8.4|,P3 - 7/15 | PT_b_alpha_S0M_P1E,P1 - 7/15 | PT_b_alpha_S0S_P1E,22 - J13 - 2/1 1b | PT_b_alpha_S0M_P1E   Y   22 - J13 - 6/5 1b | PT_b_alpha_S0M_P1E,22 - J12 - 2/1 1b | PT_b_alpha_S0S_P1E   Y   22 - J12 - 6/5 1b | PT_b_alpha_S0S_P1E
-Mirror,mag,alpha,JP1,JPU0,S0M,P1E,S,P1,"8,16",22,8 Y 6,7.6,|8.4|,P3 - 8/16 | PT_b_alpha_S0S_P1E,P1 - 8/16 | PT_b_alpha_S0M_P1E,22 - J12 - 2/1 1b | PT_b_alpha_S0S_P1E   Y   22 - J12 - 6/5 1b | PT_b_alpha_S0S_P1E,22 - J13 - 2/1 1b | PT_b_alpha_S0M_P1E   Y   22 - J13 - 6/5 1b | PT_b_alpha_S0M_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP4,JPU1,S1S,P1W,M,P2,"1,9",21,7 Y 5,7.6,|8.4|,P2 - 1/9 | PT_b_alpha_S1M_P1W,P2 - 1/9 | PT_b_alpha_S1S_P1W,23 - J12 - 4/3 1b | PT_b_alpha_S1M_P1W   Y   23 - J12 - 8/7 1b | PT_b_alpha_S1M_P1W,21 - J13 - 4/3 1b | PT_b_alpha_S1S_P1W   Y   21 - J13 - 8/7 1b | PT_b_alpha_S1S_P1W
-Mirror,mag,alpha,JP4,JPU1,S1S,P2E,A,P2,"2,10",15,4,7.2,7.8,P2 - 2/10 | PT_b_alpha_S1M_P2E,P2 - 2/10 | PT_b_alpha_S1S_P2E,18 - J12 - 4/3 1b | PT_b_alpha_S1M_P2E,15 - J12 - 2/1 2a | PT_b_alpha_S1S_P2E
-Mirror,mag,alpha,JP4,JPU1,S1S,P3,A,P2,"3,11",13,3,|6.8|,7.2,P2 - 3/11 | PT_b_alpha_S1M_P3,P2 - 3/11 | PT_b_alpha_S1S_P3,15 - J12 - 6/5 2a | PT_b_alpha_S1M_P3,13 - J12 - 4/3 2b | PT_b_alpha_S1S_P3
-Mirror,mag,alpha,JP5,JPU1,S1M,P1W,M,P2,"4,12",23,3 Y 1,7.6,|8.4|,P2 - 4/12 | PT_b_alpha_S1S_P1W,P2 - 4/12 | PT_b_alpha_S1M_P1W,21 - J13 - 4/3 1b | PT_b_alpha_S1S_P1W   Y   21 - J13 - 8/7 1b | PT_b_alpha_S1S_P1W,23 - J12 - 4/3 1b | PT_b_alpha_S1M_P1W   Y   23 - J12 - 8/7 1b | PT_b_alpha_S1M_P1W
-Mirror,mag,alpha,JP5,JPU0,S1M,P2E,A,P2,"5,13",18,3,7.6,|8.4|,P2 - 5/13 | PT_b_alpha_S1S_P2E,P2 - 5/13 | PT_b_alpha_S1M_P2E,15 - J12 - 2/1 2a | PT_b_alpha_S1S_P2E,18 - J12 - 4/3 1b | PT_b_alpha_S1M_P2E
-Mirror,mag,alpha,JP5,JPU1,S1M,P3,A,P2,"6,14",15,2,7.2,7.8,P2 - 6/14 | PT_b_alpha_S1S_P3,P2 - 6/14 | PT_b_alpha_S1M_P3,13 - J12 - 4/3 2b | PT_b_alpha_S1S_P3,15 - J12 - 6/5 2a | PT_b_alpha_S1M_P3
-Mirror,mag,alpha,JP0,JPU0,S0S,P2W,S,P2,"7,15",21,3 Y 1,7.6,|8.4|,P2 - 7/15 | PT_b_alpha_S0S_P2W,P2 - 7/15 | PT_b_alpha_S0S_P2W,21 - J12 - 4/3 1b | PT_b_alpha_S0S_P2W   Y   21 - J12 - 8/7 1b | PT_b_alpha_S0S_P2W,21 - J12 - 4/3 1b | PT_b_alpha_S0S_P2W   Y   21 - J12 - 8/7 1b | PT_b_alpha_S0S_P2W
-Mirror,mag,alpha,JP5,JPU1,S1M,P1E,S,P2,"8,16",23,4 Y 2,7.6,|8.4|,P2 - 8/16 | PT_b_alpha_S1S_P1E,P2 - 8/16 | PT_b_alpha_S1M_P1E,21 - J13 - 2/1 1b | PT_b_alpha_S1S_P1E   Y   21 - J13 - 6/5 1b | PT_b_alpha_S1S_P1E,23 - J12 - 2/1 1b | PT_b_alpha_S1M_P1E   Y   23 - J12 - 6/5 1b | PT_b_alpha_S1M_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP8,JPU2,S2S,P1W,A,P3,"1,9",18,1,7.6,|8.4|,P4 - 1/9 | PT_b_alpha_X2M_P1W,P3 - 1/9 | PT_b_alpha_S2S_P1W,11 - J13 - 8/7 2a | PT_b_alpha_X2M_P1W,18 - J12 - 8/7 1b | PT_b_alpha_S2S_P1W
-Mirror,mag,alpha,JP8,JPU2,S2S,P2E,A,P3,"2,10",15,7,7.2,7.8,P4 - 2/10 | PT_b_alpha_X2M_P2E,P3 - 2/10 | PT_b_alpha_S2S_P2E,6 - J12 - 6/5 2a | PT_b_alpha_X2M_P2E,15 - J13 - 4/3 2a | PT_b_alpha_S2S_P2E
-Mirror,mag,alpha,JP8,JPU2,S2S,P3,A,P3,"3,11",13,4,|6.8|,7.2,P4 - 3/11 | PT_b_alpha_X2M_P3,P3 - 3/11 | PT_b_alpha_S2S_P3,3 - J13 - 8/7 2a | PT_b_alpha_X2M_P3,13 - J12 - 2/1 2b | PT_b_alpha_S2S_P3
-Mirror,mag,alpha,JP9,JPU2,S2M,P1W,A,P3,"4,12",23,5,7.6,|8.4|,P4 - 4/12 | PT_b_alpha_X2S_P1W,P3 - 4/12 | PT_b_alpha_S2M_P1W,6 - J12 - 8/7 2a | PT_b_alpha_X2S_P1W,23 - J13 - 8/7 1b | PT_b_alpha_S2M_P1W
-Mirror,mag,alpha,JP9,JPU2,S2M,P2E,A,P3,"5,13",18,2,7.6,|8.4|,P4 - 5/13 | PT_b_alpha_X2S_P2E,P3 - 5/13 | PT_b_alpha_S2M_P2E,3 - J13 - 4/3 2a | PT_b_alpha_X2S_P2E,18 - J12 - 6/5 1b | PT_b_alpha_S2M_P2E
-Mirror,mag,alpha,JP9,JPU2,S2M,P3,A,P3,"6,14",15,5,7.6,7.8,P4 - 6/14 | PT_b_alpha_X2S_P3,P3 - 6/14 | PT_b_alpha_S2M_P3,1 - J12 - 2/1 2b | PT_b_alpha_X2S_P3,15 - J13 - 8/7 2e | PT_b_alpha_S2M_P3
-Mirror,mag,alpha,JP4,JPU1,S1S,P1E,S,P3,"7,15",21,8 Y 6,7.6,|8.4|,P4 - 7/15 | PT_b_alpha_X1M_P1E,P3 - 7/15 | PT_b_alpha_S1S_P1E,11 - J12 - 2/1 2a | PT_b_alpha_X1M_P1E   Y   11 - J12 - 6/5 2a | PT_b_alpha_X1M_P1E,21 - J13 - 2/1 1b | PT_b_alpha_S1S_P1E   Y   21 - J13 - 6/5 1b | PT_b_alpha_S1S_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP0,JPU0,S0S,P1W,A,P7,"1,9",19,8,7.6,|8.4|,P9 - 1/9 | PT_b_beta_S0M_P1W,P7 - 1/9 | PT_b_beta_S0S_P1W,24 - J12 - 2/1 1b | PT_b_beta_S0M_P1W,19 - J13 - 2/1 1b | PT_b_beta_S0S_P1W
-Mirror,mag,beta,JP0,JPU0,S0S,P2E,A,P7,"2,10",19,5,7.6,|8.4|,P9 - 2/10 | PT_b_beta_S0M_P2E,P7 - 2/10 | PT_b_beta_S0S_P2E,19 - J12 - 2/1 1b | PT_b_beta_S0M_P2E,19 - J13 - 8/7 1b | PT_b_beta_S0S_P2E
-Mirror,mag,beta,JP0,JPU0,S0S,P3,A,P7,"3,11",16,3,7.2,7.8,P9 - 3/11 | PT_b_beta_S0M_P3,P7 - 3/11 | PT_b_beta_S0S_P3,16 - J12 - 8/7 2a | PT_b_beta_S0M_P3,16 - J12 - 4/3 2a | PT_b_beta_S0S_P3
-Mirror,mag,beta,JP1,JPU0,S0M,P1W,A,P7,"4,12",24,4,7.6,|8.4|,P9 - 4/12 | PT_b_beta_S0S_P1W,P7 - 4/12 | PT_b_beta_S0M_P1W,19 - J13 - 2/1 1b | PT_b_beta_S0S_P1W,24 - J12 - 2/1 1b | PT_b_beta_S0M_P1W
-Mirror,mag,beta,JP1,JPU0,S0M,P2E,A,P7,"5,13",19,4,7.6,|8.4|,P9 - 5/13 | PT_b_beta_S0S_P2E,P7 - 5/13 | PT_b_beta_S0M_P2E,19 - J13 - 8/7 1b | PT_b_beta_S0S_P2E,19 - J12 - 2/1 1b | PT_b_beta_S0M_P2E
-Mirror,mag,beta,JP1,JPU0,S0M,P3,A,P7,"6,14",16,1,7.2,7.8,P9 - 6/14 | PT_b_beta_S0S_P3,P7 - 6/14 | PT_b_beta_S0M_P3,16 - J12 - 4/3 2a | PT_b_beta_S0S_P3,16 - J12 - 8/7 2a | PT_b_beta_S0M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP4,JPU1,S1S,P1W,A,P8,"1,9",19,6,7.6,|8.4|,P8 - 1/9 | PT_b_beta_S1M_P1W,P8 - 1/9 | PT_b_beta_S1S_P1W,24 - J12 - 8/7 1b | PT_b_beta_S1M_P1W,19 - J13 - 6/5 1b | PT_b_beta_S1S_P1W
-Mirror,mag,beta,JP4,JPU1,S1S,P2E,A,P8,"2,10",16,4,7.2,7.8,P8 - 2/10 | PT_b_beta_S1M_P2E,P8 - 2/10 | PT_b_beta_S1S_P2E,19 - J12 - 4/3 1b | PT_b_beta_S1M_P2E,16 - J12 - 2/1 2a | PT_b_beta_S1S_P2E
-Mirror,mag,beta,JP4,JPU1,S1S,P3,A,P8,"3,11",14,3,|6.8|,7.2,P8 - 3/11 | PT_b_beta_S1M_P3,P8 - 3/11 | PT_b_beta_S1S_P3,16 - J12 - 6/5 2a | PT_b_beta_S1M_P3,14 - J12 - 4/3 2b | PT_b_beta_S1S_P3
-Mirror,mag,beta,JP5,JPU1,S1M,P1W,A,P8,"4,12",24,1,7.6,|8.4|,P8 - 4/12 | PT_b_beta_S1S_P1W,P8 - 4/12 | PT_b_beta_S1M_P1W,19 - J13 - 6/5 1b | PT_b_beta_S1S_P1W,24 - J12 - 8/7 1b | PT_b_beta_S1M_P1W
-Mirror,mag,beta,JP5,JPU1,S1M,P2E,A,P8,"5,13",19,3,7.6,|8.4|,P8 - 5/13 | PT_b_beta_S1S_P2E,P8 - 5/13 | PT_b_beta_S1M_P2E,16 - J12 - 2/1 2a | PT_b_beta_S1S_P2E,19 - J12 - 4/3 1b | PT_b_beta_S1M_P2E
-Mirror,mag,beta,JP5,JPU1,S1M,P3,A,P8,"6,14",16,2,7.2,7.8,P8 - 6/14 | PT_b_beta_S1S_P3,P8 - 6/14 | PT_b_beta_S1M_P3,14 - J12 - 4/3 2b | PT_b_beta_S1S_P3,16 - J12 - 6/5 2a | PT_b_beta_S1M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP8,JPU2,S2S,P1W,A,P9,"1,9",19,1,7.6,|8.4|,P10 - 1/9 | PT_b_beta_X2M_P1W,P9 - 1/9 | PT_b_beta_S2S_P1W,12 - J12 - 6/5 2a | PT_b_beta_X2M_P1W,19 - J12 - 8/7 1b | PT_b_beta_S2S_P1W
-Mirror,mag,beta,JP8,JPU2,S2S,P2E,A,P9,"2,10",16,7,7.2,7.8,P10 - 2/10 | PT_b_beta_X2M_P2E,P9 - 2/10 | PT_b_beta_S2S_P2E,7 - J12 - 6/5 2a | PT_b_beta_X2M_P2E,16 - J13 - 4/3 2a | PT_b_beta_S2S_P2E
-Mirror,mag,beta,JP8,JPU2,S2S,P3,A,P9,"3,11",14,4,|6.8|,7.2,P10 - 3/11 | PT_b_beta_X2M_P3,P9 - 3/11 | PT_b_beta_S2S_P3,4 - J13 - 8/7 2a | PT_b_beta_X2M_P3,14 - J12 - 2/1 2b | PT_b_beta_S2S_P3
-Mirror,mag,beta,JP9,JPU2,S2M,P1W,A,P9,"4,12",24,2,7.6,|8.4|,P10 - 4/12 | PT_b_beta_X2S_P1W,P9 - 4/12 | PT_b_beta_S2M_P1W,7 - J12 - 8/7 2a | PT_b_beta_X2S_P1W,24 - J12 - 6/5 1b | PT_b_beta_S2M_P1W
-Mirror,mag,beta,JP9,JPU2,S2M,P2E,A,P9,"5,13",19,2,7.6,|8.4|,P10 - 5/13 | PT_b_beta_X2S_P2E,P9 - 5/13 | PT_b_beta_S2M_P2E,4 - J13 - 4/3 2a | PT_b_beta_X2S_P2E,19 - J12 - 6/5 1b | PT_b_beta_S2M_P2E
-Mirror,mag,beta,JP9,JPU2,S2M,P3,A,P9,"6,14",16,5,7.6,7.8,P10 - 6/14 | PT_b_beta_X2S_P3,P9 - 6/14 | PT_b_beta_S2M_P3,2 - J12 - 2/1 2b | PT_b_beta_X2S_P3,16 - J13 - 8/7 2e | PT_b_beta_S2M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP0,JPU0,S0S,P1W,A,P13,"1,9",20,8,7.6,|8.4|,P16 - 1/9 | PT_b_gamma_X2M_P1W,P13 - 1/9 | PT_b_gamma_S0S_P1W,12 - J13 - 6/5 2a | PT_b_gamma_X2M_P1W,20 - J13 - 2/1 1b | PT_b_gamma_S0S_P1W
-Mirror,mag,gamma,JP0,JPU0,S0S,P2E,A,P13,"2,10",20,5,7.6,|8.4|,P16 - 2/10 | PT_b_gamma_X2M_P2E,P13 - 2/10 | PT_b_gamma_S0S_P2E,8 - J12 - 6/5 2a | PT_b_gamma_X2M_P2E,20 - J13 - 8/7 1b | PT_b_gamma_S0S_P2E
-Mirror,mag,gamma,JP0,JPU0,S0S,P3,A,P13,"3,11",17,3,7.2,7.8,P16 - 3/11 | PT_b_gamma_X2M_P3,P13 - 3/11 | PT_b_gamma_S0S_P3,5 - J13 - 8/7 2a | PT_b_gamma_X2M_P3,17 - J12 - 4/3 2a | PT_b_gamma_S0S_P3
-Mirror,mag,gamma,JP1,JPU0,S0M,P1W,A,P13,"4,12",24,8,7.6,|8.4|,P16 - 4/12 | PT_b_gamma_X2S_P1W,P13 - 4/12 | PT_b_gamma_S0M_P1W,8 - J12 - 8/7 2a | PT_b_gamma_X2S_P1W,24 - J13 - 2/1 1b | PT_b_gamma_S0M_P1W
-Mirror,mag,gamma,JP1,JPU0,S0M,P2E,A,P13,"5,13",20,4,7.6,|8.4|,P16 - 5/13 | PT_b_gamma_X2S_P2E,P13 - 5/13 | PT_b_gamma_S0M_P2E,5 - J13 - 4/3 2a | PT_b_gamma_X2S_P2E,20 - J12 - 2/1 1b | PT_b_gamma_S0M_P2E
-Mirror,mag,gamma,JP1,JPU0,S0M,P3,A,P13,"6,14",17,1,7.2,7.8,P16 - 6/14 | PT_b_gamma_X2S_P3,P13 - 6/14 | PT_b_gamma_S0M_P3,2 - J13 - 2/1 2b | PT_b_gamma_X2S_P3,17 - J12 - 8/7 2a | PT_b_gamma_S0M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP4,JPU1,S1S,P1W,A,P14,"1,9",20,6,7.6,|8.4|,P14 - 1/9 | PT_b_gamma_S1M_P1W,P14 - 1/9 | PT_b_gamma_S1S_P1W,24 - J13 - 8/7 1b | PT_b_gamma_S1M_P1W,20 - J13 - 6/5 1b | PT_b_gamma_S1S_P1W
-Mirror,mag,gamma,JP4,JPU1,S1S,P2E,A,P14,"2,10",17,4,7.2,7.8,P14 - 2/10 | PT_b_gamma_S1M_P2E,P14 - 2/10 | PT_b_gamma_S1S_P2E,20 - J12 - 4/3 1b | PT_b_gamma_S1M_P2E,17 - J12 - 2/1 2a | PT_b_gamma_S1S_P2E
-Mirror,mag,gamma,JP4,JPU1,S1S,P3,A,P14,"3,11",14,7,|6.8|,7.2,P14 - 3/11 | PT_b_gamma_S1M_P3,P14 - 3/11 | PT_b_gamma_S1S_P3,17 - J12 - 6/5 2a | PT_b_gamma_S1M_P3,14 - J13 - 4/3 2b | PT_b_gamma_S1S_P3
-Mirror,mag,gamma,JP5,JPU1,S1M,P1W,A,P14,"4,12",24,5,7.6,|8.4|,P14 - 4/12 | PT_b_gamma_S1S_P1W,P14 - 4/12 | PT_b_gamma_S1M_P1W,20 - J13 - 6/5 1b | PT_b_gamma_S1S_P1W,24 - J13 - 8/7 1b | PT_b_gamma_S1M_P1W
-Mirror,mag,gamma,JP5,JPU1,S1M,P2E,A,P14,"5,13",20,3,7.6,|8.4|,P14 - 5/13 | PT_b_gamma_S1S_P2E,P14 - 5/13 | PT_b_gamma_S1M_P2E,17 - J12 - 2/1 2a | PT_b_gamma_S1S_P2E,20 - J12 - 4/3 1b | PT_b_gamma_S1M_P2E
-Mirror,mag,gamma,JP5,JPU1,S1M,P3,A,P14,"6,14",17,2,7.2,7.8,P14 - 6/14 | PT_b_gamma_S1S_P3,P14 - 6/14 | PT_b_gamma_S1M_P3,14 - J13 - 4/3 2b | PT_b_gamma_S1S_P3,17 - J12 - 6/5 2a | PT_b_gamma_S1M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP8,JPU2,S2S,P1W,A,P15,"1,9",20,1,7.6,|8.4|,P15 - 1/9 | PT_b_gamma_S0M_P1W,P15 - 1/9 | PT_b_gamma_S2S_P1W,24 - J13 - 2/1 1b | PT_b_gamma_S0M_P1W,20 - J12 - 8/7 1b | PT_b_gamma_S2S_P1W
-Mirror,mag,gamma,JP8,JPU2,S2S,P2E,A,P15,"2,10",17,7,7.2,7.8,P15 - 2/10 | PT_b_gamma_S0M_P2E,P15 - 2/10 | PT_b_gamma_S2S_P2E,20 - J12 - 2/1 1b | PT_b_gamma_S0M_P2E,17 - J13 - 4/3 2a | PT_b_gamma_S2S_P2E
-Mirror,mag,gamma,JP8,JPU2,S2S,P3,A,P15,"3,11",14,8,|6.8|,7.2,P15 - 3/11 | PT_b_gamma_S0M_P3,P15 - 3/11 | PT_b_gamma_S2S_P3,17 - J12 - 8/7 2a | PT_b_gamma_S0M_P3,14 - J13 - 2/1 2b | PT_b_gamma_S2S_P3
-Mirror,mag,gamma,JP9,JPU2,S2M,P1W,A,P15,"4,12",24,6,7.6,|8.4|,P15 - 4/12 | PT_b_gamma_S0S_P1W,P15 - 4/12 | PT_b_gamma_S2M_P1W,20 - J13 - 2/1 1b | PT_b_gamma_S0S_P1W,24 - J13 - 6/5 1b | PT_b_gamma_S2M_P1W
-Mirror,mag,gamma,JP9,JPU2,S2M,P2E,A,P15,"5,13",20,2,7.6,|8.4|,P15 - 5/13 | PT_b_gamma_S0S_P2E,P15 - 5/13 | PT_b_gamma_S2M_P2E,20 - J13 - 8/7 1b | PT_b_gamma_S0S_P2E,20 - J12 - 6/5 1b | PT_b_gamma_S2M_P2E
-Mirror,mag,gamma,JP9,JPU2,S2M,P3,A,P15,"6,14",17,5,7.6,7.8,P15 - 6/14 | PT_b_gamma_S0S_P3,P15 - 6/14 | PT_b_gamma_S2M_P3,17 - J12 - 4/3 2a | PT_b_gamma_S0S_P3,17 - J13 - 8/7 2e | PT_b_gamma_S2M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP1,JPL0,S0M,P4,A,P19,"1,9",13,1,|7.6|,7.6,P19 - 1/9 | PT_b_alpha_X0M_P4,P19 - 1/9 | PT_b_alpha_S0M_P4,1 - J12 - 8/7 2c | PT_b_alpha_X0M_P4,13 - J12 - 8/7 2c | PT_b_alpha_S0M_P4
-Mirror,mag,alpha,JP5,JPL1,S1M,P4,A,P19,"2,10",13,2,|7.6|,7.6,P19 - 2/10 | PT_b_alpha_X1M_P4,P19 - 2/10 | PT_b_alpha_S1M_P4,1 - J12 - 6/5 2c | PT_b_alpha_X1M_P4,13 - J12 - 6/5 2c | PT_b_alpha_S1M_P4
-Mirror,mag,alpha,JP9,JPL2,S2M,P4,A,P19,"3,11",13,5,|7.6|,7.6,P19 - 3/11 | PT_b_alpha_X2M_P4,P19 - 3/11 | PT_b_alpha_S2M_P4,1 - J13 - 8/7 2c | PT_b_alpha_X2M_P4,13 - J13 - 8/7 2c | PT_b_alpha_S2M_P4
-Mirror,mag,alpha,JP0,JPL0,S0S,P4,A,P19,"5,13",13,7,|7.6|,7.6,P19 - 5/13 | PT_b_alpha_X0S_P4,P19 - 5/13 | PT_b_alpha_S0S_P4,1 - J13 - 4/3 2c | PT_b_alpha_X0S_P4,13 - J13 - 4/3 2c | PT_b_alpha_S0S_P4
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP1,JPL0,S0M,P4,A,P25,"1,9",14,1,|7.6|,7.6,P25 - 1/9 | PT_b_beta_X0M_P4,P25 - 1/9 | PT_b_beta_S0M_P4,2 - J12 - 8/7 2c | PT_b_beta_X0M_P4,14 - J12 - 8/7 2c | PT_b_beta_S0M_P4
-Mirror,mag,beta,JP5,JPL1,S1M,P4,A,P25,"2,10",14,2,|7.6|,7.6,P25 - 2/10 | PT_b_beta_X1M_P4,P25 - 2/10 | PT_b_beta_S1M_P4,2 - J12 - 6/5 2c | PT_b_beta_X1M_P4,14 - J12 - 6/5 2c | PT_b_beta_S1M_P4
-Mirror,mag,beta,JP9,JPL2,S2M,P4,A,P25,"3,11",13,6,|7.6|,7.6,P25 - 3/11 | PT_b_beta_X2M_P4,P25 - 3/11 | PT_b_beta_S2M_P4,1 - J13 - 6/5 2c | PT_b_beta_X2M_P4,13 - J13 - 6/5 2c | PT_b_beta_S2M_P4
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP1,JPL0,S0M,P4,A,P31,"1,9",14,5,|7.6|,7.6,P31 - 1/9 | PT_b_gamma_X0M_P4,P31 - 1/9 | PT_b_gamma_S0M_P4,2 - J13 - 8/7 2c | PT_b_gamma_X0M_P4,14 - J13 - 8/7 2c | PT_b_gamma_S0M_P4
-Mirror,mag,gamma,JP5,JPL1,S1M,P4,A,P31,"2,10",14,6,|7.6|,7.6,P31 - 2/10 | PT_b_gamma_X1M_P4,P31 - 2/10 | PT_b_gamma_S1M_P4,2 - J13 - 6/5 2c | PT_b_gamma_X1M_P4,14 - J13 - 6/5 2c | PT_b_gamma_S1M_P4
-Mirror,mag,gamma,JP9,JPL2,S2M,P4,A,P31,"3,11",13,8,|7.6|,7.6,P31 - 3/11 | PT_b_gamma_X2M_P4,P31 - 3/11 | PT_b_gamma_S2M_P4,1 - J13 - 2/1 2c | PT_b_gamma_X2M_P4,13 - J13 - 2/1 2c | PT_b_gamma_S2M_P4
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP3,JPU0,X0S,P1W,M,P4,"1,9",10,3 Y 1,7.2,7.8,P6 - 1/9 | PT_b_alpha_X0M_P1W,P4 - 1/9 | PT_b_alpha_X0S_P1W,10 - J13 - 4/3 2a | PT_b_alpha_X0M_P1W   Y   10 - J13 - 8/7 2a | PT_b_alpha_X0M_P1W,10 - J12 - 4/3 2a | PT_b_alpha_X0S_P1W   Y   10 - J12 - 8/7 2a | PT_b_alpha_X0S_P1W
-Mirror,mag,alpha,JP3,JPU0,X0S,P2E,M,P4,"2,10",9,4 Y 2,7.2,7.8,P6 - 2/10 | PT_b_alpha_X0M_P2E,P4 - 2/10 | PT_b_alpha_X0S_P2E,6 - J12 - 2/1 2a | PT_b_alpha_X0M_P2E,9 - J12 - 2/1 2a | PT_b_alpha_X0S_P2E   Y   9 - J12 - 6/5 2a | PT_b_alpha_X0S_P2E
-Mirror,mag,alpha,JP3,JPU1,X0S,P3,A,P4,"3,11",3,3,7.2,7.8,P6 - 3/11 | PT_b_alpha_X0M_P3,P4 - 3/11 | PT_b_alpha_X0S_P3,3 - J12 - 8/7 2a | PT_b_alpha_X0M_P3,3 - J12 - 4/3 2a | PT_b_alpha_X0S_P3
-Mirror,mag,alpha,JP2,JPU0,X0M,P1W,M,P4,"4,12",10,7 Y 5,7.2,7.8,P6 - 4/12 | PT_b_alpha_X0S_P1W,P4 - 4/12 | PT_b_alpha_X0M_P1W,10 - J12 - 4/3 2a | PT_b_alpha_X0S_P1W   Y   10 - J12 - 8/7 2a | PT_b_alpha_X0S_P1W,10 - J13 - 4/3 2a | PT_b_alpha_X0M_P1W   Y   10 - J13 - 8/7 2a | PT_b_alpha_X0M_P1W
-Mirror,mag,alpha,JP2,JPU0,X0M,P2E,A,P4,"5,13",6,4,7.2,7.8,P6 - 5/13 | PT_b_alpha_X0S_P2E,P4 - 5/13 | PT_b_alpha_X0M_P2E,9 - J12 - 2/1 2a | PT_b_alpha_X0S_P2E   Y   9 - J12 - 6/5 2a | PT_b_alpha_X0S_P2E,6 - J12 - 2/1 2a | PT_b_alpha_X0M_P2E
-Mirror,mag,alpha,JP2,JPU0,X0M,P3,A,P4,"6,14",3,1,7.2,7.8,P6 - 6/14 | PT_b_alpha_X0S_P3,P4 - 6/14 | PT_b_alpha_X0M_P3,3 - J12 - 4/3 2a | PT_b_alpha_X0S_P3,3 - J12 - 8/7 2a | PT_b_alpha_X0M_P3
-Mirror,mag,alpha,JP3,JPU1,X0S,P1E,S,P4,"7,15",10,4 Y 2,7.2,7.8,P6 - 7/15 | PT_b_alpha_X0M_P1E,P4 - 7/15 | PT_b_alpha_X0S_P1E,10 - J13 - 2/1 2a | PT_b_alpha_X0M_P1E   Y   10 - J13 - 6/5 2a | PT_b_alpha_X0M_P1E,10 - J12 - 2/1 2a | PT_b_alpha_X0S_P1E   Y   10 - J12 - 6/5 2a | PT_b_alpha_X0S_P1E
-Mirror,mag,alpha,JP2,JPU0,X0M,P1E,S,P4,"8,16",10,8 Y 6,7.2,7.8,P6 - 8/16 | PT_b_alpha_X0S_P1E,P4 - 8/16 | PT_b_alpha_X0M_P1E,10 - J12 - 2/1 2a | PT_b_alpha_X0S_P1E   Y   10 - J12 - 6/5 2a | PT_b_alpha_X0S_P1E,10 - J13 - 2/1 2a | PT_b_alpha_X0M_P1E   Y   10 - J13 - 6/5 2a | PT_b_alpha_X0M_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP7,JPU1,X1S,P1W,M,P5,"1,9",9,7 Y 5,7.2,7.8,P5 - 1/9 | PT_b_alpha_X1M_P1W,P5 - 1/9 | PT_b_alpha_X1S_P1W,11 - J12 - 4/3 2a | PT_b_alpha_X1M_P1W   Y   11 - J12 - 8/7 2a | PT_b_alpha_X1M_P1W,9 - J13 - 4/3 2a | PT_b_alpha_X1S_P1W   Y   9 - J13 - 8/7 2a | PT_b_alpha_X1S_P1W
-Mirror,mag,alpha,JP7,JPU1,X1S,P2E,A,P5,"2,10",3,4,7.2,7.8,P5 - 2/10 | PT_b_alpha_X1M_P2E,P5 - 2/10 | PT_b_alpha_X1S_P2E,6 - J12 - 4/3 2a | PT_b_alpha_X1M_P2E,3 - J12 - 2/1 2a | PT_b_alpha_X1S_P2E
-Mirror,mag,alpha,JP7,JPU1,X1S,P3,A,P5,"3,11",1,3,|6.8|,7.2,P5 - 3/11 | PT_b_alpha_X1M_P3,P5 - 3/11 | PT_b_alpha_X1S_P3,3 - J12 - 6/5 2a | PT_b_alpha_X1M_P3,1 - J12 - 4/3 2b | PT_b_alpha_X1S_P3
-Mirror,mag,alpha,JP6,JPU1,X1M,P1W,M,P5,"4,12",11,3 Y 1,7.2,7.8,P5 - 4/12 | PT_b_alpha_X1S_P1W,P5 - 4/12 | PT_b_alpha_X1M_P1W,9 - J13 - 4/3 2a | PT_b_alpha_X1S_P1W   Y   9 - J13 - 8/7 2a | PT_b_alpha_X1S_P1W,11 - J12 - 4/3 2a | PT_b_alpha_X1M_P1W   Y   11 - J12 - 8/7 2a | PT_b_alpha_X1M_P1W
-Mirror,mag,alpha,JP6,JPU1,X1M,P2E,A,P5,"5,13",6,3,7.2,7.8,P5 - 5/13 | PT_b_alpha_X1S_P2E,P5 - 5/13 | PT_b_alpha_X1M_P2E,3 - J12 - 2/1 2a | PT_b_alpha_X1S_P2E,6 - J12 - 4/3 2a | PT_b_alpha_X1M_P2E
-Mirror,mag,alpha,JP6,JPU1,X1M,P3,A,P5,"6,14",3,2,7.2,7.8,P5 - 6/14 | PT_b_alpha_X1S_P3,P5 - 6/14 | PT_b_alpha_X1M_P3,1 - J12 - 4/3 2b | PT_b_alpha_X1S_P3,3 - J12 - 6/5 2a | PT_b_alpha_X1M_P3
-Mirror,mag,alpha,JP3,JPU1,X0S,P2W,S,P5,"7,15",9,3 Y 1,7.2,7.8,P5 - 7/15 | PT_b_alpha_X0S_P2W,P5 - 7/15 | PT_b_alpha_X0S_P2W,9 - J12 - 4/3 2a | PT_b_alpha_X0S_P2W   Y   9 - J12 - 8/7 2a | PT_b_alpha_X0S_P2W,9 - J12 - 4/3 2a | PT_b_alpha_X0S_P2W   Y   9 - J12 - 8/7 2a | PT_b_alpha_X0S_P2W
-Mirror,mag,alpha,JP6,JPU1,X1M,P1E,S,P5,"8,16",11,4 Y 2,7.2,7.8,P5 - 8/16 | PT_b_alpha_X1S_P1E,P5 - 8/16 | PT_b_alpha_X1M_P1E,9 - J13 - 2/1 2a | PT_b_alpha_X1S_P1E   Y   9 - J13 - 6/5 2a | PT_b_alpha_X1S_P1E,11 - J12 - 2/1 2a | PT_b_alpha_X1M_P1E   Y   11 - J12 - 6/5 2a | PT_b_alpha_X1M_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP11,JPU2,X2S,P1W,A,P6,"1,9",6,1,7.2,7.8,P1 - 1/9 | PT_b_alpha_S2M_P1W,P6 - 1/9 | PT_b_alpha_X2S_P1W,23 - J13 - 8/7 1b | PT_b_alpha_S2M_P1W,6 - J12 - 8/7 2a | PT_b_alpha_X2S_P1W
-Mirror,mag,alpha,JP11,JPU2,X2S,P2E,A,P6,"2,10",3,7,7.2,7.8,P1 - 2/10 | PT_b_alpha_S2M_P2E,P6 - 2/10 | PT_b_alpha_X2S_P2E,18 - J12 - 6/5 1b | PT_b_alpha_S2M_P2E,3 - J13 - 4/3 2a | PT_b_alpha_X2S_P2E
-Mirror,mag,alpha,JP10,JPU2,X2M,P1W,A,P6,"4,12",11,5,7.2,7.8,P1 - 4/12 | PT_b_alpha_S2S_P1W,P6 - 4/12 | PT_b_alpha_X2M_P1W,18 - J12 - 8/7 1b | PT_b_alpha_S2S_P1W,11 - J13 - 8/7 2a | PT_b_alpha_X2M_P1W
-Mirror,mag,alpha,JP10,JPU2,X2M,P2E,A,P6,"5,13",6,2,7.2,7.8,P1 - 5/13 | PT_b_alpha_S2S_P2E,P6 - 5/13 | PT_b_alpha_X2M_P2E,15 - J13 - 4/3 2a | PT_b_alpha_S2S_P2E,6 - J12 - 6/5 2a | PT_b_alpha_X2M_P2E
-Mirror,mag,alpha,JP10,JPU2,X2M,P3,A,P6,"6,14",3,5,7.2,7.8,P1 - 6/14 | PT_b_alpha_S2S_P3,P6 - 6/14 | PT_b_alpha_X2M_P3,13 - J12 - 2/1 2b | PT_b_alpha_S2S_P3,3 - J13 - 8/7 2a | PT_b_alpha_X2M_P3
-Mirror,mag,alpha,JP7,JPU1,X1S,P1E,S,P6,"7,15",9,8 Y 6,7.2,7.8,P1 - 7/15 | PT_b_alpha_S1M_P1E,P6 - 7/15 | PT_b_alpha_X1S_P1E,23 - J12 - 2/1 1b | PT_b_alpha_S1M_P1E   Y   23 - J12 - 6/5 1b | PT_b_alpha_S1M_P1E,9 - J13 - 2/1 2a | PT_b_alpha_X1S_P1E   Y   9 - J13 - 6/5 2a | PT_b_alpha_X1S_P1E
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP3,JPU0,X0S,P1W,A,P10,"1,9",7,8,7.2,7.8,P12 - 1/9 | PT_b_beta_X0M_P1W,P10 - 1/9 | PT_b_beta_X0S_P1W,12 - J12 - 2/1 2a | PT_b_beta_X0M_P1W,7 - J13 - 2/1 2a | PT_b_beta_X0S_P1W
-Mirror,mag,beta,JP3,JPU1,X0S,P2E,A,P10,"2,10",7,5,7.2,7.8,P12 - 2/10 | PT_b_beta_X0M_P2E,P10 - 2/10 | PT_b_beta_X0S_P2E,7 - J12 - 2/1 2a | PT_b_beta_X0M_P2E,7 - J13 - 8/7 2a | PT_b_beta_X0S_P2E
-Mirror,mag,beta,JP3,JPU1,X0S,P3,A,P10,"3,11",4,3,7.2,7.8,P12 - 3/11 | PT_b_beta_X0M_P3,P10 - 3/11 | PT_b_beta_X0S_P3,4 - J12 - 8/7 2a | PT_b_beta_X0M_P3,4 - J12 - 4/3 2a | PT_b_beta_X0S_P3
-Mirror,mag,beta,JP2,JPU0,X0M,P1W,A,P10,"4,12",12,4,7.2,7.8,P12 - 4/12 | PT_b_beta_X0S_P1W,P10 - 4/12 | PT_b_beta_X0M_P1W,7 - J13 - 2/1 2a | PT_b_beta_X0S_P1W,12 - J12 - 2/1 2a | PT_b_beta_X0M_P1W
-Mirror,mag,beta,JP2,JPU0,X0M,P2E,A,P10,"5,13",7,4,7.2,7.8,P12 - 5/13 | PT_b_beta_X0S_P2E,P10 - 5/13 | PT_b_beta_X0M_P2E,7 - J13 - 8/7 2a | PT_b_beta_X0S_P2E,7 - J12 - 2/1 2a | PT_b_beta_X0M_P2E
-Mirror,mag,beta,JP2,JPU0,X0M,P3,A,P10,"6,14",4,1,7.2,7.8,P12 - 6/14 | PT_b_beta_X0S_P3,P10 - 6/14 | PT_b_beta_X0M_P3,4 - J12 - 4/3 2a | PT_b_beta_X0S_P3,4 - J12 - 8/7 2a | PT_b_beta_X0M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP7,JPU1,X1S,P1W,A,P11,"1,9",7,6,7.2,7.8,P11 - 1/9 | PT_b_beta_X1M_P1W,P11 - 1/9 | PT_b_beta_X1S_P1W,12 - J12 - 8/7 2a | PT_b_beta_X1M_P1W,7 - J13 - 6/5 2a | PT_b_beta_X1S_P1W
-Mirror,mag,beta,JP7,JPU1,X1S,P2E,A,P11,"2,10",4,4,7.2,7.8,P11 - 2/10 | PT_b_beta_X1M_P2E,P11 - 2/10 | PT_b_beta_X1S_P2E,7 - J12 - 4/3 2a | PT_b_beta_X1M_P2E,4 - J12 - 2/1 2a | PT_b_beta_X1S_P2E
-Mirror,mag,beta,JP7,JPU1,X1S,P3,A,P11,"3,11",2,3,|6.8|,7.2,P11 - 3/11 | PT_b_beta_X1M_P3,P11 - 3/11 | PT_b_beta_X1S_P3,4 - J12 - 6/5 2a | PT_b_beta_X1M_P3,2 - J12 - 4/3 2b | PT_b_beta_X1S_P3
-Mirror,mag,beta,JP6,JPU1,X1M,P1W,A,P11,"4,12",12,1,7.2,7.8,P11 - 4/12 | PT_b_beta_X1S_P1W,P11 - 4/12 | PT_b_beta_X1M_P1W,7 - J13 - 6/5 2a | PT_b_beta_X1S_P1W,12 - J12 - 8/7 2a | PT_b_beta_X1M_P1W
-Mirror,mag,beta,JP6,JPU1,X1M,P2E,A,P11,"5,13",7,3,7.2,7.8,P11 - 5/13 | PT_b_beta_X1S_P2E,P11 - 5/13 | PT_b_beta_X1M_P2E,4 - J12 - 2/1 2a | PT_b_beta_X1S_P2E,7 - J12 - 4/3 2a | PT_b_beta_X1M_P2E
-Mirror,mag,beta,JP6,JPU1,X1M,P3,A,P11,"6,14",4,2,7.2,7.8,P11 - 6/14 | PT_b_beta_X1S_P3,P11 - 6/14 | PT_b_beta_X1M_P3,2 - J12 - 4/3 2b | PT_b_beta_X1S_P3,4 - J12 - 6/5 2a | PT_b_beta_X1M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP11,JPU2,X2S,P1W,A,P12,"1,9",7,1,7.2,7.8,P7 - 1/9 | PT_b_beta_S2M_P1W,P12 - 1/9 | PT_b_beta_X2S_P1W,24 - J12 - 6/5 1b | PT_b_beta_S2M_P1W,7 - J12 - 8/7 2a | PT_b_beta_X2S_P1W
-Mirror,mag,beta,JP11,JPU2,X2S,P2E,A,P12,"2,10",4,7,7.2,7.8,P7 - 2/10 | PT_b_beta_S2M_P2E,P12 - 2/10 | PT_b_beta_X2S_P2E,19 - J12 - 6/5 1b | PT_b_beta_S2M_P2E,4 - J13 - 4/3 2a | PT_b_beta_X2S_P2E
-Mirror,mag,beta,JP10,JPU2,X2M,P1W,A,P12,"4,12",12,2,7.2,7.8,P7 - 4/12 | PT_b_beta_S2S_P1W,P12 - 4/12 | PT_b_beta_X2M_P1W,19 - J12 - 8/7 1b | PT_b_beta_S2S_P1W,12 - J12 - 6/5 2a | PT_b_beta_X2M_P1W
-Mirror,mag,beta,JP10,JPU2,X2M,P2E,A,P12,"5,13",7,2,7.2,7.8,P7 - 5/13 | PT_b_beta_S2S_P2E,P12 - 5/13 | PT_b_beta_X2M_P2E,16 - J13 - 4/3 2a | PT_b_beta_S2S_P2E,7 - J12 - 6/5 2a | PT_b_beta_X2M_P2E
-Mirror,mag,beta,JP10,JPU2,X2M,P3,A,P12,"6,14",4,5,7.2,7.8,P7 - 6/14 | PT_b_beta_S2S_P3,P12 - 6/14 | PT_b_beta_X2M_P3,14 - J12 - 2/1 2b | PT_b_beta_S2S_P3,4 - J13 - 8/7 2a | PT_b_beta_X2M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP3,JPU0,X0S,P1W,A,P16,"1,9",8,8,7.2,7.8,P18 - 1/9 | PT_b_gamma_X0M_P1W,P16 - 1/9 | PT_b_gamma_X0S_P1W,12 - J13 - 2/1 2a | PT_b_gamma_X0M_P1W,8 - J13 - 2/1 2a | PT_b_gamma_X0S_P1W
-Mirror,mag,gamma,JP3,JPU1,X0S,P2E,A,P16,"2,10",8,5,7.2,7.8,P18 - 2/10 | PT_b_gamma_X0M_P2E,P16 - 2/10 | PT_b_gamma_X0S_P2E,8 - J12 - 2/1 2a | PT_b_gamma_X0M_P2E,8 - J13 - 8/7 2a | PT_b_gamma_X0S_P2E
-Mirror,mag,gamma,JP3,JPU1,X0S,P3,A,P16,"3,11",5,3,7.2,7.8,P18 - 3/11 | PT_b_gamma_X0M_P3,P16 - 3/11 | PT_b_gamma_X0S_P3,5 - J12 - 8/7 2a | PT_b_gamma_X0M_P3,5 - J12 - 4/3 2a | PT_b_gamma_X0S_P3
-Mirror,mag,gamma,JP2,JPU0,X0M,P1W,A,P16,"4,12",12,8,7.2,7.8,P18 - 4/12 | PT_b_gamma_X0S_P1W,P16 - 4/12 | PT_b_gamma_X0M_P1W,8 - J13 - 2/1 2a | PT_b_gamma_X0S_P1W,12 - J13 - 2/1 2a | PT_b_gamma_X0M_P1W
-Mirror,mag,gamma,JP2,JPU0,X0M,P2E,A,P16,"5,13",8,4,7.2,7.8,P18 - 5/13 | PT_b_gamma_X0S_P2E,P16 - 5/13 | PT_b_gamma_X0M_P2E,8 - J13 - 8/7 2a | PT_b_gamma_X0S_P2E,8 - J12 - 2/1 2a | PT_b_gamma_X0M_P2E
-Mirror,mag,gamma,JP2,JPU0,X0M,P3,A,P16,"6,14",5,1,7.2,7.8,P18 - 6/14 | PT_b_gamma_X0S_P3,P16 - 6/14 | PT_b_gamma_X0M_P3,5 - J12 - 4/3 2a | PT_b_gamma_X0S_P3,5 - J12 - 8/7 2a | PT_b_gamma_X0M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP7,JPU1,X1S,P1W,A,P17,"1,9",8,6,7.2,7.8,P17 - 1/9 | PT_b_gamma_X1M_P1W,P17 - 1/9 | PT_b_gamma_X1S_P1W,12 - J13 - 8/7 2a | PT_b_gamma_X1M_P1W,8 - J13 - 6/5 2a | PT_b_gamma_X1S_P1W
-Mirror,mag,gamma,JP7,JPU1,X1S,P2E,A,P17,"2,10",5,4,7.2,7.8,P17 - 2/10 | PT_b_gamma_X1M_P2E,P17 - 2/10 | PT_b_gamma_X1S_P2E,8 - J12 - 4/3 2a | PT_b_gamma_X1M_P2E,5 - J12 - 2/1 2a | PT_b_gamma_X1S_P2E
-Mirror,mag,gamma,JP7,JPU1,X1S,P3,A,P17,"3,11",2,7,|6.8|,7.2,P17 - 3/11 | PT_b_gamma_X1M_P3,P17 - 3/11 | PT_b_gamma_X1S_P3,5 - J12 - 6/5 2a | PT_b_gamma_X1M_P3,2 - J13 - 4/3 2b | PT_b_gamma_X1S_P3
-Mirror,mag,gamma,JP6,JPU1,X1M,P1W,A,P17,"4,12",12,5,7.2,7.8,P17 - 4/12 | PT_b_gamma_X1S_P1W,P17 - 4/12 | PT_b_gamma_X1M_P1W,8 - J13 - 6/5 2a | PT_b_gamma_X1S_P1W,12 - J13 - 8/7 2a | PT_b_gamma_X1M_P1W
-Mirror,mag,gamma,JP6,JPU1,X1M,P2E,A,P17,"5,13",8,3,7.2,7.8,P17 - 5/13 | PT_b_gamma_X1S_P2E,P17 - 5/13 | PT_b_gamma_X1M_P2E,5 - J12 - 2/1 2a | PT_b_gamma_X1S_P2E,8 - J12 - 4/3 2a | PT_b_gamma_X1M_P2E
-Mirror,mag,gamma,JP6,JPU1,X1M,P3,A,P17,"6,14",5,2,7.2,7.8,P17 - 6/14 | PT_b_gamma_X1S_P3,P17 - 6/14 | PT_b_gamma_X1M_P3,2 - J13 - 4/3 2b | PT_b_gamma_X1S_P3,5 - J12 - 6/5 2a | PT_b_gamma_X1M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP11,JPU2,X2S,P1W,A,P18,"1,9",8,1,7.2,7.8,P13 - 1/9 | PT_b_gamma_S2M_P1W,P18 - 1/9 | PT_b_gamma_X2S_P1W,24 - J13 - 6/5 1b | PT_b_gamma_S2M_P1W,8 - J12 - 8/7 2a | PT_b_gamma_X2S_P1W
-Mirror,mag,gamma,JP11,JPU2,X2S,P2E,A,P18,"2,10",5,7,7.2,7.8,P13 - 2/10 | PT_b_gamma_S2M_P2E,P18 - 2/10 | PT_b_gamma_X2S_P2E,20 - J12 - 6/5 1b | PT_b_gamma_S2M_P2E,5 - J13 - 4/3 2a | PT_b_gamma_X2S_P2E
-Mirror,mag,gamma,JP10,JPU2,X2M,P1W,A,P18,"4,12",12,6,7.2,7.8,P13 - 4/12 | PT_b_gamma_S2S_P1W,P18 - 4/12 | PT_b_gamma_X2M_P1W,20 - J12 - 8/7 1b | PT_b_gamma_S2S_P1W,12 - J13 - 6/5 2a | PT_b_gamma_X2M_P1W
-Mirror,mag,gamma,JP10,JPU2,X2M,P2E,A,P18,"5,13",8,2,7.2,7.8,P13 - 5/13 | PT_b_gamma_S2S_P2E,P18 - 5/13 | PT_b_gamma_X2M_P2E,17 - J13 - 4/3 2a | PT_b_gamma_S2S_P2E,8 - J12 - 6/5 2a | PT_b_gamma_X2M_P2E
-Mirror,mag,gamma,JP10,JPU2,X2M,P3,A,P18,"6,14",5,5,7.2,7.8,P13 - 6/14 | PT_b_gamma_S2S_P3,P18 - 6/14 | PT_b_gamma_X2M_P3,14 - J13 - 2/1 2b | PT_b_gamma_S2S_P3,5 - J13 - 8/7 2a | PT_b_gamma_X2M_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,alpha,JP2,JPL0,X0M,P4,A,P22,"1,9",1,1,|7.6|,7.6,P22 - 1/9 | PT_b_alpha_S0M_P4,P22 - 1/9 | PT_b_alpha_X0M_P4,13 - J12 - 8/7 2c | PT_b_alpha_S0M_P4,1 - J12 - 8/7 2c | PT_b_alpha_X0M_P4
-Mirror,mag,alpha,JP6,JPL1,X1M,P4,A,P22,"2,10",1,2,|7.6|,7.6,P22 - 2/10 | PT_b_alpha_S1M_P4,P22 - 2/10 | PT_b_alpha_X1M_P4,13 - J12 - 6/5 2c | PT_b_alpha_S1M_P4,1 - J12 - 6/5 2c | PT_b_alpha_X1M_P4
-Mirror,mag,alpha,JP10,JPL2,X2M,P4,A,P22,"3,11",1,5,|7.6|,7.6,P22 - 3/11 | PT_b_alpha_S2M_P4,P22 - 3/11 | PT_b_alpha_X2M_P4,13 - J13 - 8/7 2c | PT_b_alpha_S2M_P4,1 - J13 - 8/7 2c | PT_b_alpha_X2M_P4
-Mirror,mag,alpha,JP11,JPL2,X2S,P3,A,P22,"4,12",1,4,|6.8|,7.2,P22 - 4/12 | PT_b_alpha_S2M_P3,P22 - 4/12 | PT_b_alpha_X2S_P3,15 - J13 - 8/7 2e | PT_b_alpha_S2M_P3,1 - J12 - 2/1 2b | PT_b_alpha_X2S_P3
-Mirror,mag,alpha,JP3,JPL1,X0S,P4,A,P22,"5,13",1,7,|7.6|,7.6,P22 - 5/13 | PT_b_alpha_S0S_P4,P22 - 5/13 | PT_b_alpha_X0S_P4,13 - J13 - 4/3 2c | PT_b_alpha_S0S_P4,1 - J13 - 4/3 2c | PT_b_alpha_X0S_P4
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,beta,JP2,JPL1,X0M,P4,A,P28,"1,9",2,1,|7.6|,7.6,P28 - 1/9 | PT_b_beta_S0M_P4,P28 - 1/9 | PT_b_beta_X0M_P4,14 - J12 - 8/7 2c | PT_b_beta_S0M_P4,2 - J12 - 8/7 2c | PT_b_beta_X0M_P4
-Mirror,mag,beta,JP6,JPL1,X1M,P4,A,P28,"2,10",2,2,|7.6|,7.6,P28 - 2/10 | PT_b_beta_S1M_P4,P28 - 2/10 | PT_b_beta_X1M_P4,14 - J12 - 6/5 2c | PT_b_beta_S1M_P4,2 - J12 - 6/5 2c | PT_b_beta_X1M_P4
-Mirror,mag,beta,JP10,JPL2,X2M,P4,A,P28,"3,11",1,6,|7.6|,7.6,P28 - 3/11 | PT_b_beta_S2M_P4,P28 - 3/11 | PT_b_beta_X2M_P4,13 - J13 - 6/5 2c | PT_b_beta_S2M_P4,1 - J13 - 6/5 2c | PT_b_beta_X2M_P4
-Mirror,mag,beta,JP11,JPL2,X2S,P3,A,P28,"4,12",2,4,|6.8|,7.2,P28 - 4/12 | PT_b_beta_S2M_P3,P28 - 4/12 | PT_b_beta_X2S_P3,16 - J13 - 8/7 2e | PT_b_beta_S2M_P3,2 - J12 - 2/1 2b | PT_b_beta_X2S_P3
- , , , , , , , , , , , , , , , , , 
-Mirror,mag,gamma,JP2,JPL1,X0M,P4,A,P34,"1,9",2,5,|7.6|,7.6,P34 - 1/9 | PT_b_gamma_S0M_P4,P34 - 1/9 | PT_b_gamma_X0M_P4,14 - J13 - 8/7 2c | PT_b_gamma_S0M_P4,2 - J13 - 8/7 2c | PT_b_gamma_X0M_P4
-Mirror,mag,gamma,JP6,JPU1,X1M,P4,A,P34,"2,10",2,6,|7.6|,7.6,P34 - 2/10 | PT_b_gamma_S1M_P4,P34 - 2/10 | PT_b_gamma_X1M_P4,14 - J13 - 6/5 2c | PT_b_gamma_S1M_P4,2 - J13 - 6/5 2c | PT_b_gamma_X1M_P4
-Mirror,mag,gamma,JP10,JPL2,X2M,P4,A,P34,"3,11",1,8,|7.6|,7.6,P34 - 3/11 | PT_b_gamma_S2M_P4,P34 - 3/11 | PT_b_gamma_X2M_P4,13 - J13 - 2/1 2c | PT_b_gamma_S2M_P4,1 - J13 - 2/1 2c | PT_b_gamma_X2M_P4
-Mirror,mag,gamma,JP11,JPU2,X2S,P3,A,P34,"4,12",2,8,|6.8|,7.2,P34 - 4/12 | PT_b_gamma_S2M_P3,P34 - 4/12 | PT_b_gamma_X2S_P3,17 - J13 - 8/7 2e | PT_b_gamma_S2M_P3,2 - J13 - 2/1 2b | PT_b_gamma_X2S_P3
+True/Mir,Mag/IP,BP,BP Con.,iBB/P2B2 Con.,SBC Flex Name,4-asic group / DCB power,M/S/A,PPP Pos. (Correct),PPP Pins (Correct),LVR,LVR Ch.,Actual C L (m),Actual A L (m),C Len (m),A Len (m),Cav. Map. PPP Label (After Moving Pos.),Replace w/ PPP Label,Cav. Map. LVR Label (After Moving Pos.),Replace w/ LVR Label
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP0,JPU0,S0S,P1W,M,P1,"1,9",22,3 Y 1,7.6,|8.4|,7.6,|8.4|,P3 - 1/9 | PT_b_alpha_S0M_P1W,P1 - 1/9 | PT_b_alpha_S0S_P1W,22 - J13 - 4/3 1b | PT_b_alpha_S0M_P1W   Y   22 - J13 - 8/7 1b | PT_b_alpha_S0M_P1W,22 - J12 - 4/3 1b | PT_b_alpha_S0S_P1W   Y   22 - J12 - 8/7 1b | PT_b_alpha_S0S_P1W
+Mirror,mag,alpha,JP0,JPU0,S0S,P2E,M,P1,"2,10",21,4 Y 2,7.6,|8.4|,7.6,|8.4|,P3 - 2/10 | PT_b_alpha_S0M_P2E,P1 - 2/10 | PT_b_alpha_S0S_P2E,18 - J12 - 2/1 1b | PT_b_alpha_S0M_P2E,21 - J12 - 2/1 1b | PT_b_alpha_S0S_P2E   Y   21 - J12 - 6/5 1b | PT_b_alpha_S0S_P2E
+Mirror,mag,alpha,JP0,JPU0,S0S,P3,A,P1,"3,11",15,3,7.2,7.8,7.2,7.8,P3 - 3/11 | PT_b_alpha_S0M_P3,P1 - 3/11 | PT_b_alpha_S0S_P3,15 - J12 - 8/7 2a | PT_b_alpha_S0M_P3,15 - J12 - 4/3 2a | PT_b_alpha_S0S_P3
+Mirror,mag,alpha,JP1,JPU0,S0M,P1W,M,P1,"4,12",22,7 Y 5,7.6,|8.4|,7.6,|8.4|,P3 - 4/12 | PT_b_alpha_S0S_P1W,P1 - 4/12 | PT_b_alpha_S0M_P1W,22 - J12 - 4/3 1b | PT_b_alpha_S0S_P1W   Y   22 - J12 - 8/7 1b | PT_b_alpha_S0S_P1W,22 - J13 - 4/3 1b | PT_b_alpha_S0M_P1W   Y   22 - J13 - 8/7 1b | PT_b_alpha_S0M_P1W
+Mirror,mag,alpha,JP1,JPU0,S0M,P2E,A,P1,"5,13",18,4,7.6,|8.4|,7.6,|8.4|,P3 - 5/13 | PT_b_alpha_S0S_P2E,P1 - 5/13 | PT_b_alpha_S0M_P2E,21 - J12 - 2/1 1b | PT_b_alpha_S0S_P2E   Y   21 - J12 - 6/5 1b | PT_b_alpha_S0S_P2E,18 - J12 - 2/1 1b | PT_b_alpha_S0M_P2E
+Mirror,mag,alpha,JP1,JPU0,S0M,P3,A,P1,"6,14",15,1,7.2,7.8,7.2,7.8,P3 - 6/14 | PT_b_alpha_S0S_P3,P1 - 6/14 | PT_b_alpha_S0M_P3,15 - J12 - 4/3 2a | PT_b_alpha_S0S_P3,15 - J12 - 8/7 2a | PT_b_alpha_S0M_P3
+Mirror,mag,alpha,JP0,JPU0,S0S,P1E,S,P1,"7,15",22,4 Y 2,7.6,|8.4|,7.6,|8.4|,P3 - 7/15 | PT_b_alpha_S0M_P1E,P1 - 7/15 | PT_b_alpha_S0S_P1E,22 - J13 - 2/1 1b | PT_b_alpha_S0M_P1E   Y   22 - J13 - 6/5 1b | PT_b_alpha_S0M_P1E,22 - J12 - 2/1 1b | PT_b_alpha_S0S_P1E   Y   22 - J12 - 6/5 1b | PT_b_alpha_S0S_P1E
+Mirror,mag,alpha,JP1,JPU0,S0M,P1E,S,P1,"8,16",22,8 Y 6,7.6,|8.4|,7.6,|8.4|,P3 - 8/16 | PT_b_alpha_S0S_P1E,P1 - 8/16 | PT_b_alpha_S0M_P1E,22 - J12 - 2/1 1b | PT_b_alpha_S0S_P1E   Y   22 - J12 - 6/5 1b | PT_b_alpha_S0S_P1E,22 - J13 - 2/1 1b | PT_b_alpha_S0M_P1E   Y   22 - J13 - 6/5 1b | PT_b_alpha_S0M_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP4,JPU1,S1S,P1W,M,P2,"1,9",21,7 Y 5,7.6,|8.4|,7.6,|8.4|,P2 - 1/9 | PT_b_alpha_S1M_P1W,P2 - 1/9 | PT_b_alpha_S1S_P1W,23 - J12 - 4/3 1b | PT_b_alpha_S1M_P1W   Y   23 - J12 - 8/7 1b | PT_b_alpha_S1M_P1W,21 - J13 - 4/3 1b | PT_b_alpha_S1S_P1W   Y   21 - J13 - 8/7 1b | PT_b_alpha_S1S_P1W
+Mirror,mag,alpha,JP4,JPU1,S1S,P2E,A,P2,"2,10",15,4,7.6,|8.4|,7.2,7.8,P2 - 2/10 | PT_b_alpha_S1M_P2E,P2 - 2/10 | PT_b_alpha_S1S_P2E,18 - J12 - 4/3 1b | PT_b_alpha_S1M_P2E,15 - J12 - 2/1 2a | PT_b_alpha_S1S_P2E
+Mirror,mag,alpha,JP4,JPU1,S1S,P3,A,P2,"3,11",13,3,7.2,7.8,|6.8|,7.2,P2 - 3/11 | PT_b_alpha_S1M_P3,P2 - 3/11 | PT_b_alpha_S1S_P3,15 - J12 - 6/5 2a | PT_b_alpha_S1M_P3,13 - J12 - 4/3 2b | PT_b_alpha_S1S_P3
+Mirror,mag,alpha,JP5,JPU1,S1M,P1W,M,P2,"4,12",23,3 Y 1,7.6,|8.4|,7.6,|8.4|,P2 - 4/12 | PT_b_alpha_S1S_P1W,P2 - 4/12 | PT_b_alpha_S1M_P1W,21 - J13 - 4/3 1b | PT_b_alpha_S1S_P1W   Y   21 - J13 - 8/7 1b | PT_b_alpha_S1S_P1W,23 - J12 - 4/3 1b | PT_b_alpha_S1M_P1W   Y   23 - J12 - 8/7 1b | PT_b_alpha_S1M_P1W
+Mirror,mag,alpha,JP5,JPU0,S1M,P2E,A,P2,"5,13",18,3,7.2,7.8,7.6,|8.4|,P2 - 5/13 | PT_b_alpha_S1S_P2E,P2 - 5/13 | PT_b_alpha_S1M_P2E,15 - J12 - 2/1 2a | PT_b_alpha_S1S_P2E,18 - J12 - 4/3 1b | PT_b_alpha_S1M_P2E
+Mirror,mag,alpha,JP5,JPU1,S1M,P3,A,P2,"6,14",15,2,|6.8|,7.2,7.2,7.8,P2 - 6/14 | PT_b_alpha_S1S_P3,P2 - 6/14 | PT_b_alpha_S1M_P3,13 - J12 - 4/3 2b | PT_b_alpha_S1S_P3,15 - J12 - 6/5 2a | PT_b_alpha_S1M_P3
+Mirror,mag,alpha,JP0,JPU0,S0S,P2W,S,P2,"7,15",21,3 Y 1,7.6,|8.4|,7.6,|8.4|,P2 - 7/15 | PT_b_alpha_S0S_P2W,P2 - 7/15 | PT_b_alpha_S0S_P2W,21 - J12 - 4/3 1b | PT_b_alpha_S0S_P2W   Y   21 - J12 - 8/7 1b | PT_b_alpha_S0S_P2W,21 - J12 - 4/3 1b | PT_b_alpha_S0S_P2W   Y   21 - J12 - 8/7 1b | PT_b_alpha_S0S_P2W
+Mirror,mag,alpha,JP5,JPU1,S1M,P1E,S,P2,"8,16",23,4 Y 2,7.6,|8.4|,7.6,|8.4|,P2 - 8/16 | PT_b_alpha_S1S_P1E,P2 - 8/16 | PT_b_alpha_S1M_P1E,21 - J13 - 2/1 1b | PT_b_alpha_S1S_P1E   Y   21 - J13 - 6/5 1b | PT_b_alpha_S1S_P1E,23 - J12 - 2/1 1b | PT_b_alpha_S1M_P1E   Y   23 - J12 - 6/5 1b | PT_b_alpha_S1M_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP8,JPU2,S2S,P1W,A,P3,"1,9",18,1,7.2,7.8,7.6,|8.4|,P4 - 1/9 | PT_b_alpha_X2M_P1W,P3 - 1/9 | PT_b_alpha_S2S_P1W,11 - J13 - 8/7 2a | PT_b_alpha_X2M_P1W,18 - J12 - 8/7 1b | PT_b_alpha_S2S_P1W
+Mirror,mag,alpha,JP8,JPU2,S2S,P2E,A,P3,"2,10",15,7,7.2,7.8,7.2,7.8,P4 - 2/10 | PT_b_alpha_X2M_P2E,P3 - 2/10 | PT_b_alpha_S2S_P2E,6 - J12 - 6/5 2a | PT_b_alpha_X2M_P2E,15 - J13 - 4/3 2a | PT_b_alpha_S2S_P2E
+Mirror,mag,alpha,JP8,JPU2,S2S,P3,A,P3,"3,11",13,4,7.2,7.8,|6.8|,7.2,P4 - 3/11 | PT_b_alpha_X2M_P3,P3 - 3/11 | PT_b_alpha_S2S_P3,3 - J13 - 8/7 2a | PT_b_alpha_X2M_P3,13 - J12 - 2/1 2b | PT_b_alpha_S2S_P3
+Mirror,mag,alpha,JP9,JPU2,S2M,P1W,A,P3,"4,12",23,5,7.2,7.8,7.6,|8.4|,P4 - 4/12 | PT_b_alpha_X2S_P1W,P3 - 4/12 | PT_b_alpha_S2M_P1W,6 - J12 - 8/7 2a | PT_b_alpha_X2S_P1W,23 - J13 - 8/7 1b | PT_b_alpha_S2M_P1W
+Mirror,mag,alpha,JP9,JPU2,S2M,P2E,A,P3,"5,13",18,2,7.2,7.8,7.6,|8.4|,P4 - 5/13 | PT_b_alpha_X2S_P2E,P3 - 5/13 | PT_b_alpha_S2M_P2E,3 - J13 - 4/3 2a | PT_b_alpha_X2S_P2E,18 - J12 - 6/5 1b | PT_b_alpha_S2M_P2E
+Mirror,mag,alpha,JP9,JPU2,S2M,P3,A,P3,"6,14",15,5,|6.8|,7.2,7.6,7.8,P4 - 6/14 | PT_b_alpha_X2S_P3,P3 - 6/14 | PT_b_alpha_S2M_P3,1 - J12 - 2/1 2b | PT_b_alpha_X2S_P3,15 - J13 - 8/7 2e | PT_b_alpha_S2M_P3
+Mirror,mag,alpha,JP4,JPU1,S1S,P1E,S,P3,"7,15",21,8 Y 6,7.2,7.8,7.6,|8.4|,P4 - 7/15 | PT_b_alpha_X1M_P1E,P3 - 7/15 | PT_b_alpha_S1S_P1E,11 - J12 - 2/1 2a | PT_b_alpha_X1M_P1E   Y   11 - J12 - 6/5 2a | PT_b_alpha_X1M_P1E,21 - J13 - 2/1 1b | PT_b_alpha_S1S_P1E   Y   21 - J13 - 6/5 1b | PT_b_alpha_S1S_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP0,JPU0,S0S,P1W,A,P7,"1,9",19,8,7.6,|8.4|,7.6,|8.4|,P9 - 1/9 | PT_b_beta_S0M_P1W,P7 - 1/9 | PT_b_beta_S0S_P1W,24 - J12 - 2/1 1b | PT_b_beta_S0M_P1W,19 - J13 - 2/1 1b | PT_b_beta_S0S_P1W
+Mirror,mag,beta,JP0,JPU0,S0S,P2E,A,P7,"2,10",19,5,7.6,|8.4|,7.6,|8.4|,P9 - 2/10 | PT_b_beta_S0M_P2E,P7 - 2/10 | PT_b_beta_S0S_P2E,19 - J12 - 2/1 1b | PT_b_beta_S0M_P2E,19 - J13 - 8/7 1b | PT_b_beta_S0S_P2E
+Mirror,mag,beta,JP0,JPU0,S0S,P3,A,P7,"3,11",16,3,7.2,7.8,7.2,7.8,P9 - 3/11 | PT_b_beta_S0M_P3,P7 - 3/11 | PT_b_beta_S0S_P3,16 - J12 - 8/7 2a | PT_b_beta_S0M_P3,16 - J12 - 4/3 2a | PT_b_beta_S0S_P3
+Mirror,mag,beta,JP1,JPU0,S0M,P1W,A,P7,"4,12",24,4,7.6,|8.4|,7.6,|8.4|,P9 - 4/12 | PT_b_beta_S0S_P1W,P7 - 4/12 | PT_b_beta_S0M_P1W,19 - J13 - 2/1 1b | PT_b_beta_S0S_P1W,24 - J12 - 2/1 1b | PT_b_beta_S0M_P1W
+Mirror,mag,beta,JP1,JPU0,S0M,P2E,A,P7,"5,13",19,4,7.6,|8.4|,7.6,|8.4|,P9 - 5/13 | PT_b_beta_S0S_P2E,P7 - 5/13 | PT_b_beta_S0M_P2E,19 - J13 - 8/7 1b | PT_b_beta_S0S_P2E,19 - J12 - 2/1 1b | PT_b_beta_S0M_P2E
+Mirror,mag,beta,JP1,JPU0,S0M,P3,A,P7,"6,14",16,1,7.2,7.8,7.2,7.8,P9 - 6/14 | PT_b_beta_S0S_P3,P7 - 6/14 | PT_b_beta_S0M_P3,16 - J12 - 4/3 2a | PT_b_beta_S0S_P3,16 - J12 - 8/7 2a | PT_b_beta_S0M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP4,JPU1,S1S,P1W,A,P8,"1,9",19,6,7.6,|8.4|,7.6,|8.4|,P8 - 1/9 | PT_b_beta_S1M_P1W,P8 - 1/9 | PT_b_beta_S1S_P1W,24 - J12 - 8/7 1b | PT_b_beta_S1M_P1W,19 - J13 - 6/5 1b | PT_b_beta_S1S_P1W
+Mirror,mag,beta,JP4,JPU1,S1S,P2E,A,P8,"2,10",16,4,7.6,|8.4|,7.2,7.8,P8 - 2/10 | PT_b_beta_S1M_P2E,P8 - 2/10 | PT_b_beta_S1S_P2E,19 - J12 - 4/3 1b | PT_b_beta_S1M_P2E,16 - J12 - 2/1 2a | PT_b_beta_S1S_P2E
+Mirror,mag,beta,JP4,JPU1,S1S,P3,A,P8,"3,11",14,3,7.2,7.8,|6.8|,7.2,P8 - 3/11 | PT_b_beta_S1M_P3,P8 - 3/11 | PT_b_beta_S1S_P3,16 - J12 - 6/5 2a | PT_b_beta_S1M_P3,14 - J12 - 4/3 2b | PT_b_beta_S1S_P3
+Mirror,mag,beta,JP5,JPU1,S1M,P1W,A,P8,"4,12",24,1,7.6,|8.4|,7.6,|8.4|,P8 - 4/12 | PT_b_beta_S1S_P1W,P8 - 4/12 | PT_b_beta_S1M_P1W,19 - J13 - 6/5 1b | PT_b_beta_S1S_P1W,24 - J12 - 8/7 1b | PT_b_beta_S1M_P1W
+Mirror,mag,beta,JP5,JPU1,S1M,P2E,A,P8,"5,13",19,3,7.2,7.8,7.6,|8.4|,P8 - 5/13 | PT_b_beta_S1S_P2E,P8 - 5/13 | PT_b_beta_S1M_P2E,16 - J12 - 2/1 2a | PT_b_beta_S1S_P2E,19 - J12 - 4/3 1b | PT_b_beta_S1M_P2E
+Mirror,mag,beta,JP5,JPU1,S1M,P3,A,P8,"6,14",16,2,|6.8|,7.2,7.2,7.8,P8 - 6/14 | PT_b_beta_S1S_P3,P8 - 6/14 | PT_b_beta_S1M_P3,14 - J12 - 4/3 2b | PT_b_beta_S1S_P3,16 - J12 - 6/5 2a | PT_b_beta_S1M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP8,JPU2,S2S,P1W,A,P9,"1,9",19,1,7.2,7.8,7.6,|8.4|,P10 - 1/9 | PT_b_beta_X2M_P1W,P9 - 1/9 | PT_b_beta_S2S_P1W,12 - J12 - 6/5 2a | PT_b_beta_X2M_P1W,19 - J12 - 8/7 1b | PT_b_beta_S2S_P1W
+Mirror,mag,beta,JP8,JPU2,S2S,P2E,A,P9,"2,10",16,7,7.2,7.8,7.2,7.8,P10 - 2/10 | PT_b_beta_X2M_P2E,P9 - 2/10 | PT_b_beta_S2S_P2E,7 - J12 - 6/5 2a | PT_b_beta_X2M_P2E,16 - J13 - 4/3 2a | PT_b_beta_S2S_P2E
+Mirror,mag,beta,JP8,JPU2,S2S,P3,A,P9,"3,11",14,4,7.2,7.8,|6.8|,7.2,P10 - 3/11 | PT_b_beta_X2M_P3,P9 - 3/11 | PT_b_beta_S2S_P3,4 - J13 - 8/7 2a | PT_b_beta_X2M_P3,14 - J12 - 2/1 2b | PT_b_beta_S2S_P3
+Mirror,mag,beta,JP9,JPU2,S2M,P1W,A,P9,"4,12",24,2,7.2,7.8,7.6,|8.4|,P10 - 4/12 | PT_b_beta_X2S_P1W,P9 - 4/12 | PT_b_beta_S2M_P1W,7 - J12 - 8/7 2a | PT_b_beta_X2S_P1W,24 - J12 - 6/5 1b | PT_b_beta_S2M_P1W
+Mirror,mag,beta,JP9,JPU2,S2M,P2E,A,P9,"5,13",19,2,7.2,7.8,7.6,|8.4|,P10 - 5/13 | PT_b_beta_X2S_P2E,P9 - 5/13 | PT_b_beta_S2M_P2E,4 - J13 - 4/3 2a | PT_b_beta_X2S_P2E,19 - J12 - 6/5 1b | PT_b_beta_S2M_P2E
+Mirror,mag,beta,JP9,JPU2,S2M,P3,A,P9,"6,14",16,5,|6.8|,7.2,7.6,7.8,P10 - 6/14 | PT_b_beta_X2S_P3,P9 - 6/14 | PT_b_beta_S2M_P3,2 - J12 - 2/1 2b | PT_b_beta_X2S_P3,16 - J13 - 8/7 2e | PT_b_beta_S2M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP0,JPU0,S0S,P1W,A,P13,"1,9",20,8,7.2,7.8,7.6,|8.4|,P16 - 1/9 | PT_b_gamma_X2M_P1W,P13 - 1/9 | PT_b_gamma_S0S_P1W,12 - J13 - 6/5 2a | PT_b_gamma_X2M_P1W,20 - J13 - 2/1 1b | PT_b_gamma_S0S_P1W
+Mirror,mag,gamma,JP0,JPU0,S0S,P2E,A,P13,"2,10",20,5,7.2,7.8,7.6,|8.4|,P16 - 2/10 | PT_b_gamma_X2M_P2E,P13 - 2/10 | PT_b_gamma_S0S_P2E,8 - J12 - 6/5 2a | PT_b_gamma_X2M_P2E,20 - J13 - 8/7 1b | PT_b_gamma_S0S_P2E
+Mirror,mag,gamma,JP0,JPU0,S0S,P3,A,P13,"3,11",17,3,7.2,7.8,7.2,7.8,P16 - 3/11 | PT_b_gamma_X2M_P3,P13 - 3/11 | PT_b_gamma_S0S_P3,5 - J13 - 8/7 2a | PT_b_gamma_X2M_P3,17 - J12 - 4/3 2a | PT_b_gamma_S0S_P3
+Mirror,mag,gamma,JP1,JPU0,S0M,P1W,A,P13,"4,12",24,8,7.2,7.8,7.6,|8.4|,P16 - 4/12 | PT_b_gamma_X2S_P1W,P13 - 4/12 | PT_b_gamma_S0M_P1W,8 - J12 - 8/7 2a | PT_b_gamma_X2S_P1W,24 - J13 - 2/1 1b | PT_b_gamma_S0M_P1W
+Mirror,mag,gamma,JP1,JPU0,S0M,P2E,A,P13,"5,13",20,4,7.2,7.8,7.6,|8.4|,P16 - 5/13 | PT_b_gamma_X2S_P2E,P13 - 5/13 | PT_b_gamma_S0M_P2E,5 - J13 - 4/3 2a | PT_b_gamma_X2S_P2E,20 - J12 - 2/1 1b | PT_b_gamma_S0M_P2E
+Mirror,mag,gamma,JP1,JPU0,S0M,P3,A,P13,"6,14",17,1,|6.8|,7.2,7.2,7.8,P16 - 6/14 | PT_b_gamma_X2S_P3,P13 - 6/14 | PT_b_gamma_S0M_P3,2 - J13 - 2/1 2b | PT_b_gamma_X2S_P3,17 - J12 - 8/7 2a | PT_b_gamma_S0M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP4,JPU1,S1S,P1W,A,P14,"1,9",20,6,7.6,|8.4|,7.6,|8.4|,P14 - 1/9 | PT_b_gamma_S1M_P1W,P14 - 1/9 | PT_b_gamma_S1S_P1W,24 - J13 - 8/7 1b | PT_b_gamma_S1M_P1W,20 - J13 - 6/5 1b | PT_b_gamma_S1S_P1W
+Mirror,mag,gamma,JP4,JPU1,S1S,P2E,A,P14,"2,10",17,4,7.6,|8.4|,7.2,7.8,P14 - 2/10 | PT_b_gamma_S1M_P2E,P14 - 2/10 | PT_b_gamma_S1S_P2E,20 - J12 - 4/3 1b | PT_b_gamma_S1M_P2E,17 - J12 - 2/1 2a | PT_b_gamma_S1S_P2E
+Mirror,mag,gamma,JP4,JPU1,S1S,P3,A,P14,"3,11",14,7,7.2,7.8,|6.8|,7.2,P14 - 3/11 | PT_b_gamma_S1M_P3,P14 - 3/11 | PT_b_gamma_S1S_P3,17 - J12 - 6/5 2a | PT_b_gamma_S1M_P3,14 - J13 - 4/3 2b | PT_b_gamma_S1S_P3
+Mirror,mag,gamma,JP5,JPU1,S1M,P1W,A,P14,"4,12",24,5,7.6,|8.4|,7.6,|8.4|,P14 - 4/12 | PT_b_gamma_S1S_P1W,P14 - 4/12 | PT_b_gamma_S1M_P1W,20 - J13 - 6/5 1b | PT_b_gamma_S1S_P1W,24 - J13 - 8/7 1b | PT_b_gamma_S1M_P1W
+Mirror,mag,gamma,JP5,JPU1,S1M,P2E,A,P14,"5,13",20,3,7.2,7.8,7.6,|8.4|,P14 - 5/13 | PT_b_gamma_S1S_P2E,P14 - 5/13 | PT_b_gamma_S1M_P2E,17 - J12 - 2/1 2a | PT_b_gamma_S1S_P2E,20 - J12 - 4/3 1b | PT_b_gamma_S1M_P2E
+Mirror,mag,gamma,JP5,JPU1,S1M,P3,A,P14,"6,14",17,2,|6.8|,7.2,7.2,7.8,P14 - 6/14 | PT_b_gamma_S1S_P3,P14 - 6/14 | PT_b_gamma_S1M_P3,14 - J13 - 4/3 2b | PT_b_gamma_S1S_P3,17 - J12 - 6/5 2a | PT_b_gamma_S1M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP8,JPU2,S2S,P1W,A,P15,"1,9",20,1,7.6,|8.4|,7.6,|8.4|,P15 - 1/9 | PT_b_gamma_S0M_P1W,P15 - 1/9 | PT_b_gamma_S2S_P1W,24 - J13 - 2/1 1b | PT_b_gamma_S0M_P1W,20 - J12 - 8/7 1b | PT_b_gamma_S2S_P1W
+Mirror,mag,gamma,JP8,JPU2,S2S,P2E,A,P15,"2,10",17,7,7.6,|8.4|,7.2,7.8,P15 - 2/10 | PT_b_gamma_S0M_P2E,P15 - 2/10 | PT_b_gamma_S2S_P2E,20 - J12 - 2/1 1b | PT_b_gamma_S0M_P2E,17 - J13 - 4/3 2a | PT_b_gamma_S2S_P2E
+Mirror,mag,gamma,JP8,JPU2,S2S,P3,A,P15,"3,11",14,8,7.2,7.8,|6.8|,7.2,P15 - 3/11 | PT_b_gamma_S0M_P3,P15 - 3/11 | PT_b_gamma_S2S_P3,17 - J12 - 8/7 2a | PT_b_gamma_S0M_P3,14 - J13 - 2/1 2b | PT_b_gamma_S2S_P3
+Mirror,mag,gamma,JP9,JPU2,S2M,P1W,A,P15,"4,12",24,6,7.6,|8.4|,7.6,|8.4|,P15 - 4/12 | PT_b_gamma_S0S_P1W,P15 - 4/12 | PT_b_gamma_S2M_P1W,20 - J13 - 2/1 1b | PT_b_gamma_S0S_P1W,24 - J13 - 6/5 1b | PT_b_gamma_S2M_P1W
+Mirror,mag,gamma,JP9,JPU2,S2M,P2E,A,P15,"5,13",20,2,7.6,|8.4|,7.6,|8.4|,P15 - 5/13 | PT_b_gamma_S0S_P2E,P15 - 5/13 | PT_b_gamma_S2M_P2E,20 - J13 - 8/7 1b | PT_b_gamma_S0S_P2E,20 - J12 - 6/5 1b | PT_b_gamma_S2M_P2E
+Mirror,mag,gamma,JP9,JPU2,S2M,P3,A,P15,"6,14",17,5,7.2,7.8,7.6,7.8,P15 - 6/14 | PT_b_gamma_S0S_P3,P15 - 6/14 | PT_b_gamma_S2M_P3,17 - J12 - 4/3 2a | PT_b_gamma_S0S_P3,17 - J13 - 8/7 2e | PT_b_gamma_S2M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP1,JPL0,S0M,P4,A,P19,"1,9",13,1,|7.6|,7.6,|7.6|,7.6,P19 - 1/9 | PT_b_alpha_X0M_P4,P19 - 1/9 | PT_b_alpha_S0M_P4,1 - J12 - 8/7 2c | PT_b_alpha_X0M_P4,13 - J12 - 8/7 2c | PT_b_alpha_S0M_P4
+Mirror,mag,alpha,JP5,JPL1,S1M,P4,A,P19,"2,10",13,2,|7.6|,7.6,|7.6|,7.6,P19 - 2/10 | PT_b_alpha_X1M_P4,P19 - 2/10 | PT_b_alpha_S1M_P4,1 - J12 - 6/5 2c | PT_b_alpha_X1M_P4,13 - J12 - 6/5 2c | PT_b_alpha_S1M_P4
+Mirror,mag,alpha,JP9,JPL2,S2M,P4,A,P19,"3,11",13,5,|7.6|,7.6,|7.6|,7.6,P19 - 3/11 | PT_b_alpha_X2M_P4,P19 - 3/11 | PT_b_alpha_S2M_P4,1 - J13 - 8/7 2c | PT_b_alpha_X2M_P4,13 - J13 - 8/7 2c | PT_b_alpha_S2M_P4
+Mirror,mag,alpha,JP0,JPL0,S0S,P4,A,P19,"5,13",13,7,|7.6|,7.6,|7.6|,7.6,P19 - 5/13 | PT_b_alpha_X0S_P4,P19 - 5/13 | PT_b_alpha_S0S_P4,1 - J13 - 4/3 2c | PT_b_alpha_X0S_P4,13 - J13 - 4/3 2c | PT_b_alpha_S0S_P4
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP1,JPL0,S0M,P4,A,P25,"1,9",14,1,|7.6|,7.6,|7.6|,7.6,P25 - 1/9 | PT_b_beta_X0M_P4,P25 - 1/9 | PT_b_beta_S0M_P4,2 - J12 - 8/7 2c | PT_b_beta_X0M_P4,14 - J12 - 8/7 2c | PT_b_beta_S0M_P4
+Mirror,mag,beta,JP5,JPL1,S1M,P4,A,P25,"2,10",14,2,|7.6|,7.6,|7.6|,7.6,P25 - 2/10 | PT_b_beta_X1M_P4,P25 - 2/10 | PT_b_beta_S1M_P4,2 - J12 - 6/5 2c | PT_b_beta_X1M_P4,14 - J12 - 6/5 2c | PT_b_beta_S1M_P4
+Mirror,mag,beta,JP9,JPL2,S2M,P4,A,P25,"3,11",13,6,|7.6|,7.6,|7.6|,7.6,P25 - 3/11 | PT_b_beta_X2M_P4,P25 - 3/11 | PT_b_beta_S2M_P4,1 - J13 - 6/5 2c | PT_b_beta_X2M_P4,13 - J13 - 6/5 2c | PT_b_beta_S2M_P4
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP1,JPL0,S0M,P4,A,P31,"1,9",14,5,|7.6|,7.6,|7.6|,7.6,P31 - 1/9 | PT_b_gamma_X0M_P4,P31 - 1/9 | PT_b_gamma_S0M_P4,2 - J13 - 8/7 2c | PT_b_gamma_X0M_P4,14 - J13 - 8/7 2c | PT_b_gamma_S0M_P4
+Mirror,mag,gamma,JP5,JPL1,S1M,P4,A,P31,"2,10",14,6,|7.6|,7.6,|7.6|,7.6,P31 - 2/10 | PT_b_gamma_X1M_P4,P31 - 2/10 | PT_b_gamma_S1M_P4,2 - J13 - 6/5 2c | PT_b_gamma_X1M_P4,14 - J13 - 6/5 2c | PT_b_gamma_S1M_P4
+Mirror,mag,gamma,JP9,JPL2,S2M,P4,A,P31,"3,11",13,8,|7.6|,7.6,|7.6|,7.6,P31 - 3/11 | PT_b_gamma_X2M_P4,P31 - 3/11 | PT_b_gamma_S2M_P4,1 - J13 - 2/1 2c | PT_b_gamma_X2M_P4,13 - J13 - 2/1 2c | PT_b_gamma_S2M_P4
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP3,JPU0,X0S,P1W,M,P4,"1,9",10,3 Y 1,7.2,7.8,7.2,7.8,P6 - 1/9 | PT_b_alpha_X0M_P1W,P4 - 1/9 | PT_b_alpha_X0S_P1W,10 - J13 - 4/3 2a | PT_b_alpha_X0M_P1W   Y   10 - J13 - 8/7 2a | PT_b_alpha_X0M_P1W,10 - J12 - 4/3 2a | PT_b_alpha_X0S_P1W   Y   10 - J12 - 8/7 2a | PT_b_alpha_X0S_P1W
+Mirror,mag,alpha,JP3,JPU0,X0S,P2E,M,P4,"2,10",9,4 Y 2,7.2,7.8,7.2,7.8,P6 - 2/10 | PT_b_alpha_X0M_P2E,P4 - 2/10 | PT_b_alpha_X0S_P2E,6 - J12 - 2/1 2a | PT_b_alpha_X0M_P2E,9 - J12 - 2/1 2a | PT_b_alpha_X0S_P2E   Y   9 - J12 - 6/5 2a | PT_b_alpha_X0S_P2E
+Mirror,mag,alpha,JP3,JPU1,X0S,P3,A,P4,"3,11",3,3,7.2,7.8,7.2,7.8,P6 - 3/11 | PT_b_alpha_X0M_P3,P4 - 3/11 | PT_b_alpha_X0S_P3,3 - J12 - 8/7 2a | PT_b_alpha_X0M_P3,3 - J12 - 4/3 2a | PT_b_alpha_X0S_P3
+Mirror,mag,alpha,JP2,JPU0,X0M,P1W,M,P4,"4,12",10,7 Y 5,7.2,7.8,7.2,7.8,P6 - 4/12 | PT_b_alpha_X0S_P1W,P4 - 4/12 | PT_b_alpha_X0M_P1W,10 - J12 - 4/3 2a | PT_b_alpha_X0S_P1W   Y   10 - J12 - 8/7 2a | PT_b_alpha_X0S_P1W,10 - J13 - 4/3 2a | PT_b_alpha_X0M_P1W   Y   10 - J13 - 8/7 2a | PT_b_alpha_X0M_P1W
+Mirror,mag,alpha,JP2,JPU0,X0M,P2E,A,P4,"5,13",6,4,7.2,7.8,7.2,7.8,P6 - 5/13 | PT_b_alpha_X0S_P2E,P4 - 5/13 | PT_b_alpha_X0M_P2E,9 - J12 - 2/1 2a | PT_b_alpha_X0S_P2E   Y   9 - J12 - 6/5 2a | PT_b_alpha_X0S_P2E,6 - J12 - 2/1 2a | PT_b_alpha_X0M_P2E
+Mirror,mag,alpha,JP2,JPU0,X0M,P3,A,P4,"6,14",3,1,7.2,7.8,7.2,7.8,P6 - 6/14 | PT_b_alpha_X0S_P3,P4 - 6/14 | PT_b_alpha_X0M_P3,3 - J12 - 4/3 2a | PT_b_alpha_X0S_P3,3 - J12 - 8/7 2a | PT_b_alpha_X0M_P3
+Mirror,mag,alpha,JP3,JPU1,X0S,P1E,S,P4,"7,15",10,4 Y 2,7.2,7.8,7.2,7.8,P6 - 7/15 | PT_b_alpha_X0M_P1E,P4 - 7/15 | PT_b_alpha_X0S_P1E,10 - J13 - 2/1 2a | PT_b_alpha_X0M_P1E   Y   10 - J13 - 6/5 2a | PT_b_alpha_X0M_P1E,10 - J12 - 2/1 2a | PT_b_alpha_X0S_P1E   Y   10 - J12 - 6/5 2a | PT_b_alpha_X0S_P1E
+Mirror,mag,alpha,JP2,JPU0,X0M,P1E,S,P4,"8,16",10,8 Y 6,7.2,7.8,7.2,7.8,P6 - 8/16 | PT_b_alpha_X0S_P1E,P4 - 8/16 | PT_b_alpha_X0M_P1E,10 - J12 - 2/1 2a | PT_b_alpha_X0S_P1E   Y   10 - J12 - 6/5 2a | PT_b_alpha_X0S_P1E,10 - J13 - 2/1 2a | PT_b_alpha_X0M_P1E   Y   10 - J13 - 6/5 2a | PT_b_alpha_X0M_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP7,JPU1,X1S,P1W,M,P5,"1,9",9,7 Y 5,7.2,7.8,7.2,7.8,P5 - 1/9 | PT_b_alpha_X1M_P1W,P5 - 1/9 | PT_b_alpha_X1S_P1W,11 - J12 - 4/3 2a | PT_b_alpha_X1M_P1W   Y   11 - J12 - 8/7 2a | PT_b_alpha_X1M_P1W,9 - J13 - 4/3 2a | PT_b_alpha_X1S_P1W   Y   9 - J13 - 8/7 2a | PT_b_alpha_X1S_P1W
+Mirror,mag,alpha,JP7,JPU1,X1S,P2E,A,P5,"2,10",3,4,7.2,7.8,7.2,7.8,P5 - 2/10 | PT_b_alpha_X1M_P2E,P5 - 2/10 | PT_b_alpha_X1S_P2E,6 - J12 - 4/3 2a | PT_b_alpha_X1M_P2E,3 - J12 - 2/1 2a | PT_b_alpha_X1S_P2E
+Mirror,mag,alpha,JP7,JPU1,X1S,P3,A,P5,"3,11",1,3,7.2,7.8,|6.8|,7.2,P5 - 3/11 | PT_b_alpha_X1M_P3,P5 - 3/11 | PT_b_alpha_X1S_P3,3 - J12 - 6/5 2a | PT_b_alpha_X1M_P3,1 - J12 - 4/3 2b | PT_b_alpha_X1S_P3
+Mirror,mag,alpha,JP6,JPU1,X1M,P1W,M,P5,"4,12",11,3 Y 1,7.2,7.8,7.2,7.8,P5 - 4/12 | PT_b_alpha_X1S_P1W,P5 - 4/12 | PT_b_alpha_X1M_P1W,9 - J13 - 4/3 2a | PT_b_alpha_X1S_P1W   Y   9 - J13 - 8/7 2a | PT_b_alpha_X1S_P1W,11 - J12 - 4/3 2a | PT_b_alpha_X1M_P1W   Y   11 - J12 - 8/7 2a | PT_b_alpha_X1M_P1W
+Mirror,mag,alpha,JP6,JPU1,X1M,P2E,A,P5,"5,13",6,3,7.2,7.8,7.2,7.8,P5 - 5/13 | PT_b_alpha_X1S_P2E,P5 - 5/13 | PT_b_alpha_X1M_P2E,3 - J12 - 2/1 2a | PT_b_alpha_X1S_P2E,6 - J12 - 4/3 2a | PT_b_alpha_X1M_P2E
+Mirror,mag,alpha,JP6,JPU1,X1M,P3,A,P5,"6,14",3,2,|6.8|,7.2,7.2,7.8,P5 - 6/14 | PT_b_alpha_X1S_P3,P5 - 6/14 | PT_b_alpha_X1M_P3,1 - J12 - 4/3 2b | PT_b_alpha_X1S_P3,3 - J12 - 6/5 2a | PT_b_alpha_X1M_P3
+Mirror,mag,alpha,JP3,JPU1,X0S,P2W,S,P5,"7,15",9,3 Y 1,7.2,7.8,7.2,7.8,P5 - 7/15 | PT_b_alpha_X0S_P2W,P5 - 7/15 | PT_b_alpha_X0S_P2W,9 - J12 - 4/3 2a | PT_b_alpha_X0S_P2W   Y   9 - J12 - 8/7 2a | PT_b_alpha_X0S_P2W,9 - J12 - 4/3 2a | PT_b_alpha_X0S_P2W   Y   9 - J12 - 8/7 2a | PT_b_alpha_X0S_P2W
+Mirror,mag,alpha,JP6,JPU1,X1M,P1E,S,P5,"8,16",11,4 Y 2,7.2,7.8,7.2,7.8,P5 - 8/16 | PT_b_alpha_X1S_P1E,P5 - 8/16 | PT_b_alpha_X1M_P1E,9 - J13 - 2/1 2a | PT_b_alpha_X1S_P1E   Y   9 - J13 - 6/5 2a | PT_b_alpha_X1S_P1E,11 - J12 - 2/1 2a | PT_b_alpha_X1M_P1E   Y   11 - J12 - 6/5 2a | PT_b_alpha_X1M_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP11,JPU2,X2S,P1W,A,P6,"1,9",6,1,7.6,|8.4|,7.2,7.8,P1 - 1/9 | PT_b_alpha_S2M_P1W,P6 - 1/9 | PT_b_alpha_X2S_P1W,23 - J13 - 8/7 1b | PT_b_alpha_S2M_P1W,6 - J12 - 8/7 2a | PT_b_alpha_X2S_P1W
+Mirror,mag,alpha,JP11,JPU2,X2S,P2E,A,P6,"2,10",3,7,7.6,|8.4|,7.2,7.8,P1 - 2/10 | PT_b_alpha_S2M_P2E,P6 - 2/10 | PT_b_alpha_X2S_P2E,18 - J12 - 6/5 1b | PT_b_alpha_S2M_P2E,3 - J13 - 4/3 2a | PT_b_alpha_X2S_P2E
+Mirror,mag,alpha,JP10,JPU2,X2M,P1W,A,P6,"4,12",11,5,7.6,|8.4|,7.2,7.8,P1 - 4/12 | PT_b_alpha_S2S_P1W,P6 - 4/12 | PT_b_alpha_X2M_P1W,18 - J12 - 8/7 1b | PT_b_alpha_S2S_P1W,11 - J13 - 8/7 2a | PT_b_alpha_X2M_P1W
+Mirror,mag,alpha,JP10,JPU2,X2M,P2E,A,P6,"5,13",6,2,7.2,7.8,7.2,7.8,P1 - 5/13 | PT_b_alpha_S2S_P2E,P6 - 5/13 | PT_b_alpha_X2M_P2E,15 - J13 - 4/3 2a | PT_b_alpha_S2S_P2E,6 - J12 - 6/5 2a | PT_b_alpha_X2M_P2E
+Mirror,mag,alpha,JP10,JPU2,X2M,P3,A,P6,"6,14",3,5,|6.8|,7.2,7.2,7.8,P1 - 6/14 | PT_b_alpha_S2S_P3,P6 - 6/14 | PT_b_alpha_X2M_P3,13 - J12 - 2/1 2b | PT_b_alpha_S2S_P3,3 - J13 - 8/7 2a | PT_b_alpha_X2M_P3
+Mirror,mag,alpha,JP7,JPU1,X1S,P1E,S,P6,"7,15",9,8 Y 6,7.6,|8.4|,7.2,7.8,P1 - 7/15 | PT_b_alpha_S1M_P1E,P6 - 7/15 | PT_b_alpha_X1S_P1E,23 - J12 - 2/1 1b | PT_b_alpha_S1M_P1E   Y   23 - J12 - 6/5 1b | PT_b_alpha_S1M_P1E,9 - J13 - 2/1 2a | PT_b_alpha_X1S_P1E   Y   9 - J13 - 6/5 2a | PT_b_alpha_X1S_P1E
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP3,JPU0,X0S,P1W,A,P10,"1,9",7,8,7.2,7.8,7.2,7.8,P12 - 1/9 | PT_b_beta_X0M_P1W,P10 - 1/9 | PT_b_beta_X0S_P1W,12 - J12 - 2/1 2a | PT_b_beta_X0M_P1W,7 - J13 - 2/1 2a | PT_b_beta_X0S_P1W
+Mirror,mag,beta,JP3,JPU1,X0S,P2E,A,P10,"2,10",7,5,7.2,7.8,7.2,7.8,P12 - 2/10 | PT_b_beta_X0M_P2E,P10 - 2/10 | PT_b_beta_X0S_P2E,7 - J12 - 2/1 2a | PT_b_beta_X0M_P2E,7 - J13 - 8/7 2a | PT_b_beta_X0S_P2E
+Mirror,mag,beta,JP3,JPU1,X0S,P3,A,P10,"3,11",4,3,7.2,7.8,7.2,7.8,P12 - 3/11 | PT_b_beta_X0M_P3,P10 - 3/11 | PT_b_beta_X0S_P3,4 - J12 - 8/7 2a | PT_b_beta_X0M_P3,4 - J12 - 4/3 2a | PT_b_beta_X0S_P3
+Mirror,mag,beta,JP2,JPU0,X0M,P1W,A,P10,"4,12",12,4,7.2,7.8,7.2,7.8,P12 - 4/12 | PT_b_beta_X0S_P1W,P10 - 4/12 | PT_b_beta_X0M_P1W,7 - J13 - 2/1 2a | PT_b_beta_X0S_P1W,12 - J12 - 2/1 2a | PT_b_beta_X0M_P1W
+Mirror,mag,beta,JP2,JPU0,X0M,P2E,A,P10,"5,13",7,4,7.2,7.8,7.2,7.8,P12 - 5/13 | PT_b_beta_X0S_P2E,P10 - 5/13 | PT_b_beta_X0M_P2E,7 - J13 - 8/7 2a | PT_b_beta_X0S_P2E,7 - J12 - 2/1 2a | PT_b_beta_X0M_P2E
+Mirror,mag,beta,JP2,JPU0,X0M,P3,A,P10,"6,14",4,1,7.2,7.8,7.2,7.8,P12 - 6/14 | PT_b_beta_X0S_P3,P10 - 6/14 | PT_b_beta_X0M_P3,4 - J12 - 4/3 2a | PT_b_beta_X0S_P3,4 - J12 - 8/7 2a | PT_b_beta_X0M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP7,JPU1,X1S,P1W,A,P11,"1,9",7,6,7.2,7.8,7.2,7.8,P11 - 1/9 | PT_b_beta_X1M_P1W,P11 - 1/9 | PT_b_beta_X1S_P1W,12 - J12 - 8/7 2a | PT_b_beta_X1M_P1W,7 - J13 - 6/5 2a | PT_b_beta_X1S_P1W
+Mirror,mag,beta,JP7,JPU1,X1S,P2E,A,P11,"2,10",4,4,7.2,7.8,7.2,7.8,P11 - 2/10 | PT_b_beta_X1M_P2E,P11 - 2/10 | PT_b_beta_X1S_P2E,7 - J12 - 4/3 2a | PT_b_beta_X1M_P2E,4 - J12 - 2/1 2a | PT_b_beta_X1S_P2E
+Mirror,mag,beta,JP7,JPU1,X1S,P3,A,P11,"3,11",2,3,7.2,7.8,|6.8|,7.2,P11 - 3/11 | PT_b_beta_X1M_P3,P11 - 3/11 | PT_b_beta_X1S_P3,4 - J12 - 6/5 2a | PT_b_beta_X1M_P3,2 - J12 - 4/3 2b | PT_b_beta_X1S_P3
+Mirror,mag,beta,JP6,JPU1,X1M,P1W,A,P11,"4,12",12,1,7.2,7.8,7.2,7.8,P11 - 4/12 | PT_b_beta_X1S_P1W,P11 - 4/12 | PT_b_beta_X1M_P1W,7 - J13 - 6/5 2a | PT_b_beta_X1S_P1W,12 - J12 - 8/7 2a | PT_b_beta_X1M_P1W
+Mirror,mag,beta,JP6,JPU1,X1M,P2E,A,P11,"5,13",7,3,7.2,7.8,7.2,7.8,P11 - 5/13 | PT_b_beta_X1S_P2E,P11 - 5/13 | PT_b_beta_X1M_P2E,4 - J12 - 2/1 2a | PT_b_beta_X1S_P2E,7 - J12 - 4/3 2a | PT_b_beta_X1M_P2E
+Mirror,mag,beta,JP6,JPU1,X1M,P3,A,P11,"6,14",4,2,|6.8|,7.2,7.2,7.8,P11 - 6/14 | PT_b_beta_X1S_P3,P11 - 6/14 | PT_b_beta_X1M_P3,2 - J12 - 4/3 2b | PT_b_beta_X1S_P3,4 - J12 - 6/5 2a | PT_b_beta_X1M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP11,JPU2,X2S,P1W,A,P12,"1,9",7,1,7.6,|8.4|,7.2,7.8,P7 - 1/9 | PT_b_beta_S2M_P1W,P12 - 1/9 | PT_b_beta_X2S_P1W,24 - J12 - 6/5 1b | PT_b_beta_S2M_P1W,7 - J12 - 8/7 2a | PT_b_beta_X2S_P1W
+Mirror,mag,beta,JP11,JPU2,X2S,P2E,A,P12,"2,10",4,7,7.6,|8.4|,7.2,7.8,P7 - 2/10 | PT_b_beta_S2M_P2E,P12 - 2/10 | PT_b_beta_X2S_P2E,19 - J12 - 6/5 1b | PT_b_beta_S2M_P2E,4 - J13 - 4/3 2a | PT_b_beta_X2S_P2E
+Mirror,mag,beta,JP10,JPU2,X2M,P1W,A,P12,"4,12",12,2,7.6,|8.4|,7.2,7.8,P7 - 4/12 | PT_b_beta_S2S_P1W,P12 - 4/12 | PT_b_beta_X2M_P1W,19 - J12 - 8/7 1b | PT_b_beta_S2S_P1W,12 - J12 - 6/5 2a | PT_b_beta_X2M_P1W
+Mirror,mag,beta,JP10,JPU2,X2M,P2E,A,P12,"5,13",7,2,7.2,7.8,7.2,7.8,P7 - 5/13 | PT_b_beta_S2S_P2E,P12 - 5/13 | PT_b_beta_X2M_P2E,16 - J13 - 4/3 2a | PT_b_beta_S2S_P2E,7 - J12 - 6/5 2a | PT_b_beta_X2M_P2E
+Mirror,mag,beta,JP10,JPU2,X2M,P3,A,P12,"6,14",4,5,|6.8|,7.2,7.2,7.8,P7 - 6/14 | PT_b_beta_S2S_P3,P12 - 6/14 | PT_b_beta_X2M_P3,14 - J12 - 2/1 2b | PT_b_beta_S2S_P3,4 - J13 - 8/7 2a | PT_b_beta_X2M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP3,JPU0,X0S,P1W,A,P16,"1,9",8,8,7.2,7.8,7.2,7.8,P18 - 1/9 | PT_b_gamma_X0M_P1W,P16 - 1/9 | PT_b_gamma_X0S_P1W,12 - J13 - 2/1 2a | PT_b_gamma_X0M_P1W,8 - J13 - 2/1 2a | PT_b_gamma_X0S_P1W
+Mirror,mag,gamma,JP3,JPU1,X0S,P2E,A,P16,"2,10",8,5,7.2,7.8,7.2,7.8,P18 - 2/10 | PT_b_gamma_X0M_P2E,P16 - 2/10 | PT_b_gamma_X0S_P2E,8 - J12 - 2/1 2a | PT_b_gamma_X0M_P2E,8 - J13 - 8/7 2a | PT_b_gamma_X0S_P2E
+Mirror,mag,gamma,JP3,JPU1,X0S,P3,A,P16,"3,11",5,3,7.2,7.8,7.2,7.8,P18 - 3/11 | PT_b_gamma_X0M_P3,P16 - 3/11 | PT_b_gamma_X0S_P3,5 - J12 - 8/7 2a | PT_b_gamma_X0M_P3,5 - J12 - 4/3 2a | PT_b_gamma_X0S_P3
+Mirror,mag,gamma,JP2,JPU0,X0M,P1W,A,P16,"4,12",12,8,7.2,7.8,7.2,7.8,P18 - 4/12 | PT_b_gamma_X0S_P1W,P16 - 4/12 | PT_b_gamma_X0M_P1W,8 - J13 - 2/1 2a | PT_b_gamma_X0S_P1W,12 - J13 - 2/1 2a | PT_b_gamma_X0M_P1W
+Mirror,mag,gamma,JP2,JPU0,X0M,P2E,A,P16,"5,13",8,4,7.2,7.8,7.2,7.8,P18 - 5/13 | PT_b_gamma_X0S_P2E,P16 - 5/13 | PT_b_gamma_X0M_P2E,8 - J13 - 8/7 2a | PT_b_gamma_X0S_P2E,8 - J12 - 2/1 2a | PT_b_gamma_X0M_P2E
+Mirror,mag,gamma,JP2,JPU0,X0M,P3,A,P16,"6,14",5,1,7.2,7.8,7.2,7.8,P18 - 6/14 | PT_b_gamma_X0S_P3,P16 - 6/14 | PT_b_gamma_X0M_P3,5 - J12 - 4/3 2a | PT_b_gamma_X0S_P3,5 - J12 - 8/7 2a | PT_b_gamma_X0M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP7,JPU1,X1S,P1W,A,P17,"1,9",8,6,7.2,7.8,7.2,7.8,P17 - 1/9 | PT_b_gamma_X1M_P1W,P17 - 1/9 | PT_b_gamma_X1S_P1W,12 - J13 - 8/7 2a | PT_b_gamma_X1M_P1W,8 - J13 - 6/5 2a | PT_b_gamma_X1S_P1W
+Mirror,mag,gamma,JP7,JPU1,X1S,P2E,A,P17,"2,10",5,4,7.2,7.8,7.2,7.8,P17 - 2/10 | PT_b_gamma_X1M_P2E,P17 - 2/10 | PT_b_gamma_X1S_P2E,8 - J12 - 4/3 2a | PT_b_gamma_X1M_P2E,5 - J12 - 2/1 2a | PT_b_gamma_X1S_P2E
+Mirror,mag,gamma,JP7,JPU1,X1S,P3,A,P17,"3,11",2,7,7.2,7.8,|6.8|,7.2,P17 - 3/11 | PT_b_gamma_X1M_P3,P17 - 3/11 | PT_b_gamma_X1S_P3,5 - J12 - 6/5 2a | PT_b_gamma_X1M_P3,2 - J13 - 4/3 2b | PT_b_gamma_X1S_P3
+Mirror,mag,gamma,JP6,JPU1,X1M,P1W,A,P17,"4,12",12,5,7.2,7.8,7.2,7.8,P17 - 4/12 | PT_b_gamma_X1S_P1W,P17 - 4/12 | PT_b_gamma_X1M_P1W,8 - J13 - 6/5 2a | PT_b_gamma_X1S_P1W,12 - J13 - 8/7 2a | PT_b_gamma_X1M_P1W
+Mirror,mag,gamma,JP6,JPU1,X1M,P2E,A,P17,"5,13",8,3,7.2,7.8,7.2,7.8,P17 - 5/13 | PT_b_gamma_X1S_P2E,P17 - 5/13 | PT_b_gamma_X1M_P2E,5 - J12 - 2/1 2a | PT_b_gamma_X1S_P2E,8 - J12 - 4/3 2a | PT_b_gamma_X1M_P2E
+Mirror,mag,gamma,JP6,JPU1,X1M,P3,A,P17,"6,14",5,2,|6.8|,7.2,7.2,7.8,P17 - 6/14 | PT_b_gamma_X1S_P3,P17 - 6/14 | PT_b_gamma_X1M_P3,2 - J13 - 4/3 2b | PT_b_gamma_X1S_P3,5 - J12 - 6/5 2a | PT_b_gamma_X1M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP11,JPU2,X2S,P1W,A,P18,"1,9",8,1,7.6,|8.4|,7.2,7.8,P13 - 1/9 | PT_b_gamma_S2M_P1W,P18 - 1/9 | PT_b_gamma_X2S_P1W,24 - J13 - 6/5 1b | PT_b_gamma_S2M_P1W,8 - J12 - 8/7 2a | PT_b_gamma_X2S_P1W
+Mirror,mag,gamma,JP11,JPU2,X2S,P2E,A,P18,"2,10",5,7,7.6,|8.4|,7.2,7.8,P13 - 2/10 | PT_b_gamma_S2M_P2E,P18 - 2/10 | PT_b_gamma_X2S_P2E,20 - J12 - 6/5 1b | PT_b_gamma_S2M_P2E,5 - J13 - 4/3 2a | PT_b_gamma_X2S_P2E
+Mirror,mag,gamma,JP10,JPU2,X2M,P1W,A,P18,"4,12",12,6,7.6,|8.4|,7.2,7.8,P13 - 4/12 | PT_b_gamma_S2S_P1W,P18 - 4/12 | PT_b_gamma_X2M_P1W,20 - J12 - 8/7 1b | PT_b_gamma_S2S_P1W,12 - J13 - 6/5 2a | PT_b_gamma_X2M_P1W
+Mirror,mag,gamma,JP10,JPU2,X2M,P2E,A,P18,"5,13",8,2,7.2,7.8,7.2,7.8,P13 - 5/13 | PT_b_gamma_S2S_P2E,P18 - 5/13 | PT_b_gamma_X2M_P2E,17 - J13 - 4/3 2a | PT_b_gamma_S2S_P2E,8 - J12 - 6/5 2a | PT_b_gamma_X2M_P2E
+Mirror,mag,gamma,JP10,JPU2,X2M,P3,A,P18,"6,14",5,5,|6.8|,7.2,7.2,7.8,P13 - 6/14 | PT_b_gamma_S2S_P3,P18 - 6/14 | PT_b_gamma_X2M_P3,14 - J13 - 2/1 2b | PT_b_gamma_S2S_P3,5 - J13 - 8/7 2a | PT_b_gamma_X2M_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,alpha,JP2,JPL0,X0M,P4,A,P22,"1,9",1,1,|7.6|,7.6,|7.6|,7.6,P22 - 1/9 | PT_b_alpha_S0M_P4,P22 - 1/9 | PT_b_alpha_X0M_P4,13 - J12 - 8/7 2c | PT_b_alpha_S0M_P4,1 - J12 - 8/7 2c | PT_b_alpha_X0M_P4
+Mirror,mag,alpha,JP6,JPL1,X1M,P4,A,P22,"2,10",1,2,|7.6|,7.6,|7.6|,7.6,P22 - 2/10 | PT_b_alpha_S1M_P4,P22 - 2/10 | PT_b_alpha_X1M_P4,13 - J12 - 6/5 2c | PT_b_alpha_S1M_P4,1 - J12 - 6/5 2c | PT_b_alpha_X1M_P4
+Mirror,mag,alpha,JP10,JPL2,X2M,P4,A,P22,"3,11",1,5,|7.6|,7.6,|7.6|,7.6,P22 - 3/11 | PT_b_alpha_S2M_P4,P22 - 3/11 | PT_b_alpha_X2M_P4,13 - J13 - 8/7 2c | PT_b_alpha_S2M_P4,1 - J13 - 8/7 2c | PT_b_alpha_X2M_P4
+Mirror,mag,alpha,JP11,JPL2,X2S,P3,A,P22,"4,12",1,4,7.6,7.8,|6.8|,7.2,P22 - 4/12 | PT_b_alpha_S2M_P3,P22 - 4/12 | PT_b_alpha_X2S_P3,15 - J13 - 8/7 2e | PT_b_alpha_S2M_P3,1 - J12 - 2/1 2b | PT_b_alpha_X2S_P3
+Mirror,mag,alpha,JP3,JPL1,X0S,P4,A,P22,"5,13",1,7,|7.6|,7.6,|7.6|,7.6,P22 - 5/13 | PT_b_alpha_S0S_P4,P22 - 5/13 | PT_b_alpha_X0S_P4,13 - J13 - 4/3 2c | PT_b_alpha_S0S_P4,1 - J13 - 4/3 2c | PT_b_alpha_X0S_P4
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,beta,JP2,JPL1,X0M,P4,A,P28,"1,9",2,1,|7.6|,7.6,|7.6|,7.6,P28 - 1/9 | PT_b_beta_S0M_P4,P28 - 1/9 | PT_b_beta_X0M_P4,14 - J12 - 8/7 2c | PT_b_beta_S0M_P4,2 - J12 - 8/7 2c | PT_b_beta_X0M_P4
+Mirror,mag,beta,JP6,JPL1,X1M,P4,A,P28,"2,10",2,2,|7.6|,7.6,|7.6|,7.6,P28 - 2/10 | PT_b_beta_S1M_P4,P28 - 2/10 | PT_b_beta_X1M_P4,14 - J12 - 6/5 2c | PT_b_beta_S1M_P4,2 - J12 - 6/5 2c | PT_b_beta_X1M_P4
+Mirror,mag,beta,JP10,JPL2,X2M,P4,A,P28,"3,11",1,6,|7.6|,7.6,|7.6|,7.6,P28 - 3/11 | PT_b_beta_S2M_P4,P28 - 3/11 | PT_b_beta_X2M_P4,13 - J13 - 6/5 2c | PT_b_beta_S2M_P4,1 - J13 - 6/5 2c | PT_b_beta_X2M_P4
+Mirror,mag,beta,JP11,JPL2,X2S,P3,A,P28,"4,12",2,4,7.6,7.8,|6.8|,7.2,P28 - 4/12 | PT_b_beta_S2M_P3,P28 - 4/12 | PT_b_beta_X2S_P3,16 - J13 - 8/7 2e | PT_b_beta_S2M_P3,2 - J12 - 2/1 2b | PT_b_beta_X2S_P3
+ , , , , , , , , , , , , , , , , , , , 
+Mirror,mag,gamma,JP2,JPL1,X0M,P4,A,P34,"1,9",2,5,|7.6|,7.6,|7.6|,7.6,P34 - 1/9 | PT_b_gamma_S0M_P4,P34 - 1/9 | PT_b_gamma_X0M_P4,14 - J13 - 8/7 2c | PT_b_gamma_S0M_P4,2 - J13 - 8/7 2c | PT_b_gamma_X0M_P4
+Mirror,mag,gamma,JP6,JPU1,X1M,P4,A,P34,"2,10",2,6,|7.6|,7.6,|7.6|,7.6,P34 - 2/10 | PT_b_gamma_S1M_P4,P34 - 2/10 | PT_b_gamma_X1M_P4,14 - J13 - 6/5 2c | PT_b_gamma_S1M_P4,2 - J13 - 6/5 2c | PT_b_gamma_X1M_P4
+Mirror,mag,gamma,JP10,JPL2,X2M,P4,A,P34,"3,11",1,8,|7.6|,7.6,|7.6|,7.6,P34 - 3/11 | PT_b_gamma_S2M_P4,P34 - 3/11 | PT_b_gamma_X2M_P4,13 - J13 - 2/1 2c | PT_b_gamma_S2M_P4,1 - J13 - 2/1 2c | PT_b_gamma_X2M_P4
+Mirror,mag,gamma,JP11,JPU2,X2S,P3,A,P34,"4,12",2,8,7.6,7.8,|6.8|,7.2,P34 - 4/12 | PT_b_gamma_S2M_P3,P34 - 4/12 | PT_b_gamma_X2S_P3,17 - J13 - 8/7 2e | PT_b_gamma_S2M_P3,2 - J13 - 2/1 2b | PT_b_gamma_X2S_P3
