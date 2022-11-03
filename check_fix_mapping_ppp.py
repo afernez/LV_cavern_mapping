@@ -11,7 +11,7 @@ import csv
 from argparse import ArgumentParser
 
 # problem seems to be restricted to hybrid mag mirror (stereo+straight)
-only_hyb_mag_mir = True
+only_hyb_mag_mir = False
 
 # see if flipping stereo<->straight helps
 check_stereo_straight_flip = False
@@ -24,6 +24,7 @@ parser.add_argument('cavern', help='specify cavern mapping to be used as input')
 # note that only C side needs to be compared; A side mapping is equivalent
 # also set sheets that will be compared for consistency
 parser.add_argument('doCompare', help='specify if compare mappings should be checked')
+parser.add_argument('doCheckLines', help='specify if cavern mapping LVR-load should be checked')
 parser.add_argument('-swap', '-s', default='NA', help='specify how Posistronix are swapping')
 args = parser.parse_args()
 nominal = args.nominal
@@ -32,6 +33,11 @@ compare = []
 if (args.doCompare).lower()=='true':
     compare = os.listdir('compare')
     compare = ['compare/'+file for file in compare]
+schem_ip = 'NA'
+schem_mag = 'NA'
+if (args.doCheckLines).lower()=='true':
+    schem_ip = 'nominal/PEPI_a_SIDE_g3.NET'
+    schem_mag = 'nominal/PEPI_b_SIDE_g3.NET'
 swap_pos = args.swap
 
 # from parseXls import * # steal what Mark did to parse the cavern file
@@ -351,6 +357,7 @@ def parse_cavern(file):
             l.set_lvr(row['LVR ID'], row['LVR Channel'])
             ppp_label = row['PPP Connector - Pin'] + ' / ' + \
                         (row['LVR Name']).replace('_LV_SRC/RET','')
+            # print(row['LVR ID - Connector - Pin'])
             lvr_label = row['LVR ID - Connector - Pin'] + ' ' + \
                         row['SBC section'] + ' / ' + \
                         (row['LVR Name']).replace('_LV_SRC/RET','')
@@ -441,16 +448,46 @@ def parse_cable_test(file):
         continue
     return lines
 
+# parse Phoebe's netlists
+def parse_netlist(netlist):
+    with open(netlist) as fp:
+        myline=fp.readline()
+        netmap = {}
+        while myline:
+            if (myline.find("PCBComponent") > 0):
+                connector = myline.split()[3]
+                array=[]
+                myline=fp.readline()
+                while (myline.find("(") > 0):
+                    if(myline.find("J1") ==-1): array.append(myline.split()[2])
+                    else: array.append("x")
+                    myline=fp.readline()
+                netmap[connector]=array
+            myline = fp.readline()
+        #target = "LVReg_X-Y_1.2_"
+        #for j in range(13,25,1):
+        #    print("\n"+str(j))
+        #    for i in reversed(netmap["J12_"+target+str(j)]): print(i)
+        #    for i in reversed(netmap["J13_"+target+str(j)]): print(i)
+        for conn in netmap.keys():
+            for net in netmap[conn]:
+                if ("_SRC" in net) or (net.endswith("_P")):
+                    if("PT_" in net) or ("DCB_" in net):
+                        print(net+", "+conn)
+
 
 # Associate files with a function for parsing
 parse_func = {}
-files = [nominal, cavern, swap_pos] + compare
+files = [nominal, cavern, swap_pos, schem_ip, schem_mag] + compare
 for file in files:
     if 'surface_LV_power_tests' in file: parse_func[file]=parse_surface
     elif 'LVR_PPP_Underground' in file: parse_func[file]=parse_cavern
     elif 'lvr_testing' in file: parse_func[file]=parse_cable_test
     elif 'swap_positronic' in file: parse_func[file]=parse_swap_pos
-    else: print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
+    elif 'PEPI_' in file: parse_func[file]=parse_netlist
+    else:
+        if schem_ip=='NA' or swap_pos=='NA': continue
+        print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
 
 
 # def print_ppp_corrected_cavern_lines(xlfile, cav_to_nom):
@@ -748,14 +785,19 @@ def cavern_check_fix():
         for row in cav_lines_moved: writer_moved.writerow(row)
         fixme_moved.close()
 
-
-
     for comp in compare:
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
         # TODO comparisons...
 
     # print(f'\n\nWriting (unformatted) fixed cavern mapping...\n\n')
     # fixed = 'fixed-'+cavern
+
+    if (schem_ip != 'NA'):
+        print(f'Checking {cavern} LVR<->load vs {schem_ip} and {schem_mag}...\n\n')
+        # cavern_lines is what you want to compare
+        ip_lines = parse_func[schem_ip](schem_ip)
+        mag_lines = parse_func[schem_mag](schem_mag)
+
 
 
 no_typos = cavern_typo_check()
