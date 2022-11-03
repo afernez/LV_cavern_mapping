@@ -24,7 +24,7 @@ parser.add_argument('cavern', help='specify cavern mapping to be used as input')
 # note that only C side needs to be compared; A side mapping is equivalent
 # also set sheets that will be compared for consistency
 parser.add_argument('doCompare', help='specify if compare mappings should be checked')
-parser.add_argument('swap', default='NA', help='specify how Posistronix are swapping')
+parser.add_argument('-swap', '-s', default='NA', help='specify how Posistronix are swapping')
 args = parser.parse_args()
 nominal = args.nominal
 cavern = args.cavern

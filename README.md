@@ -9,7 +9,7 @@ will produce cavern mappings (formatted by Mark) in a convenient form for the so
 
 The cavern mapping was found to have mistakes because the PPP mapping had changed and the cavern mapping wasn't updated (or, potentially it was just copied incorrectly). Running
 
-`python check_fix_mapping_ppp.py <mapping_with_nominal_PPP> <formatted_cavern_mapping> <check_against_compare_mappings> (<positronic_swap>)`
+`python check_fix_mapping_ppp.py <mapping_with_nominal_PPP> <formatted_cavern_mapping> <check_against_compare_mappings> (-s <positronic_swap>)`
 
 will first check for (not easily fixable) typos in the formatted cavern mapping file (by making sure that all the nominal lines, which are trusted to be typo-free [this is likely not a fully correct assumption; but at least, the typos in the surface mapping seem isolated to the JPU/JPL iBB/P2B2 connectors, which is extraneous information for the line], can be found in the cavern mapping), outputting lines with typos to the command line. Then, once any typos in the cavern mapping are fixed (by the user), running this will check the nominal mapping vs the formatted cavern mapping (and, optionally, the mappings included in the compare file, if optional third command line arg is `true`--NOTE this isn't implemented in the code right now; still, include a third argument, say `false`) and output PPP mapping mistakes to a `ppp_fixes.csv` sheet stored in the `fixme` folder.
 
