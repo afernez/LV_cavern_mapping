@@ -150,6 +150,10 @@ for hybrid in hybrids:
 #
 def merge( dcb, hybridX, hybridS ):
     print( "Merging...", dcb, hybridX, hybridS )
+    # annoying excel sheet name problem...
+    # 'Hybrid - Mag - Mirror - Straight' is actually called
+    # 'Hybrid - Mag - Mirror - Straigh'
+    if (hybridX == 'Hybrid - Mag - Mirror - Straight'): hybridX = 'Hybrid - Mag - Mirror - Straigh'
     dfMergeHybrid = dfHybrids[hybridX]
     dfMergeHybrid = dfMergeHybrid.append( dfHybrids[hybridS] )
     dfMergeHybrid['Pos'] = dfMergeHybrid['BP Connector'].str.replace( 'JP', '' ).astype(int)
