@@ -11,7 +11,7 @@ import csv
 from argparse import ArgumentParser
 
 # problem seems to be restricted to hybrid mag mirror (stereo+straight)
-only_hyb_mag_mir = False
+only_hyb_mag_mir = True
 
 # see if flipping stereo<->straight helps
 check_stereo_straight_flip = False
@@ -355,12 +355,10 @@ def parse_cavern(file):
             l=line(x, y, z, bp, bp_con, ibbp2b2, flex, load, msa, ppp, ppp_pin)
             l.set_length(row['C L (m)'], row['A L (m)'])
             l.set_lvr(row['LVR ID'], row['LVR Channel'])
-            ppp_label = row['PPP Connector - Pin'] + ' / ' + \
-                        (row['LVR Name']).replace('_LV_SRC/RET','')
-            # print(row['LVR ID - Connector - Pin'])
+            lvr_name = ((row['LVR Name']).replace('_P/N_S','')).replace('_P/N','')
+            ppp_label = row['PPP Connector - Pin'] + ' | ' + lvr_name
             lvr_label = row['LVR ID - Connector - Pin'] + ' ' + \
-                        row['SBC section'] + ' / ' + \
-                        (row['LVR Name']).replace('_LV_SRC/RET','')
+                        row['SBC section'] + ' | ' + lvr_name
             l.set_labels(ppp_label, lvr_label)
             lines.append(l)
 
@@ -448,8 +446,9 @@ def parse_cable_test(file):
         continue
     return lines
 
-# parse Phoebe's netlists
+# parse Phoebe's netlists; return a map of LVR ch to load
 def parse_netlist(netlist):
+    lvrch_load = {}
     with open(netlist) as fp:
         myline=fp.readline()
         netmap = {}
@@ -459,7 +458,9 @@ def parse_netlist(netlist):
                 array=[]
                 myline=fp.readline()
                 while (myline.find("(") > 0):
-                    if(myline.find("J1") ==-1): array.append(myline.split()[2])
+                    if(myline.find("J1") ==-1):
+                        line = myline.split()
+                        array.append(f'LVPin{line[1]}|{line[2]}')
                     else: array.append("x")
                     myline=fp.readline()
                 netmap[connector]=array
@@ -473,8 +474,18 @@ def parse_netlist(netlist):
             for net in netmap[conn]:
                 if ("_SRC" in net) or (net.endswith("_P")):
                     if("PT_" in net) or ("DCB_" in net):
-                        print(net+", "+conn)
-
+                        net_parts = net.split('|')
+                        pin = (net_parts[0])[-1]
+                        load = net_parts[1]
+                        load = load.replace('_LV_SRC','')
+                        load = load.replace('_25_P', '_25')
+                        load = load.replace('_b_P', '_b')
+                        load = load.replace('_a_P', '_a')
+                        conn_parts = conn.split('_')
+                        lvr_out_con = conn_parts[0]
+                        lvr = conn_parts[-1]
+                        lvrch_load[f'{lvr}_{lvr_out_con}_{pin}'] = load
+    return lvrch_load
 
 # Associate files with a function for parsing
 parse_func = {}
@@ -795,8 +806,44 @@ def cavern_check_fix():
     if (schem_ip != 'NA'):
         print(f'Checking {cavern} LVR<->load vs {schem_ip} and {schem_mag}...\n\n')
         # cavern_lines is what you want to compare
-        ip_lines = parse_func[schem_ip](schem_ip)
-        mag_lines = parse_func[schem_mag](schem_mag)
+        # store erroroneous cav map/lvr schem line info, lvr info
+        map_errors = [['Mag/IP', 'True/Mir', 'BP', 'M/S/A', 'LVR + Src Pin',
+                      'Cav. Map. Load', 'LV Schem. Load']]
+        ip_map_lvr_load = parse_func[schem_ip](schem_ip)
+        mag_map_lvr_load = parse_func[schem_mag](schem_mag)
+        map_lvr_load = {}
+        for ip_lvr_load in ip_map_lvr_load:
+            map_lvr_load[ip_lvr_load] = ip_map_lvr_load[ip_lvr_load]
+        for mag_lvr_load in mag_map_lvr_load:
+            map_lvr_load[mag_lvr_load] = mag_map_lvr_load[mag_lvr_load]
+        # print(map_lvr_load)
+        # go through the cavern_lines (including both lvrs for splices) and check
+        # that lvr is mapping to the right load!
+        for cav_line in cavern_lines:
+            # by construction, you can just check that the lvr label is right
+            lvr_labels = (cav_line.lvr_label).split('   Y   ')
+            for lvr_label in lvr_labels:
+                lvr = (lvr_label.split(' | '))[0][:-5] # ignore SBC and ret pin
+                lvr = lvr.replace(' - ', '_') # reformat like netlist
+                load = (lvr_label.split(' | '))[1]
+                if not lvr in map_lvr_load:
+                    print(f'Cannot find {lvr}!')
+                    map_lvr_load[lvr] = 'Depopulated in LV Schem.!'
+                if not load == map_lvr_load[lvr]:
+                    # print(f'Cav. Map. {load} not equal to LV Schem. '+
+                    #       f'{map_lvr_load[lvr]}: line '+
+                    #       f'is {cav_line.x+cav_line.y}'+
+                    #       f'{cav_line.z+cav_line.bp+cav_line.bp_con}'+
+                    #       f'{cav_line.ibbp2b2+cav_line.flex+cav_line.load}'+
+                    #       f'{cav_line.msa}, from LVR {lvr}')
+                    map_errors.append([cav_line.z, true_mirror(cav_line.x,
+                                       cav_line.y, cav_line.z),
+                                       cav_line.bp, cav_line.msa, lvr, load,
+                                       map_lvr_load[lvr]])
+        fixme_map = open('fixme/lvr_load_mapping_errors.csv', 'w')
+        writer_map = csv.writer(fixme_map)
+        for row in map_errors: writer_map.writerow(row)
+        fixme_map.close()
 
 
 
