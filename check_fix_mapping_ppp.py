@@ -3,8 +3,16 @@
 # against any other references, eg. the sheet used to test the produced PEPI
 # cables) PPP info. Output cavern differences to files in fixme folder,
 # including directions for shifters fixing the cables by moving labels.
-# Note: it is assumed here that the LVR info in the cavern mapping is correct;
-# another script would need to be prepared to check this vs Phoebe's schematic.
+# Note: this script can also check the LV cavern LVR-load mapping is correct vs
+# Phoebe's schematics.
+# Note: the script also now checks that Petr's LV labels were generated
+# correctly by comparing to the (correct) lines outputted to move_labels.csv.
+# Here, the PPP color info and SBC region (referencing Petr's stackup diagram)
+# is input by hand for the move_labels.csv lines. Also notably, Petr's label
+# docs contain DCB lines, whereas I'm only generally looking at hybrid lines;
+# to skip the DCB lines (that weren't altered in the updated cavern mapping),
+# if the PPP+pin can't be found in move_labels.csv, the line from Petr's label
+# sheets is skipped.
 
 import pandas, os, fnmatch, math
 import csv

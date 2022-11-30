@@ -1,0 +1,323 @@
+./rd Version 1.38 CBM PEPI type: M
+reading Sections_3.32.csv----------
+14 lines read
+Sections: 12 entries
+reading Slots.csv----------
+43 lines read
+reading HMM_stereo.csv----------
+166 lines read
+reading HMM_straight.csv----------
+0 lines read
+reading DMM.csv----------
+166 lines read
+------ Report PPP for side CBM
+PPP 1 P1 8 real and 5 virtual lines 			4 LVRs:  15 18 21 22
+     1 1/9 LVR_22 J12_4/3   	    1b blu 7.6 m  
+     2 1/9* LVR_22 J12_8/7   	    1b blu 7.6 m  virtual, Y-spliced at LVR 22
+     3 2/10 LVR_21 J12_2/1   	    1b blu 7.6 m  
+     4 2/10* LVR_21 J12_6/5   	    1b blu 7.6 m  virtual, Y-spliced at LVR 21
+     5 3/11 LVR_15 J12_4/3   	    2a blu 7.2 m  
+     6 4/12 LVR_22 J13_4/3   	    1b blu 7.6 m  
+     7 4/12* LVR_22 J13_8/7   	    1b blu 7.6 m  virtual, Y-spliced at LVR 22
+     8 5/13 LVR_18 J12_2/1   	    1b blu 7.6 m  
+     9 6/14 LVR_15 J12_8/7   	    2a blu 7.2 m  
+     10 7/15 LVR_22 J12_2/1   	    1b blu 7.6 m  
+     11 7/15* LVR_22 J12_6/5   	    1b blu 7.6 m  virtual, Y-spliced at LVR 22
+     12 8/16 LVR_22 J13_2/1   	    1b blu 7.6 m  
+     13 8/16* LVR_22 J13_6/5   	    1b blu 7.6 m  virtual, Y-spliced at LVR 22
+
+PPP 2 P2 8 real and 4 virtual lines 			5 LVRs:  13 15 18 21 23
+     1 1/9 LVR_21 J13_4/3   	    1b blu 7.6 m  
+     2 1/9* LVR_21 J13_8/7   	    1b blu 7.6 m  virtual, Y-spliced at LVR 21
+     3 2/10 LVR_15 J12_2/1   	    2a blu 7.2 m  
+     4 3/11 LVR_13 J12_4/3   	    2b blu |6.8| m  
+     5 4/12 LVR_23 J12_4/3   	    1b blu 7.6 m  
+     6 4/12* LVR_23 J12_8/7   	    1b blu 7.6 m  virtual, Y-spliced at LVR 23
+     7 5/13 LVR_18 J12_4/3   	    1b blu 7.6 m  
+     8 6/14 LVR_15 J12_6/5   	    2a blu 7.2 m  
+     9 7/15 LVR_21 J12_4/3   	    1b blu 7.6 m  
+     10 7/15* LVR_21 J12_8/7   	    1b blu 7.6 m  virtual, Y-spliced at LVR 21
+     11 8/16 LVR_23 J12_2/1   	    1b blu 7.6 m  
+     12 8/16* LVR_23 J12_6/5   	    1b blu 7.6 m  virtual, Y-spliced at LVR 23
+
+PPP 3 P3 7 real and 1 virtual lines 			5 LVRs:  13 15 18 21 23
+     1 1/9 LVR_18 J12_8/7   	    1b blu 7.6 m  
+     2 2/10 LVR_15 J13_4/3   	    2a blu 7.2 m  
+     3 3/11 LVR_13 J12_2/1   	    2b blu |6.8| m  
+     4 4/12 LVR_23 J13_8/7   	    1b blu 7.6 m  
+     5 5/13 LVR_18 J12_6/5   	    1b blu 7.6 m  
+     6 6/14 LVR_15 J13_8/7   	    2a blu 7.2 m  
+     7 7/15 LVR_21 J13_2/1   	    1b blu 7.6 m  
+     8 7/15* LVR_21 J13_6/5   	    1b blu 7.6 m  virtual, Y-spliced at LVR 21
+
+PPP 4 P4 8 real and 5 virtual lines 			4 LVRs:  10 3 6 9
+     1 1/9 LVR_10 J12_4/3   	    2a blu 7.2 m  
+     2 1/9* LVR_10 J12_8/7   	    2a blu 7.2 m  virtual, Y-spliced at LVR 10
+     3 2/10 LVR_9 J12_2/1   	    2a blu 7.2 m  
+     4 2/10* LVR_9 J12_6/5   	    2a blu 7.2 m  virtual, Y-spliced at LVR 9
+     5 3/11 LVR_3 J12_4/3   	    2a blu 7.2 m  
+     6 4/12 LVR_10 J13_4/3   	    2a blu 7.2 m  
+     7 4/12* LVR_10 J13_8/7   	    2a blu 7.2 m  virtual, Y-spliced at LVR 10
+     8 5/13 LVR_6 J12_2/1   	    2a blu 7.2 m  
+     9 6/14 LVR_3 J12_8/7   	    2a blu 7.2 m  
+     10 7/15 LVR_10 J12_2/1   	    2a blu 7.2 m  
+     11 7/15* LVR_10 J12_6/5   	    2a blu 7.2 m  virtual, Y-spliced at LVR 10
+     12 8/16 LVR_10 J13_2/1   	    2a blu 7.2 m  
+     13 8/16* LVR_10 J13_6/5   	    2a blu 7.2 m  virtual, Y-spliced at LVR 10
+
+PPP 5 P5 8 real and 4 virtual lines 			5 LVRs:  1 11 3 6 9
+     1 1/9 LVR_9 J13_4/3   	    2a blu 7.2 m  
+     2 1/9* LVR_9 J13_8/7   	    2a blu 7.2 m  virtual, Y-spliced at LVR 9
+     3 2/10 LVR_3 J12_2/1   	    2a blu 7.2 m  
+     4 3/11 LVR_1 J12_4/3   	    2b blu |6.8| m  
+     5 4/12 LVR_11 J12_4/3   	    2a blu 7.2 m  
+     6 4/12* LVR_11 J12_8/7   	    2a blu 7.2 m  virtual, Y-spliced at LVR 11
+     7 5/13 LVR_6 J12_4/3   	    2a blu 7.2 m  
+     8 6/14 LVR_3 J12_6/5   	    2a blu 7.2 m  
+     9 7/15 LVR_9 J12_4/3   	    2a blu 7.2 m  
+     10 7/15* LVR_9 J12_8/7   	    2a blu 7.2 m  virtual, Y-spliced at LVR 9
+     11 8/16 LVR_11 J12_2/1   	    2a blu 7.2 m  
+     12 8/16* LVR_11 J12_6/5   	    2a blu 7.2 m  virtual, Y-spliced at LVR 11
+
+PPP 6 P6 6 real and 1 virtual lines 			4 LVRs:  11 3 6 9
+     1 1/9 LVR_6 J12_8/7   	    2a blu 7.2 m  
+     2 2/10 LVR_3 J13_4/3   	    2a blu 7.2 m  
+     3 4/12 LVR_11 J13_8/7   	    2a blu 7.2 m  
+     4 5/13 LVR_6 J12_6/5   	    2a blu 7.2 m  
+     5 6/14 LVR_3 J13_8/7   	    2a blu 7.2 m  
+     6 7/15 LVR_9 J13_2/1   	    2a blu 7.2 m  
+     7 7/15* LVR_9 J13_6/5   	    2a blu 7.2 m  virtual, Y-spliced at LVR 9
+
+PPP 7 P7 6 real and 0 virtual lines 			3 LVRs:  16 19 24
+     1 1/9 LVR_19 J13_2/1   	    1b blu 7.6 m  
+     2 2/10 LVR_19 J13_8/7   	    1b blu 7.6 m  
+     3 3/11 LVR_16 J12_4/3   	    2a blu 7.2 m  
+     4 4/12 LVR_24 J12_2/1   	    1b blu 7.6 m  
+     5 5/13 LVR_19 J12_2/1   	    1b blu 7.6 m  
+     6 6/14 LVR_16 J12_8/7   	    2a blu 7.2 m  
+
+PPP 8 P8 6 real and 0 virtual lines 			4 LVRs:  14 16 19 24
+     1 1/9 LVR_19 J13_6/5   	    1b blu 7.6 m  
+     2 2/10 LVR_16 J12_2/1   	    2a blu 7.2 m  
+     3 3/11 LVR_14 J12_4/3   	    2b blu |6.8| m  
+     4 4/12 LVR_24 J12_8/7   	    1b blu 7.6 m  
+     5 5/13 LVR_19 J12_4/3   	    1b blu 7.6 m  
+     6 6/14 LVR_16 J12_6/5   	    2a blu 7.2 m  
+
+PPP 9 P9 6 real and 0 virtual lines 			4 LVRs:  14 16 19 24
+     1 1/9 LVR_19 J12_8/7   	    1b blu 7.6 m  
+     2 2/10 LVR_16 J13_4/3   	    2a blu 7.2 m  
+     3 3/11 LVR_14 J12_2/1   	    2b blu |6.8| m  
+     4 4/12 LVR_24 J12_6/5   	    1b blu 7.6 m  
+     5 5/13 LVR_19 J12_6/5   	    1b blu 7.6 m  
+     6 6/14 LVR_16 J13_8/7   	    2a blu 7.2 m  
+
+PPP 10 P10 6 real and 0 virtual lines 			3 LVRs:  12 4 7
+     1 1/9 LVR_7 J13_2/1   	    2a blu 7.2 m  
+     2 2/10 LVR_7 J13_8/7   	    2a blu 7.2 m  
+     3 3/11 LVR_4 J12_4/3   	    2a blu 7.2 m  
+     4 4/12 LVR_12 J12_2/1   	    2a blu 7.2 m  
+     5 5/13 LVR_7 J12_2/1   	    2a blu 7.2 m  
+     6 6/14 LVR_4 J12_8/7   	    2a blu 7.2 m  
+
+PPP 11 P11 6 real and 0 virtual lines 			4 LVRs:  12 2 4 7
+     1 1/9 LVR_7 J13_6/5   	    2a blu 7.2 m  
+     2 2/10 LVR_4 J12_2/1   	    2a blu 7.2 m  
+     3 3/11 LVR_2 J12_4/3   	    2b blu |6.8| m  
+     4 4/12 LVR_12 J12_8/7   	    2a blu 7.2 m  
+     5 5/13 LVR_7 J12_4/3   	    2a blu 7.2 m  
+     6 6/14 LVR_4 J12_6/5   	    2a blu 7.2 m  
+
+PPP 12 P12 5 real and 0 virtual lines 			3 LVRs:  12 4 7
+     1 1/9 LVR_7 J12_8/7   	    2a blu 7.2 m  
+     2 2/10 LVR_4 J13_4/3   	    2a blu 7.2 m  
+     3 4/12 LVR_12 J12_6/5   	    2a blu 7.2 m  
+     4 5/13 LVR_7 J12_6/5   	    2a blu 7.2 m  
+     5 6/14 LVR_4 J13_8/7   	    2a blu 7.2 m  
+
+PPP 13 P13 6 real and 0 virtual lines 			3 LVRs:  17 20 24
+     1 1/9 LVR_20 J13_2/1   	    1b blu 7.6 m  
+     2 2/10 LVR_20 J13_8/7   	    1b blu 7.6 m  
+     3 3/11 LVR_17 J12_4/3   	    2a blu 7.2 m  
+     4 4/12 LVR_24 J13_2/1   	    1b blu 7.6 m  
+     5 5/13 LVR_20 J12_2/1   	    1b blu 7.6 m  
+     6 6/14 LVR_17 J12_8/7   	    2a blu 7.2 m  
+
+PPP 14 P14 6 real and 0 virtual lines 			4 LVRs:  14 17 20 24
+     1 1/9 LVR_20 J13_6/5   	    1b blu 7.6 m  
+     2 2/10 LVR_17 J12_2/1   	    2a blu 7.2 m  
+     3 3/11 LVR_14 J13_4/3   	    2b blu |6.8| m  
+     4 4/12 LVR_24 J13_8/7   	    1b blu 7.6 m  
+     5 5/13 LVR_20 J12_4/3   	    1b blu 7.6 m  
+     6 6/14 LVR_17 J12_6/5   	    2a blu 7.2 m  
+
+PPP 15 P15 6 real and 0 virtual lines 			4 LVRs:  14 17 20 24
+     1 1/9 LVR_20 J12_8/7   	    1b blu 7.6 m  
+     2 2/10 LVR_17 J13_4/3   	    2a blu 7.2 m  
+     3 3/11 LVR_14 J13_2/1   	    2b blu |6.8| m  
+     4 4/12 LVR_24 J13_6/5   	    1b blu 7.6 m  
+     5 5/13 LVR_20 J12_6/5   	    1b blu 7.6 m  
+     6 6/14 LVR_17 J13_8/7   	    2a blu 7.2 m  
+
+PPP 16 P16 6 real and 0 virtual lines 			3 LVRs:  12 5 8
+     1 1/9 LVR_8 J13_2/1   	    2a blu 7.2 m  
+     2 2/10 LVR_8 J13_8/7   	    2a blu 7.2 m  
+     3 3/11 LVR_5 J12_4/3   	    2a blu 7.2 m  
+     4 4/12 LVR_12 J13_2/1   	    2a blu 7.2 m  
+     5 5/13 LVR_8 J12_2/1   	    2a blu 7.2 m  
+     6 6/14 LVR_5 J12_8/7   	    2a blu 7.2 m  
+
+PPP 17 P17 6 real and 0 virtual lines 			4 LVRs:  12 2 5 8
+     1 1/9 LVR_8 J13_6/5   	    2a blu 7.2 m  
+     2 2/10 LVR_5 J12_2/1   	    2a blu 7.2 m  
+     3 3/11 LVR_2 J13_4/3   	    2b blu |6.8| m  
+     4 4/12 LVR_12 J13_8/7   	    2a blu 7.2 m  
+     5 5/13 LVR_8 J12_4/3   	    2a blu 7.2 m  
+     6 6/14 LVR_5 J12_6/5   	    2a blu 7.2 m  
+
+PPP 18 P18 5 real and 0 virtual lines 			3 LVRs:  12 5 8
+     1 1/9 LVR_8 J12_8/7   	    2a blu 7.2 m  
+     2 2/10 LVR_5 J13_4/3   	    2a blu 7.2 m  
+     3 4/12 LVR_12 J13_6/5   	    2a blu 7.2 m  
+     4 5/13 LVR_8 J12_6/5   	    2a blu 7.2 m  
+     5 6/14 LVR_5 J13_8/7   	    2a blu 7.2 m  
+
+PPP 19 P19 4 real and 0 virtual lines 			1 LVRs:  13
+     1 1/9 LVR_13 J12_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_13 J12_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_13 J13_8/7   	    2c red |7.6| m  
+     4 5/13 LVR_13 J13_4/3   	    2c red |7.6| m  
+
+PPP 20 P20 7 real and 0 virtual lines 			4 LVRs:  25 26 27 34
+     1 1/9 LVR_27 J13_8/7   	    1a red 8.8 m  
+     2 2/10 LVR_27 J13_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_34 J13_8/7   	    1a red 8.8 m  
+     4 4/12 LVR_25 J13_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_25 J13_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_34 J12_6/5   	    1a red 8.8 m  
+     7 7/15 LVR_26 J13_4/3   	    1a red 8.8 m  
+
+PPP 21 P21 7 real and 0 virtual lines 			3 LVRs:  25 27 34
+     1 1/9 LVR_25 J12_4/3   	    1a red 8.8 m  
+     2 2/10 LVR_25 J12_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_25 J12_8/7   	    1a red 8.8 m  
+     4 4/12 LVR_27 J12_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_27 J12_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_25 J12_2/1   	    1a red 8.8 m  
+     7 7/15 LVR_34 J12_4/3   	    1a red 8.8 m  
+
+PPP 22 P22 5 real and 0 virtual lines 			1 LVRs:  1
+     1 1/9 LVR_1 J12_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_1 J12_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_1 J13_8/7   	    2c red |7.6| m  
+     4 4/12 LVR_1 J12_2/1   	    2c red |7.6| m  
+     5 5/13 LVR_1 J13_4/3   	    2c red |7.6| m  
+
+PPP 23 P23 8 real and 0 virtual lines 			4 LVRs:  25 26 27 34
+     1 1/9 LVR_27 J13_2/1   	    1a red 8.8 m  
+     2 2/10 LVR_27 J13_4/3   	    1a red 8.8 m  
+     3 3/11 LVR_25 J13_6/5   	    1a red 8.8 m  
+     4 4/12 LVR_34 J13_6/5   	    1a red 8.8 m  
+     5 5/13 LVR_25 J13_8/7   	    1a red 8.8 m  
+     6 6/14 LVR_26 J12_2/1   	    1a red 8.8 m  
+     7 7/15 LVR_26 J12_4/3   	    1a red 8.8 m  
+     8 8/16 LVR_26 J13_2/1   	    1a red 8.8 m  
+
+PPP 24 P24 8 real and 0 virtual lines 			3 LVRs:  26 27 34
+     1 1/9 LVR_34 J13_2/1   	    1a red 8.8 m  
+     2 2/10 LVR_26 J13_8/7   	    1a red 8.8 m  
+     3 3/11 LVR_27 J12_6/5   	    1a red 8.8 m  
+     4 4/12 LVR_34 J13_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_27 J12_8/7   	    1a red 8.8 m  
+     6 6/14 LVR_26 J13_6/5   	    1a red 8.8 m  
+     7 7/15 LVR_26 J12_8/7   	    1a red 8.8 m  
+     8 8/16 LVR_26 J12_6/5   	    1a red 8.8 m  
+
+PPP 25 P25 3 real and 0 virtual lines 			2 LVRs:  13 14
+     1 1/9 LVR_14 J12_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_14 J12_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_13 J13_6/5   	    2c red |7.6| m  
+
+PPP 26 P26 7 real and 0 virtual lines 			4 LVRs:  28 30 32 35
+     1 1/9 LVR_28 J13_8/7   	    1a red 8.8 m  
+     2 2/10 LVR_28 J13_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_35 J13_8/7   	    3a red 7.8 m  
+     4 4/12 LVR_30 J13_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_30 J13_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_35 J12_6/5   	    3a red 7.8 m  
+     7 7/15 LVR_32 J13_4/3   	    1a red 8.8 m  
+
+PPP 27 P27 6 real and 0 virtual lines 			2 LVRs:  28 30
+     1 1/9 LVR_30 J12_4/3   	    1a red 8.8 m  
+     2 2/10 LVR_30 J12_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_30 J12_8/7   	    1a red 8.8 m  
+     4 4/12 LVR_28 J12_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_28 J12_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_30 J12_2/1   	    1a red 8.8 m  
+
+PPP 28 P28 4 real and 0 virtual lines 			2 LVRs:  1 2
+     1 1/9 LVR_2 J12_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_2 J12_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_1 J13_6/5   	    2c red |7.6| m  
+     4 4/12 LVR_2 J12_2/1   	    2c red |7.6| m  
+
+PPP 29 P29 8 real and 0 virtual lines 			4 LVRs:  28 30 32 35
+     1 1/9 LVR_28 J13_2/1   	    1a red 8.8 m  
+     2 2/10 LVR_28 J13_4/3   	    1a red 8.8 m  
+     3 3/11 LVR_30 J13_6/5   	    1a red 8.8 m  
+     4 4/12 LVR_35 J13_6/5   	    3a red 7.8 m  
+     5 5/13 LVR_30 J13_8/7   	    1a red 8.8 m  
+     6 6/14 LVR_32 J12_2/1   	    1a red 8.8 m  
+     7 7/15 LVR_32 J12_4/3   	    1a red 8.8 m  
+     8 8/16 LVR_32 J13_2/1   	    1a red 8.8 m  
+
+PPP 30 P30 4 real and 0 virtual lines 			2 LVRs:  28 35
+     1 1/9 LVR_35 J13_2/1   	    3a red 7.8 m  
+     2 3/11 LVR_28 J12_6/5   	    1a red 8.8 m  
+     3 4/12 LVR_35 J13_4/3   	    3a red 7.8 m  
+     4 5/13 LVR_28 J12_8/7   	    1a red 8.8 m  
+
+PPP 31 P31 3 real and 0 virtual lines 			2 LVRs:  13 14
+     1 1/9 LVR_14 J13_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_14 J13_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_13 J13_2/1   	    2c red |7.6| m  
+
+PPP 32 P32 7 real and 0 virtual lines 			4 LVRs:  29 31 33 36
+     1 1/9 LVR_31 J13_8/7   	    1a red 8.8 m  
+     2 2/10 LVR_31 J13_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_36 J13_8/7   	    3a red 7.8 m  
+     4 4/12 LVR_33 J13_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_33 J13_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_36 J12_6/5   	    3a red 7.8 m  
+     7 7/15 LVR_29 J13_4/3   	    1a red 8.8 m  
+
+PPP 33 P33 6 real and 0 virtual lines 			2 LVRs:  31 33
+     1 1/9 LVR_33 J12_4/3   	    1a red 8.8 m  
+     2 2/10 LVR_33 J12_6/5   	    1a red 8.8 m  
+     3 3/11 LVR_33 J12_8/7   	    1a red 8.8 m  
+     4 4/12 LVR_31 J12_4/3   	    1a red 8.8 m  
+     5 5/13 LVR_31 J12_2/1   	    1a red 8.8 m  
+     6 6/14 LVR_33 J12_2/1   	    1a red 8.8 m  
+
+PPP 34 P34 4 real and 0 virtual lines 			2 LVRs:  1 2
+     1 1/9 LVR_2 J13_8/7   	    2c red |7.6| m  
+     2 2/10 LVR_2 J13_6/5   	    2c red |7.6| m  
+     3 3/11 LVR_1 J13_2/1   	    2c red |7.6| m  
+     4 4/12 LVR_2 J13_2/1   	    2c red |7.6| m  
+
+PPP 35 P35 8 real and 0 virtual lines 			4 LVRs:  29 31 33 36
+     1 1/9 LVR_31 J13_2/1   	    1a red 8.8 m  
+     2 2/10 LVR_31 J13_4/3   	    1a red 8.8 m  
+     3 3/11 LVR_33 J13_6/5   	    1a red 8.8 m  
+     4 4/12 LVR_36 J13_6/5   	    3a red 7.8 m  
+     5 5/13 LVR_33 J13_8/7   	    1a red 8.8 m  
+     6 6/14 LVR_29 J12_2/1   	    1a red 8.8 m  
+     7 7/15 LVR_29 J12_4/3   	    1a red 8.8 m  
+     8 8/16 LVR_29 J13_2/1   	    1a red 8.8 m  
+
+PPP 36 P36 4 real and 0 virtual lines 			2 LVRs:  31 36
+     1 1/9 LVR_36 J13_2/1   	    3a red 7.8 m  
+     2 3/11 LVR_31 J12_6/5   	    1a red 8.8 m  
+     3 4/12 LVR_36 J13_4/3   	    3a red 7.8 m  
+     4 5/13 LVR_31 J12_8/7   	    1a red 8.8 m  
+
