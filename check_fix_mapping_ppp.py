@@ -6,20 +6,20 @@
 # Note: this script can also check the LV cavern LVR-load mapping is correct vs
 # Phoebe's schematics.
 # Note: the script also now checks that Petr's LV labels were generated
-# correctly by comparing to the (correct) lines outputted to move_labels.csv.
-# Here, the PPP color info and SBC region (referencing Petr's stackup diagram)
-# is input by hand for the move_labels.csv lines. Also notably, Petr's label
-# docs contain DCB lines, whereas I'm only generally looking at hybrid lines;
-# to skip the DCB lines (that weren't altered in the updated cavern mapping),
-# if the PPP+pin can't be found in move_labels.csv, the line from Petr's label
-# sheets is skipped.
+# correctly by comparing to the (correct) lines outputted to move_labels.csv
+# (actually checks against line list used as input for ppp_fixes.csv, but the
+# correct line line info is equivalent between these sheets). Here, the PPP
+# color info isn't checked. Also notably, Petr's label docs contain
+# DCB lines, whereas I'm only generally looking at hybrid lines; to skip the
+# DCB lines (that weren't altered in the updated cavern mapping), if the PPP+pin
+# can't be found in my correct lines list, the line from Petr's label sheets is
+# skipped.
 
-import pandas, os, fnmatch, math
-import csv
+import pandas, os, fnmatch, math, copy, csv
 from argparse import ArgumentParser
 
 # problem seems to be restricted to hybrid mag mirror (stereo+straight)
-only_hyb_mag_mir = True
+only_hyb_mag_mir = False
 
 # see if flipping stereo<->straight helps
 check_stereo_straight_flip = False
@@ -289,6 +289,33 @@ def ppp_ret_pin(src_pin):
     ret = src+8
     return str(ret)
 
+def petr_filename_to_xyz(file):
+    # all filenames have same length; get rid of any parent folders
+    file = file[-15:]
+    x, y, z = file[0], file[1], file[2]
+    # change y,z to your naming convention
+    if y=='B': y='bot'
+    if y=='T': y='top'
+    if z=='M': z='mag'
+    if z=='I': z='ip'
+    return [x,y,z]
+
+# PPP color uniquely defined by where the Pos is: mag/IP and Pos num.
+def check_ppp_color(z, ppp, color):
+    ppp_num = int(ppp[1:])
+    if ppp_num <= 18:
+        if z=='mag':
+            if color!='blu': return False
+        if z=='ip':
+            if color!='grn': return False
+    else:
+        if z=='mag':
+            if color!='red': return False
+        if z=='ip':
+            if color!='yel': return False
+    return True
+
+
 
 ####### Functions to Parse different sheets
 
@@ -430,12 +457,14 @@ def parse_swap_pos(file, cavern_lines):
     swap_sheet = sheets[0] # only 1 sheet
     df = pandas.read_excel(xlsx, swap_sheet, usecols='A,D')
     for ind, row in df.iterrows():
-        old_pos = 'P'+str(int(row['Positronic']))
-        new_pos = 'P'+str(int(row['Swap to']))
+        pos = 'P'+str(int(row['Positronic']))
         for l in cavern_lines:
-            if l.ppp == old_pos:
+            pos_tmp = pos
+            if (l.x=='C' and l.y=='bot' and l.z=='mag' and l.flex!='n/a'):
+                pos_tmp = 'P'+str(int(row['Swap to'])) # don't move non-HMM Pos!
+            if l.ppp == pos:
                 ml = line(l.x, l.y, l.z, l.bp, l.bp_con, l.ibbp2b2, l.flex,
-                          l.load, l.msa, new_pos, l.ppp_pin)
+                          l.load, l.msa, pos_tmp, l.ppp_pin)
                 ml.set_lvr(l.lvr, l.lvr_ch)
                 ml.set_length(l.length_c, l.length_a)
                 ml.set_labels(l.ppp_label, l.lvr_label) # don't move ppp_label!
@@ -445,7 +474,7 @@ def parse_swap_pos(file, cavern_lines):
                 #       nl.ibbp2b2+nl.flex+nl.load+nl.msa+nl.ppp+nl.ppp_pin)
     return lines
 
-# returns a list of lines for cable test mapping
+# returns a list of lines for cable test mapping; TODO
 def parse_cable_test(file):
     xlsx = pandas.ExcelFile(file)
     sheets = xlsx.sheet_names
@@ -495,17 +524,83 @@ def parse_netlist(netlist):
                         lvrch_load[f'{lvr}_{lvr_out_con}_{pin}'] = load
     return lvrch_load
 
+# parse and check Petr's LVR labels
+def parse_check_petr_lvr(file, correct_lines):
+    my_txt = file[:-4]+'_alex.txt'
+    with open(file) as f, open(my_txt, 'w') as mf:
+        xyz = petr_filename_to_xyz(file)
+        x, y, z = xyz[0], xyz[1], xyz[2]
+        lvr = ''
+        for txt_line in f.readlines():
+            # set the lvr number!
+            if 'LVR ' in txt_line:
+                mf.write('\n'+txt_line)
+                lvr = (txt_line.split())[1]
+            # skip useless lines
+            if not ('J12' in txt_line or 'J13' in txt_line): continue
+            txt_line_split = txt_line.split()
+            lvr_ch = txt_line_split[0]
+            lvr_pin = txt_line_split[1]
+            ppp = txt_line_split[2]
+            ppp_pin = txt_line_split[3][0] # only src pin
+            ppp_color = txt_line_split[4]
+            sbc_sec = txt_line_split[5]
+            length_c = txt_line_split[6]
+            # if ppp in ['P20', 'P21', 'P23', 'P24', 'P26', 'P27', 'P29', 'P30',
+            #            'P32', 'P33', 'P35', 'P36']: continue # skip dcbs
+            # print(f'LVR{lvr} ch{lvr_ch} (pin {lvr_pin}) Pos{ppp}:{ppp_pin} '+
+            #       f'PPPReg:{ppp_color} SBCReg:{sbc_sec} L:{length_c}')
+
+            # find the correct line by xyz+lvr+lvr_ch
+            # once found, check everything else is right
+            count = 0
+            for correct_line in correct_lines:
+                if (x==correct_line.x and y==correct_line.y and
+                    z==correct_line.z and lvr==correct_line.lvr and
+                    lvr_ch==correct_line.lvr_ch):
+                    count += 1
+                    split_label_lvr = ((correct_line.lvr_label).split(' | '))[0]
+                    split_label_lvr = split_label_lvr.split()
+                    correct_line_lvr_pin = split_label_lvr[2]+'_'+split_label_lvr[4]
+                    correct_line_sbc = split_label_lvr[5]
+                    if not (ppp==correct_line.ppp and
+                            ppp_pin==correct_line.ppp_pin and
+                            check_ppp_color(z, ppp, ppp_color) and
+                            lvr_pin==correct_line_lvr_pin and
+                            sbc_sec==correct_line_sbc and
+                            length_c==correct_line.length_c):
+                        print(f'rest of {x}{y}{z} LVR{lvr} ch{lvr_ch} line '+
+                              'doesn\'t agree...')
+                        print(f'Petr: LVR{lvr} ch{lvr_ch} (pin {lvr_pin}) '+
+                              f'Pos{ppp}:{ppp_pin} PPPReg:{ppp_color} '+
+                              f'SBCReg:{sbc_sec} L:{length_c}')
+                        print(f'Me: LVR{correct_line.lvr} ch{correct_line.lvr_ch} '+
+                              f' (pin {correct_line_lvr_pin}) '+
+                              f'Pos{correct_line.ppp}:{correct_line.ppp_pin} '+
+                              # f'PPPReg:{correct_line.ppp_color} '+
+                              f'SBCReg:{correct_line_sbc} '+
+                              f'L:{correct_line.length_c}')
+            if count < 1: print(f'Couldn\'t find {x}{y}{z} LVR{lvr} ch{lvr_ch}')
+            elif count > 1: print(f'Found multiple {x}{y}{z} LVR{lvr} ch{lvr_ch}')
+            else: mf.write(txt_line)
+
+# parse and check Petr's PPP labels; actually, skip this
+def parse_check_petr_ppp(file, correct_lines):
+    return
+
 # Associate files with a function for parsing
 parse_func = {}
 files = [nominal, cavern, swap_pos, schem_ip, schem_mag] + compare
 for file in files:
     if 'surface_LV_power_tests' in file: parse_func[file]=parse_surface
     elif 'LVR_PPP_Underground' in file: parse_func[file]=parse_cavern
-    elif 'lvr_testing' in file: parse_func[file]=parse_cable_test
+    elif 'lvr_testing' in file: parse_func[file]=parse_cable_test # does nothing
     elif 'swap_positronic' in file: parse_func[file]=parse_swap_pos
     elif 'PEPI_' in file: parse_func[file]=parse_netlist
+    elif 'CBM_LVR_new' in file: parse_func[file]=parse_check_petr_lvr
+    elif 'CBM_PPP_new' in file: parse_func[file]=parse_check_petr_ppp
     else:
-        if schem_ip=='NA' or swap_pos=='NA': continue
+        if file=='NA': continue
         print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
 
 
@@ -653,7 +748,10 @@ def cavern_check_fix():
                           f'{cav_line.bp_con+cav_line.ibbp2b2+cav_line.flex}'+
                           f'{cav_line.load+cav_line.msa}???')
         if not cav_line==nom_line:
-            print(f'\nFound cavern line with wrong PPP!\n')
+            print(f'\nFound cavern line with wrong PPP! '+
+                  f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
+                  f'{cav_line.bp_con+cav_line.ibbp2b2+cav_line.flex}'+
+                  f'{cav_line.load+cav_line.msa}\n')
             # ppp_wrong_cavern_lines[cav_line] = nom_line
         ppp_corrected_cavern_lines[cav_line] = nom_line
         if check_stereo_straight_flip:
@@ -688,7 +786,10 @@ def cavern_check_fix():
                               f'{cav_line.x+cav_line.y+cav_line.z}'+
                               f'{cav_line.ppp+cav_line.ppp_pin}???')
             if not cav_line==nom_line:
-                print(f'\nFound (moved) cavern line with wrong PPP!\n')
+                print(f'\nFound (moved) cavern line with wrong PPP! '+
+                      f'{cav_line.x+cav_line.y+cav_line.z+cav_line.bp}'+
+                      f'{cav_line.bp_con+cav_line.ibbp2b2+cav_line.flex}'+
+                      f'{cav_line.load+cav_line.msa}\n')
             ppp_corrected_cavern_lines_moved[cav_line] = nom_line
 
     # write out all cavern lines
@@ -805,8 +906,27 @@ def cavern_check_fix():
         fixme_moved.close()
 
     for comp in compare:
+        # TODO comparison to LVR testing sheet. can skip Petr's PPP sorted sheet
+        if comp in ['compare/lvr_testing.csv', 'compare/CBM_PPP_new.txt']: continue
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
-        # TODO comparisons...
+        # For Petr comparison, he separates spliced lines into different
+        # entries, so create a list with "unspliced" lines
+        compare_lines = []
+        for correct_line in ppp_corrected_cavern_lines.values():
+            lvr_ch_split = correct_line.lvr_ch.split(' Y ')
+            lvr_label_split = correct_line.lvr_label.split('   Y   ')
+            for i in range(len(lvr_ch_split)):
+                # make sure the ch number is an int string, not float...
+                ch = str(int(float(lvr_ch_split[i])))
+                split_correct_line = copy.deepcopy(correct_line)
+                split_correct_line.set_lvr(correct_line.lvr, ch)
+                split_correct_line.set_labels(correct_line.ppp_label,
+                                              lvr_label_split[i])
+                compare_lines.append(split_correct_line)
+        # the actual checking will occur inside the respective parsing
+        # functions! any errors will be printed there
+        parse_func[comp](comp, compare_lines)
+
 
     # print(f'\n\nWriting (unformatted) fixed cavern mapping...\n\n')
     # fixed = 'fixed-'+cavern
