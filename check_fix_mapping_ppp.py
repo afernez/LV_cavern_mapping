@@ -546,6 +546,8 @@ def parse_check_petr_lvr(file, correct_lines):
             ppp_color = txt_line_split[4]
             sbc_sec = txt_line_split[5]
             length_c = txt_line_split[6]
+            # sometimes Petr converts floats to ints...
+            if not '|' in length_c: length_c = str(float(length_c))
             # if ppp in ['P20', 'P21', 'P23', 'P24', 'P26', 'P27', 'P29', 'P30',
             #            'P32', 'P33', 'P35', 'P36']: continue # skip dcbs
             # print(f'LVR{lvr} ch{lvr_ch} (pin {lvr_pin}) Pos{ppp}:{ppp_pin} '+
@@ -597,8 +599,11 @@ for file in files:
     elif 'lvr_testing' in file: parse_func[file]=parse_cable_test # does nothing
     elif 'swap_positronic' in file: parse_func[file]=parse_swap_pos
     elif 'PEPI_' in file: parse_func[file]=parse_netlist
-    elif 'CBM_LVR_new' in file: parse_func[file]=parse_check_petr_lvr
-    elif 'CBM_PPP_new' in file: parse_func[file]=parse_check_petr_ppp
+    elif 'CBM_LVR' in file: parse_func[file]=parse_check_petr_lvr
+    elif 'CBM_PPP' in file: parse_func[file]=parse_check_petr_ppp # also nada
+    elif 'CBI_LVR' in file: parse_func[file]=parse_check_petr_lvr
+    elif 'CTM_LVR' in file: parse_func[file]=parse_check_petr_lvr
+    elif 'CTI_LVR' in file: parse_func[file]=parse_check_petr_lvr
     else:
         if file=='NA': continue
         print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
@@ -907,7 +912,8 @@ def cavern_check_fix():
 
     for comp in compare:
         # TODO comparison to LVR testing sheet. can skip Petr's PPP sorted sheet
-        if comp in ['compare/lvr_testing.csv', 'compare/CBM_PPP_new.txt']: continue
+        if comp in ['compare/lvr_testing.csv', 'compare/CBM_PPP_new.txt'] or \
+            'alex' in comp: continue
         print(f'\n\nChecking {nominal} vs {comp}...\n\n')
         # For Petr comparison, he separates spliced lines into different
         # entries, so create a list with "unspliced" lines

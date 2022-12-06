@@ -1,0 +1,325 @@
+./rd Version 1.38 CTI PEPI type: M
+reading Sections_3.32.csv----------
+14 lines read
+Sections: 12 entries
+reading Slots.csv----------
+43 lines read
+reading HIM_stereo.csv----------
+135 lines read
+reading HIM_straight.csv----------
+135 lines read
+reading DIM.csv----------
+163 lines read
+------ Report LVR for side CTI
+LVR 37 channels: 7 			3 PPPs:  P22 P28 P5
+     4 J12_2/1 P22 4/12 yel	3c  6.8 m  
+     3 J12_4/3 P5 3/11 grn	3d  6.8 m  
+     2 J12_6/5 P22 2/10 yel	3c  6.8 m  
+     1 J12_8/7 P22 1/9 yel	3c  6.8 m  
+
+     7 J13_4/3 P22 5/13 yel	3c  6.8 m  
+     6 J13_6/5 P28 3/11 yel	3c  6.8 m  
+     5 J13_8/7 P22 3/11 yel	3c  6.8 m  
+
+LVR 38 channels: 7 			4 PPPs:  P11 P17 P28 P34
+     4 J12_2/1 P28 4/12 yel	3c  6.8 m  
+     3 J12_4/3 P11 3/11 grn	3d  6.8 m  
+     2 J12_6/5 P28 2/10 yel	3c  6.8 m  
+     1 J12_8/7 P28 1/9 yel	3c  6.8 m  
+
+     7 J13_4/3 P17 3/11 grn	3d  6.8 m  
+     6 J13_6/5 P34 2/10 yel	3c  6.8 m  
+     5 J13_8/7 P34 1/9 yel	3c  6.8 m  
+
+LVR 39 channels: 8 			4 PPPs:  P12 P4 P5 P6
+     4 J12_2/1 P5 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P4 3/11 grn	4b  6.4 m  
+     2 J12_6/5 P5 6/14 grn	4b  6.4 m  
+     1 J12_8/7 P4 6/14 grn	4b  6.4 m  
+
+     8 J13_2/1 P12 2/10 grn	4b  6.4 m  
+     7 J13_4/3 P6 2/10 grn	4b  6.4 m  
+     6 J13_6/5 P12 6/14 grn	4b  6.4 m  
+     5 J13_8/7 P6 6/14 grn	4b  6.4 m  
+
+LVR 40 channels: 8 			4 PPPs:  P10 P11 P16 P17
+     4 J12_2/1 P11 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P10 3/11 grn	4b  6.4 m  
+     2 J12_6/5 P11 6/14 grn	4b  6.4 m  
+     1 J12_8/7 P10 6/14 grn	4b  6.4 m  
+
+     8 J13_2/1 P17 2/10 grn	4b  6.4 m  
+     7 J13_4/3 P16 3/11 grn	4b  6.4 m  
+     6 J13_6/5 P17 6/14 grn	4b  6.4 m  
+     5 J13_8/7 P16 6/14 grn	4b  6.4 m  
+
+LVR 41 channels: 8 			6 PPPs:  P10 P11 P12 P4 P5 P6
+     4 J12_2/1 P4 5/13 grn	4b  6.4 m  
+     3 J12_4/3 P5 5/13 grn	4b  6.4 m  
+     2 J12_6/5 P6 5/13 grn	4b  6.4 m  
+     1 J12_8/7 P6 1/9 grn	4b  6.4 m  
+
+     8 J13_2/1 P10 5/13 grn	4b  6.4 m  
+     7 J13_4/3 P11 5/13 grn	4b  6.4 m  
+     6 J13_6/5 P12 5/13 grn	4b  6.4 m  
+     5 J13_8/7 P12 1/9 grn	4b  6.4 m  
+
+LVR 42 channels: 8 			4 PPPs:  P10 P11 P16 P17
+     4 J12_2/1 P10 1/9 grn	4b  6.4 m  
+     3 J12_4/3 P16 5/13 grn	4b  6.4 m  
+     2 J12_6/5 P11 1/9 grn	4b  6.4 m  
+     1 J12_8/7 P10 2/10 grn	4b  6.4 m  
+
+     8 J13_2/1 P16 2/10 grn	4b  6.4 m  
+     7 J13_4/3 P17 5/13 grn	4b  6.4 m  
+     6 J13_6/5 P17 1/9 grn	4b  6.4 m  
+     5 J13_8/7 P16 1/9 grn	4b  6.4 m  
+
+LVR 43 channels: 8 			3 PPPs:  P4 P5 P6
+     4 J12_2/1 P4 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P5 7/15 grn	4b  6.4 m  
+     2 J12_6/5 P4 2/10* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P5 7/15* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     8 J13_2/1 P6 7/15 grn	4b  6.4 m  
+     7 J13_4/3 P5 1/9 grn	4b  6.4 m  
+     6 J13_6/5 P6 7/15* grn	4b  6.4 m   Y-spliced with J13_2/1
+     5 J13_8/7 P5 1/9* grn	4b  6.4 m   Y-spliced with J13_4/3
+
+LVR 44 channels: 8 			1 PPPs:  P4
+     4 J12_2/1 P4 7/15 grn	4b  6.4 m  
+     3 J12_4/3 P4 1/9 grn	4b  6.4 m  
+     2 J12_6/5 P4 7/15* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P4 1/9* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     8 J13_2/1 P4 8/16 grn	4b  6.4 m  
+     7 J13_4/3 P4 4/12 grn	4b  6.4 m  
+     6 J13_6/5 P4 8/16* grn	4b  6.4 m   Y-spliced with J13_2/1
+     5 J13_8/7 P4 4/12* grn	4b  6.4 m   Y-spliced with J13_4/3
+
+LVR 45 channels: 5 			2 PPPs:  P5 P6
+     4 J12_2/1 P5 8/16 grn	4b  6.4 m  
+     3 J12_4/3 P5 4/12 grn	4b  6.4 m  
+     2 J12_6/5 P5 8/16* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P5 4/12* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     5 J13_8/7 P6 4/12 grn	4b  6.4 m  
+
+LVR 46 channels: 5 			5 PPPs:  P10 P11 P12 P16 P17
+     4 J12_2/1 P10 4/12 grn	4b  6.4 m  
+     2 J12_6/5 P12 4/12 grn	4b  6.4 m  
+     1 J12_8/7 P11 4/12 grn	4b  6.4 m  
+
+     8 J13_2/1 P16 4/12 grn	4b  6.4 m  
+     5 J13_8/7 P17 4/12 grn	4b  6.4 m  
+
+LVR 47 channels: 7 			4 PPPs:  P19 P2 P25 P3
+     4 J12_2/1 P3 3/11 grn	3d  6.8 m  
+     3 J12_4/3 P2 3/11 grn	3d  6.8 m  
+     2 J12_6/5 P19 2/10 yel	3c  6.8 m  
+     1 J12_8/7 P19 1/9 yel	3c  6.8 m  
+
+     7 J13_4/3 P19 5/13 yel	3c  6.8 m  
+     6 J13_6/5 P25 3/11 yel	3c  6.8 m  
+     5 J13_8/7 P19 3/11 yel	3c  6.8 m  
+
+LVR 48 channels: 7 			5 PPPs:  P14 P25 P31 P8 P9
+     4 J12_2/1 P9 3/11 grn	3d  6.8 m  
+     3 J12_4/3 P8 3/11 grn	3d  6.8 m  
+     2 J12_6/5 P25 2/10 yel	3c  6.8 m  
+     1 J12_8/7 P25 1/9 yel	3c  6.8 m  
+
+     7 J13_4/3 P14 3/11 grn	3d  6.8 m  
+     6 J13_6/5 P31 2/10 yel	3c  6.8 m  
+     5 J13_8/7 P31 1/9 yel	3c  6.8 m  
+
+LVR 49 channels: 8 			4 PPPs:  P1 P2 P3 P9
+     4 J12_2/1 P2 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P1 3/11 grn	4b  6.4 m  
+     2 J12_6/5 P2 6/14 grn	4b  6.4 m  
+     1 J12_8/7 P1 6/14 grn	4b  6.4 m  
+
+     8 J13_2/1 P9 2/10 grn	4b  6.4 m  
+     7 J13_4/3 P3 2/10 grn	4b  6.4 m  
+     6 J13_6/5 P9 6/14 grn	4b  6.4 m  
+     5 J13_8/7 P3 6/14 grn	4b  6.4 m  
+
+LVR 50 channels: 8 			4 PPPs:  P13 P14 P7 P8
+     4 J12_2/1 P8 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P7 3/11 grn	4b  6.4 m  
+     2 J12_6/5 P8 6/14 grn	4b  6.4 m  
+     1 J12_8/7 P7 6/14 grn	4b  6.4 m  
+
+     8 J13_2/1 P14 2/10 grn	4b  6.4 m  
+     7 J13_4/3 P13 3/11 grn	4b  6.4 m  
+     6 J13_6/5 P14 6/14 grn	4b  6.4 m  
+     5 J13_8/7 P13 6/14 grn	4b  6.4 m  
+
+LVR 51 channels: 8 			6 PPPs:  P1 P2 P3 P7 P8 P9
+     4 J12_2/1 P1 5/13 grn	4b  6.4 m  
+     3 J12_4/3 P2 5/13 grn	4b  6.4 m  
+     2 J12_6/5 P3 5/13 grn	4b  6.4 m  
+     1 J12_8/7 P3 1/9 grn	4b  6.4 m  
+
+     8 J13_2/1 P7 5/13 grn	4b  6.4 m  
+     7 J13_4/3 P8 5/13 grn	4b  6.4 m  
+     6 J13_6/5 P9 5/13 grn	4b  6.4 m  
+     5 J13_8/7 P9 1/9 grn	4b  6.4 m  
+
+LVR 52 channels: 8 			4 PPPs:  P13 P14 P7 P8
+     4 J12_2/1 P7 1/9 grn	4b  6.4 m  
+     3 J12_4/3 P13 5/13 grn	4b  6.4 m  
+     2 J12_6/5 P8 1/9 grn	4b  6.4 m  
+     1 J12_8/7 P7 2/10 grn	4b  6.4 m  
+
+     8 J13_2/1 P13 1/9 grn	4b  6.4 m  
+     7 J13_4/3 P14 5/13 grn	4b  6.4 m  
+     6 J13_6/5 P14 1/9 grn	4b  6.4 m  
+     5 J13_8/7 P13 2/10 grn	4b  6.4 m  
+
+LVR 53 channels: 8 			3 PPPs:  P1 P2 P3
+     4 J12_2/1 P1 2/10 grn	4b  6.4 m  
+     3 J12_4/3 P2 7/15 grn	4b  6.4 m  
+     2 J12_6/5 P1 2/10* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P2 7/15* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     8 J13_2/1 P3 7/15 grn	4b  6.4 m  
+     7 J13_4/3 P2 1/9 grn	4b  6.4 m  
+     6 J13_6/5 P3 7/15* grn	4b  6.4 m   Y-spliced with J13_2/1
+     5 J13_8/7 P2 1/9* grn	4b  6.4 m   Y-spliced with J13_4/3
+
+LVR 54 channels: 8 			1 PPPs:  P1
+     4 J12_2/1 P1 7/15 grn	4b  6.4 m  
+     3 J12_4/3 P1 1/9 grn	4b  6.4 m  
+     2 J12_6/5 P1 7/15* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P1 1/9* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     8 J13_2/1 P1 8/16 grn	4b  6.4 m  
+     7 J13_4/3 P1 4/12 grn	4b  6.4 m  
+     6 J13_6/5 P1 8/16* grn	4b  6.4 m   Y-spliced with J13_2/1
+     5 J13_8/7 P1 4/12* grn	4b  6.4 m   Y-spliced with J13_4/3
+
+LVR 55 channels: 5 			2 PPPs:  P2 P3
+     4 J12_2/1 P2 8/16 grn	4b  6.4 m  
+     3 J12_4/3 P2 4/12 grn	4b  6.4 m  
+     2 J12_6/5 P2 8/16* grn	4b  6.4 m   Y-spliced with J12_2/1
+     1 J12_8/7 P2 4/12* grn	4b  6.4 m   Y-spliced with J12_4/3
+
+     5 J13_8/7 P3 4/12 grn	4b  6.4 m  
+
+LVR 56 channels: 5 			5 PPPs:  P13 P14 P7 P8 P9
+     4 J12_2/1 P7 4/12 grn	4b  6.4 m  
+     2 J12_6/5 P9 4/12 grn	4b  6.4 m  
+     1 J12_8/7 P8 4/12 grn	4b  6.4 m  
+
+     8 J13_2/1 P13 4/12 grn	4b  6.4 m  
+     5 J13_8/7 P14 4/12 grn	4b  6.4 m  
+
+LVR 57 channels: 8 			3 PPPs:  P20 P21 P23
+     4 J12_2/1 P21 6/14 yel	3b  7.2 m  
+     3 J12_4/3 P21 1/9 yel	3b  7.2 m  
+     2 J12_6/5 P21 2/10 yel	3b  7.2 m  
+     1 J12_8/7 P21 3/11 yel	3b  7.2 m  
+
+     8 J13_2/1 P20 5/13 yel	3b  7.2 m  
+     7 J13_4/3 P20 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P23 3/11 yel	3b  7.2 m  
+     5 J13_8/7 P23 5/13 yel	3b  7.2 m  
+
+LVR 58 channels: 8 			3 PPPs:  P20 P23 P24
+     4 J12_2/1 P23 6/14 yel	3b  7.2 m  
+     3 J12_4/3 P23 7/15 yel	3b  7.2 m  
+     2 J12_6/5 P24 8/16 yel	3b  7.2 m  
+     1 J12_8/7 P24 7/15 yel	3b  7.2 m  
+
+     8 J13_2/1 P23 8/16 yel	3b  7.2 m  
+     7 J13_4/3 P20 7/15 yel	3b  7.2 m  
+     6 J13_6/5 P24 6/14 yel	3b  7.2 m  
+     5 J13_8/7 P24 2/10 yel	3b  7.2 m  
+
+LVR 59 channels: 8 			4 PPPs:  P20 P21 P23 P24
+     4 J12_2/1 P21 5/13 yel	3b  7.2 m  
+     3 J12_4/3 P21 4/12 yel	3b  7.2 m  
+     2 J12_6/5 P24 3/11 yel	3b  7.2 m  
+     1 J12_8/7 P24 5/13 yel	3b  7.2 m  
+
+     8 J13_2/1 P23 1/9 yel	3b  7.2 m  
+     7 J13_4/3 P23 2/10 yel	3b  7.2 m  
+     6 J13_6/5 P20 2/10 yel	3b  7.2 m  
+     5 J13_8/7 P20 1/9 yel	3b  7.2 m  
+
+LVR 60 channels: 8 			3 PPPs:  P26 P27 P29
+     4 J12_2/1 P27 6/14 yel	3b  7.2 m  
+     3 J12_4/3 P27 1/9 yel	3b  7.2 m  
+     2 J12_6/5 P27 2/10 yel	3b  7.2 m  
+     1 J12_8/7 P27 3/11 yel	3b  7.2 m  
+
+     8 J13_2/1 P26 5/13 yel	3b  7.2 m  
+     7 J13_4/3 P26 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P29 3/11 yel	3b  7.2 m  
+     5 J13_8/7 P29 5/13 yel	3b  7.2 m  
+
+LVR 61 channels: 4 			2 PPPs:  P26 P29
+     4 J12_2/1 P29 6/14 yel	3b  7.2 m  
+     3 J12_4/3 P29 7/15 yel	3b  7.2 m  
+
+     8 J13_2/1 P29 8/16 yel	3b  7.2 m  
+     7 J13_4/3 P26 7/15 yel	3b  7.2 m  
+
+LVR 62 channels: 8 			4 PPPs:  P26 P27 P29 P30
+     4 J12_2/1 P27 5/13 yel	3b  7.2 m  
+     3 J12_4/3 P27 4/12 yel	3b  7.2 m  
+     2 J12_6/5 P30 3/11 yel	3b  7.2 m  
+     1 J12_8/7 P30 5/13 yel	3b  7.2 m  
+
+     8 J13_2/1 P29 1/9 yel	3b  7.2 m  
+     7 J13_4/3 P29 2/10 yel	3b  7.2 m  
+     6 J13_6/5 P26 2/10 yel	3b  7.2 m  
+     5 J13_8/7 P26 1/9 yel	3b  7.2 m  
+
+LVR 63 channels: 8 			3 PPPs:  P32 P33 P35
+     4 J12_2/1 P33 6/14 yel	3b  7.2 m  
+     3 J12_4/3 P33 1/9 yel	3b  7.2 m  
+     2 J12_6/5 P33 2/10 yel	3b  7.2 m  
+     1 J12_8/7 P33 3/11 yel	3b  7.2 m  
+
+     8 J13_2/1 P32 5/13 yel	3b  7.2 m  
+     7 J13_4/3 P32 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P35 3/11 yel	3b  7.2 m  
+     5 J13_8/7 P35 5/13 yel	3b  7.2 m  
+
+LVR 64 channels: 8 			4 PPPs:  P32 P33 P35 P36
+     4 J12_2/1 P33 5/13 yel	4a  6.8 m  
+     3 J12_4/3 P33 4/12 yel	4a  6.8 m  
+     2 J12_6/5 P36 3/11 yel	4a  6.8 m  
+     1 J12_8/7 P36 5/13 yel	4a  6.8 m  
+
+     8 J13_2/1 P35 1/9 yel	4a  6.8 m  
+     7 J13_4/3 P35 2/10 yel	4a  6.8 m  
+     6 J13_6/5 P32 2/10 yel	4a  6.8 m  
+     5 J13_8/7 P32 1/9 yel	4a  6.8 m  
+
+LVR 65 channels: 6 			4 PPPs:  P20 P21 P23 P24
+     3 J12_4/3 P21 7/15 yel	3b  7.2 m  
+     2 J12_6/5 P20 6/14 yel	3b  7.2 m  
+
+     8 J13_2/1 P24 1/9 yel	3b  7.2 m  
+     7 J13_4/3 P24 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P23 4/12 yel	3b  7.2 m  
+     5 J13_8/7 P20 3/11 yel	3b  7.2 m  
+
+LVR 66 channels: 5 			3 PPPs:  P26 P29 P30
+     2 J12_6/5 P26 6/14 yel	3b  7.2 m  
+
+     8 J13_2/1 P30 1/9 yel	3b  7.2 m  
+     7 J13_4/3 P30 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P29 4/12 yel	3b  7.2 m  
+     5 J13_8/7 P26 3/11 yel	3b  7.2 m  
+
+LVR 67 channels: 4 			3 PPPs:  P32 P35 P36
+
+     8 J13_2/1 P36 1/9 yel	3b  7.2 m  
+     7 J13_4/3 P36 4/12 yel	3b  7.2 m  
+     6 J13_6/5 P35 4/12 yel	3b  7.2 m  
+     5 J13_8/7 P32 3/11 yel	3b  7.2 m  
+
