@@ -6,14 +6,8 @@
 # Note: this script can also check the LV cavern LVR-load mapping is correct vs
 # Phoebe's schematics.
 # Note: the script also now checks that Petr's LV labels were generated
-# correctly by comparing to the (correct) lines outputted to move_labels.csv
-# (actually checks against line list used as input for ppp_fixes.csv, but the
-# correct line line info is equivalent between these sheets). Here, the PPP
-# color info isn't checked. Also notably, Petr's label docs contain
-# DCB lines, whereas I'm only generally looking at hybrid lines; to skip the
-# DCB lines (that weren't altered in the updated cavern mapping), if the PPP+pin
-# can't be found in my correct lines list, the line from Petr's label sheets is
-# skipped.
+# correctly. Here, the PPP color info isn't checked.
+# Note: script also outputs a table for the underground power.
 
 import pandas, os, fnmatch, math, copy, csv
 from argparse import ArgumentParser
@@ -33,6 +27,7 @@ parser.add_argument('cavern', help='specify cavern mapping to be used as input')
 # also set sheets that will be compared for consistency
 parser.add_argument('doCompare', help='specify if compare mappings should be checked')
 parser.add_argument('doCheckLines', help='specify if cavern mapping LVR-load should be checked')
+parser.add_argument('-sense', '-c', default='NA', help='specify cavern sense mapping to be checked')
 parser.add_argument('-swap', '-s', default='NA', help='specify how Posistronix are swapping')
 args = parser.parse_args()
 nominal = args.nominal
@@ -41,11 +36,9 @@ compare = []
 if (args.doCompare).lower()=='true':
     compare = os.listdir('compare')
     compare = ['compare/'+file for file in compare]
-schem_ip = 'NA'
-schem_mag = 'NA'
-if (args.doCheckLines).lower()=='true':
-    schem_ip = 'nominal/PEPI_a_SIDE_g3.NET'
-    schem_mag = 'nominal/PEPI_b_SIDE_g3.NET'
+schem_ip = 'nominal/PEPI_a_SIDE_g3.NET'
+schem_mag = 'nominal/PEPI_b_SIDE_g3.NET'
+cavern_sense = args.sense
 swap_pos = args.swap
 
 # from parseXls import * # steal what Mark did to parse the cavern file
@@ -60,7 +53,7 @@ class line:
                  ppp_pin):
         self.x = x
         self.y = y
-        self.z = z
+        self.z = z # z of load being powered, not of LVR in SBC
         self.bp = bp
         self.bp_con = bp_con
         self.ibbp2b2 = ibbp2b2
@@ -103,6 +96,25 @@ class line:
         self.ppp_label = ppp_label
         self.lvr_label = lvr_label
 
+    def get_lvr_pins(self):
+        chs = self.lvr_ch.split(' Y ')
+        res = ''
+        for chn in chs:
+            ch = int(float(chn))
+            con = 'n/a'
+            pins = 'n/a'
+            if ch<5:
+                con = 'J12'
+                pin = 10-2*ch
+                pins = f'{pin}/{pin-1}'
+            else:
+                con = 'J13'
+                pin = 18-2*ch
+                pins = f'{pin}/{pin-1}'
+            res += f'{self.lvr} - {con} - {pins}  Y  '
+        res = res[:-5] # get rid of final '  Y  '
+        return res
+
     def flip_stereo_straight_line(self):
         # leave all other info the same, just change flex and BP con
         if "JD" in self.bp_con: return self # leave DCBs alone
@@ -137,6 +149,56 @@ class line:
                     self.length_c+self.length_a+self.lvr+self.lvr_ch)
 
 
+# basic class that will uniquely identify (with redundancy) sense lines
+# will have one senseline object for 4 actual sense lines: one in each SB; the
+# only true/mir difference is the PPP connector and load served (ie. what the
+# mirror vs true tBB maps to)
+class senseline:
+
+    def __init__(self, crate, slot, lvr, lvr_con, lvr_twistpair, spltr,
+                 out_spltr, in_spltr, in_twistpair, in_label, ppp_true,
+                 ppp_mir, tbb_con):
+        self.crate = crate
+        self.slot = slot
+        self.lvr = lvr
+        self.lvr_con = lvr_con # J10 or J16
+        self.lvr_twistpair = lvr_twistpair # 1-2, 4-5, 3-6, or 7-8
+        self.spltr = spltr # the full splitter label
+        self.out_spltr = out_spltr
+        self.in_spltr = in_spltr
+        self.in_twistpair = in_twistpair
+        self.in_label = in_label # contains bp info
+        self.ppp_true = ppp_true
+        self.ppp_mir = ppp_mir
+        self.tbb_con = tbb_con
+
+    def in_spltr_lab(self):
+        spltr_type=get_spltr_type(self.spltr)
+        if spltr_type=='direct': return '-'
+        elif spltr_type in ['1', '4']: return self.spltr
+        elif spltr_type in ['2', '3', '6']: return f'{self.spltr}_{self.in_spltr}'
+        else: print('what?')
+
+    def out_spltr_lab(self):
+        spltr_type=get_spltr_type(self.spltr)
+        if spltr_type=='direct': return spltr_type
+        elif spltr_type in ['1', '2', '3', '4', '6']:
+            return f'Type {spltr_type} - OUT {self.out_spltr}'
+        else: print('huh?')
+
+    def get_bp(self):
+        return self.in_label.split('_')[0]
+
+    def get_flex_mir(self, tbb_map): return
+
+    # tbb_map is all mirror; do the swap to true here!
+    def get_flex_true(self, tbb_map): return
+
+    def get_load(self): return
+
+    def get_msa(self, lines): return
+
+
 ####### Helpers
 
 def one_dec_str(float_str):
@@ -157,6 +219,107 @@ def bp_con_alt_to_JP(alt, mirror): # converts alt BP connector notation to JP #
   for JP in range(12):
     if bp_con_JP_to_alt("JP"+str(JP), mirror)==alt: return "JP"+str(JP)
   return None # should never return here
+
+# returns channel that sense line is associated w/ on LVR
+def lvr_twistpair_to_ch(sense_con, twistpair):
+    if sense_con=='J10':
+        if twistpair=='1-2': return '1'
+        elif twistpair=='4-5': return '2'
+        elif twistpair=='3-6': return '3'
+        elif twistpair=='7-8': return '4'
+        else: return '???'
+    elif sense_con=='J16':
+        if twistpair=='1-2': return '5'
+        elif twistpair=='4-5': return '6'
+        elif twistpair=='3-6': return '7'
+        elif twistpair=='7-8': return '8'
+        else: return '????'
+    else:
+        return '?????'
+
+def get_spltr_type(spltr_lab):
+    if not 'S' in spltr_lab: return 'direct'
+    else: return spltr_lab[1] # all splitter types are 1 digit
+
+# return pin in 'J12_4' etc format (only src pin)
+def lvr_ch_to_pin(chn):
+    ch = int(float(chn))
+    con = 'n/a'
+    pin = 'n/a'
+    if ch<5:
+        con = 'J12'
+        pin = f'{10-2*ch}'
+    else:
+        con = 'J13'
+        pin = f'{18-2*ch}'
+    return f'{con}_{pin}'
+
+# define the connections in the splitter boards; return 'n/a' if out twisted pair
+# maps nowhere, else return the in [port, twisted pair] that it maps to
+def spltr1(out_port, out_twistpair):
+    if out_port=='a':
+        if out_twistpair=='1-2': return ['-', '1-2']
+        if out_twistpair=='3-6': return ['-', '3-6']
+    elif out_port=='b':
+        if out_twistpair=='1-2': return ['-', '4-5']
+        if out_twistpair=='3-6': return ['-', '7-8']
+    else:
+        return False # ugly to mix types, but fine
+
+def spltr2(out_port, out_twistpair):
+    if out_port=='a':
+        if out_twistpair=='1-2': return ['1', '1-2']
+        if out_twistpair=='4-5': return ['1', '4-5']
+        if out_twistpair=='3-6': return ['2', '3-6']
+        if out_twistpair=='7-8': return ['1', '1-2']
+    elif out_port=='b':
+        if out_twistpair=='1-2': return ['3', '1-2']
+        if out_twistpair=='4-5': return ['3', '4-5']
+        if out_twistpair=='3-6': return ['2', '7-8']
+        if out_twistpair=='7-8': return ['3', '7-8']
+    else:
+        return False
+
+def spltr3(out_port, out_twistpair):
+    if out_port=='a':
+        if out_twistpair=='1-2': return ['1', '1-2']
+        if out_twistpair=='4-5': return ['2', '1-2']
+        if out_twistpair=='3-6': return ['1', '3-6']
+    elif out_port=='b':
+        if out_twistpair=='1-2': return ['1', '4-5']
+        if out_twistpair=='4-5': return ['2', '4-5']
+        if out_twistpair=='3-6': return ['1', '7-8']
+        if out_twistpair=='7-8': return ['2', '7-8']
+    else:
+        return False
+
+# identical to type 1 board... but make sure input isn't ['1', '7-8']!
+def spltr4(out_port, out_twistpair):
+    ret = spltr1(out_port, out_twistpair)
+    if (not ret==False) and ret[1]=='7-8':
+        print(f'Found a supposed type 4 splitter w 7-8 input used!')
+        return False
+    return ret
+
+# type 5 splitter no longer in use!
+
+def spltr6(out_port, out_twistpair):
+    if out_port=='a':
+        if out_twistpair=='1-2': return ['1', '4-5']
+        if out_twistpair=='3-6': return ['1', '7-8']
+    elif out_port=='b':
+        if out_twistpair=='1-2': return ['1', '1-2']
+        if out_twistpair=='4-5': return ['3', '1-2']
+        if out_twistpair=='3-6': return ['1', '3-6']
+        if out_twistpair=='7-8': return ['2', '1-2']
+    elif out_port=='c':
+        if out_twistpair=='1-2': return ['2', '4-5']
+        if out_twistpair=='3-6': return ['2', '7-8']
+    elif out_port=='d':
+        if out_twistpair=='1-2': return ['3', '4-5']
+        if out_twistpair=='3-6': return ['3', '7-8']
+    else:
+        return False
 
 # just going to copy & paste to steal Mark's parsing functions... and edit
 # slightly
@@ -315,6 +478,42 @@ def check_ppp_color(z, ppp, color):
             if color!='yel': return False
     return True
 
+# returns True if there is a (A or M) load for the associated LVR ch, else False
+def senseline_used(lvr, con, twistpair, power_map):
+    # make sure that the corresponding power line exists, and then make sure it
+    # isn't a slave line (taking into account the lines which are incorrectly
+    # assigned to slave loads)
+    lvr_power_pin = f'{lvr}_{lvr_ch_to_pin(lvr_twistpair_to_ch(con, twistpair))}'
+    # Phoebe's mapping is extremely annoying, so just put in the slave lines
+    # by hand...
+    slaves = ['43_J12_6', '43_J12_2', '43_J13_6', '43_J13_2',
+              '44_J12_6', '44_J12_2', '44_J13_6', '44_J13_2',
+              '53_J12_6', '53_J12_2', '53_J13_6', '53_J13_2',
+              '54_J12_6', '54_J12_2', '54_J13_6', '54_J13_2',
+              '45_J12_6', '45_J12_2', '55_J12_6', '55_J12_2',
+              '57_J12_6', '57_J12_2', '57_J13_6', '57_J13_2',
+              '58_J12_6', '58_J12_2', '58_J13_6', '58_J13_2',
+              '59_J12_6', '59_J12_2', '59_J13_6', '59_J13_2',
+              '60_J12_6', '60_J12_2', '60_J13_6', '60_J13_2',
+              '62_J12_6', '62_J12_2', '62_J13_6', '62_J13_2',
+              '63_J12_6', '63_J12_2', '63_J13_6', '63_J13_2',
+              '64_J12_6', '64_J12_2', '64_J13_6', '64_J13_2',
+              '61_J12_2', '61_J13_2',
+              '9_J12_6', '9_J12_2', '9_J13_6', '9_J13_2',
+              '10_J12_6', '10_J12_2', '10_J13_6', '10_J13_2',
+              '21_J12_6', '21_J12_2', '21_J13_6', '21_J13_2',
+              '22_J12_6', '22_J12_2', '22_J13_6', '22_J13_2',
+              '11_J12_6', '11_J12_2', '23_J12_6', '23_J12_2',
+              '25_J12_6', '25_J12_2', '25_J13_6', '25_J13_2',
+              '26_J12_6', '26_J12_2', '26_J13_6', '26_J13_2',
+              '27_J12_6', '27_J12_2', '27_J13_6', '27_J13_2',
+              '30_J12_6', '30_J12_2', '30_J13_6', '30_J13_2',
+              '28_J12_6', '28_J12_2', '28_J13_6', '28_J13_2',
+              '33_J12_6', '33_J12_2', '33_J13_6', '33_J13_2',
+              '31_J12_6', '31_J12_2', '31_J13_6', '31_J13_2',
+              '29_J12_2', '29_J13_2', '32_J12_2', '32_J13_2']
+    if not lvr_power_pin in power_map or lvr_power_pin in slaves: return False
+    return True
 
 
 ####### Functions to Parse different sheets
@@ -590,9 +789,63 @@ def parse_check_petr_lvr(file, correct_lines):
 def parse_check_petr_ppp(file, correct_lines):
     return
 
+# parse the cavern sense table, outputting a list of senseline objects for
+# each twisted pair (in 1 SB)
+def parse_cavern_sense(file, power_map):
+    xlsx = pandas.ExcelFile(file)
+    sheets = xlsx.sheet_names
+    senselines = []
+    sheet = sheets[0] # only 1 sheet
+    df = pandas.read_excel(xlsx, sheet, usecols='A:J')
+    for lvr in range(1,68):
+        for con in ['J10', 'J16']:
+            for twistpair_out in ['1-2', '4-5', '3-6', '7-8']:
+                if senseline_used(lvr, con, twistpair_out, power_map):
+                    # found sense line that should exist, so trace it through
+                    # the cavern sense (layout) map
+                    # throughout, take advantage of the formatting choices
+                    # in underground_LVsense_layout_table.xlsx
+                    out_row = df.loc[df['LVR Port'] == f'{lvr}_{con}']
+                    crate = out_row['Crate Number (of LVR)'].item()
+                    slot = out_row['Crate Slot Number'].item()
+                    spltr = out_row['Splitter/Cable Label'].item()
+                    spltr_out = out_row['Splitter/Cable Output'].item()
+                    spltr_type = get_spltr_type(spltr)
+                    spltr_in_pair = ['-', twistpair_out] # direct cable
+                    in_row = out_row # direct cable
+                    if spltr_type=='1':
+                        spltr_in_pair = spltr1(spltr_out, twistpair_out)
+                        in_row = df.loc[df['Splitter/Cable Label'] == spltr]
+                        in_row = in_row.loc[in_row['Splitter/Cable Output'] == 'a']
+                    elif spltr_type=='2':
+                        spltr_in_pair = spltr2(spltr_out, twistpair_out)
+                        in_row = df.loc[df['Splitter/Cable Input'] == f'{spltr}_{spltr_in_pair[0]}']
+                    elif spltr_type=='3':
+                        spltr_in_pair = spltr3(spltr_out, twistpair_out)
+                        in_row = df.loc[df['Splitter/Cable Input'] == f'{spltr}_{spltr_in_pair[0]}']
+                    elif spltr_type=='4':
+                        spltr_in_pair = spltr4(spltr_out, twistpair_out)
+                        in_row = df.loc[df['Splitter/Cable Label'] == spltr]
+                        in_row = in_row.loc[in_row['Splitter/Cable Output'] == 'a']
+                    elif spltr_type=='6':
+                        spltr_in_pair = spltr6(spltr_out, twistpair_out)
+                        in_row = df.loc[df['Splitter/Cable Input'] == f'{spltr}_{spltr_in_pair[0]}']
+                    else:
+                        if not spltr_type=='direct': print('dont recognize spltr...')
+                    if spltr_in_pair==False: print('\n\nThis shouldnt happen...\n\n')
+                    label_in = in_row['Sense Line Label'].item()
+                    ppp_true = in_row['True PPP RJ45 Coupler'].item()
+                    ppp_mir = in_row['Mirror PPP RJ45 Coupler'].item()
+                    tbb_con = in_row['tBB Port'].item()
+                    senselines.append(senseline(crate, slot, str(lvr), con,
+                    twistpair_out, spltr, spltr_out, spltr_in_pair[0],
+                    spltr_in_pair[1], label_in, ppp_true, ppp_mir, tbb_con))
+    return senselines
+
+
 # Associate files with a function for parsing
 parse_func = {}
-files = [nominal, cavern, swap_pos, schem_ip, schem_mag] + compare
+files = [nominal, cavern, swap_pos, schem_ip, schem_mag, cavern_sense] + compare
 for file in files:
     if 'surface_LV_power_tests' in file: parse_func[file]=parse_surface
     elif 'LVR_PPP_Underground' in file: parse_func[file]=parse_cavern
@@ -604,6 +857,7 @@ for file in files:
     elif 'CBI_LVR' in file: parse_func[file]=parse_check_petr_lvr
     elif 'CTM_LVR' in file: parse_func[file]=parse_check_petr_lvr
     elif 'CTI_LVR' in file: parse_func[file]=parse_check_petr_lvr
+    elif 'underground_LVsense_layout' in file: parse_func[file]=parse_cavern_sense
     else:
         if file=='NA': continue
         print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
@@ -652,6 +906,68 @@ def add_pop_col(lines, pos_ind, len_ind):
     # associated PPP positronic
     return [l+[count_positronic(lines, l[pos_ind], pos_ind, len_ind)] for l \
                                                                        in lines]
+
+# outputs a list of rows to be printed for cctb testing tables. one sheet per
+# PEPI. for A-side, use the comparable C-side PEPI lines
+# order by BP first (gamma, beta, alpha), then by DCB/X hyb/S hyb, then by Pos
+def organize_cctb_table(ppp_corrected_cavern_lines, z, truemir):
+    lines = []
+    for cl in ppp_corrected_cavern_lines:
+        yz = z_truemir_to_y_z(z, truemir) # function is assuming C-side
+        if cl.y == yz[0] and cl.z==yz[1]: lines.append(cl)
+    rows = []
+    for cl in lines:
+        rows.append([cl.ppp, cl.ppp_pin, ppp_ret_pin(cl.ppp_pin), cl.bp,
+                     cl.bp_con, cl.flex, cl.load, cl.get_lvr_pins(), cl.lvr,
+                     cl.lvr_ch, cl.msa, '', '', '', '', ''])
+    # order rows, add headers
+    rows = sorted(rows, key=lambda r: r[1])
+    rows_with_pos_refcol = [r+[int(r[0][1:])] for r in rows]
+    rows = sorted(rows_with_pos_refcol, key=lambda r: r[-1])
+    rows = [r[:-1] for r in rows] # drop refcol
+    rows_with_flex_refcol = [r+[r[5][0].lower()] for r in rows]
+    rows = sorted(rows_with_flex_refcol, key=lambda r: r[-1])
+    rows = [r[:-1] for r in rows] # drop refcol
+    rows = sorted(rows, key=lambda r: r[3], reverse=True)
+    rows.insert(0, ['PPP Label', 'Pos. Src', 'Pos. Ret', 'Backplane',
+                    'BP Con.', 'Flex Name', '4ASIC-group/DCB power', 'SBC Label',
+                    'LVR Logical ID', 'LVR ch.', 'M/S/A', 'Connector on CCTB',
+                    'Measured Voltage', 'Measured Current', 'Result', 'Comments'])
+    return rows
+
+# outputs a list of rows to be printed for cctb sense line testing tables. one
+# sheet per true/mir PEPI type and per mag/IP (so 4 sheets total)
+# order individual sheets by PPP connector
+def organize_cctb_sense_table(senselines, truemir):
+    rows_mag = []
+    rows_ip = []
+    res = []
+    for sl in senselines:
+        row = []
+        if truemir=='True': ppp = sl.ppp_true
+        elif truemir=='Mirror': ppp = sl.ppp_mir
+        else: print('you formatted truemir wrong')
+        row = [ppp, f' {sl.in_twistpair}', sl.in_spltr_lab(), sl.out_spltr_lab(),
+               sl.lvr_con, sl.lvr,
+               lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair), '', '', '',
+               '', '']
+        if int(sl.lvr) <= 36: rows_mag.append(row)
+        else: rows_ip.append(row)
+    for rows in [rows_mag, rows_ip]:
+        # order rows based on PPP connector (and twisted pair)
+        rows = sorted(rows, key=lambda r: r[1])
+        rows_with_ppp_refcol = [r+[int(r[0][1:])] for r in rows]
+        rows = sorted(rows_with_ppp_refcol, key=lambda r: r[-1])
+        rows = [r[:-1] for r in rows] # drop refcol
+        rows_with_ppp_refcol = [r+[r[0][:1]] for r in rows]
+        rows = sorted(rows_with_ppp_refcol, key=lambda r: r[-1])
+        rows = [r[:-1] for r in rows] # drop refcol
+        rows.insert(0, ['PPP Label', 'PPP Twisted Pair', 'Splitter Input',
+                        'Splitter Output', 'LVR Con.', 'LVR Number', 'LVR ch.',
+                        'M/S/A', 'Connector on CCTB', 'Measured Voltage',
+                        'Result', 'Comments'])
+        res.append(rows)
+    return res
 
 ####### Main Checking Functions
 
@@ -937,8 +1253,8 @@ def cavern_check_fix():
     # print(f'\n\nWriting (unformatted) fixed cavern mapping...\n\n')
     # fixed = 'fixed-'+cavern
 
-    if (schem_ip != 'NA'):
-        print(f'Checking {cavern} LVR<->load vs {schem_ip} and {schem_mag}...\n\n')
+    if ((args.doCheckLines).lower()=='true'):
+        print(f'\n\nChecking {cavern} LVR<->load vs {schem_ip} and {schem_mag}...\n\n')
         # cavern_lines is what you want to compare
         # store erroroneous cav map/lvr schem line info, lvr info
         map_errors = [['Mag/IP', 'True/Mir', 'BP', 'M/S/A', 'LVR + Src Pin',
@@ -979,7 +1295,50 @@ def cavern_check_fix():
         for row in map_errors: writer_map.writerow(row)
         fixme_map.close()
 
+    # go through ppp_corrected_cavern_lines.value() and print the
+    # columns Federico wants to a list; organize into different sheets for
+    # each PEPI, then organize by BPs (gamma, beta, then alpha), then organize
+    # DCBs then hybrids (straight then stereo), then order positronics small to
+    # large
+    for x in ['C', 'A']:
+        for y in ['top', 'bot']:
+            for z in ['ip', 'mag']:
+                truemir = true_mirror(x,y,z)
+                cctb_rows = organize_cctb_table(ppp_corrected_cavern_lines.values(),
+                                                z, truemir)
+                print(f'\nPrinting CCTB {x}-{y}-{z} power table...\n')
+                cctb = open(f'output/{x}_{y}_{z}_{truemir}_LVpower_cctb.csv', 'w')
+                cctb_writer = csv.writer(cctb)
+                for row in cctb_rows: cctb_writer.writerow(row)
+                cctb.close()
+
+def cavern_sense_check():
+    ip_map_lvr_load = parse_func[schem_ip](schem_ip)
+    mag_map_lvr_load = parse_func[schem_mag](schem_mag)
+    map_lvr_load = {}
+    for ip_lvr_load in ip_map_lvr_load:
+        map_lvr_load[ip_lvr_load] = ip_map_lvr_load[ip_lvr_load]
+    for mag_lvr_load in mag_map_lvr_load:
+        map_lvr_load[mag_lvr_load] = mag_map_lvr_load[mag_lvr_load]
+    # print(map_lvr_load)
+    senselines = parse_func[cavern_sense](cavern_sense, map_lvr_load)
+    for x in ['C', 'A']:
+        for y in ['top', 'bot']:
+            for z in ['ip', 'mag']:
+                truemir = true_mirror(x,y,z)
+                cctb_rows = organize_cctb_sense_table(senselines, truemir)
+                print(f'\nPrinting CCTB {x}-{y}-{z} sense table...\n')
+                cctb = open(f'output/{x}_{y}_{z}_{truemir}_LVsense_cctb.csv', 'w')
+                cctb_writer = csv.writer(cctb)
+                if z=='mag': cctb_rows = cctb_rows[0]
+                elif z=='ip': cctb_rows = cctb_rows[1]
+                else: print('...')
+                for row in cctb_rows: cctb_writer.writerow(row)
+                cctb.close()
 
 
-no_typos = cavern_typo_check()
-if no_typos: cavern_check_fix()
+if cavern_sense == 'NA':
+    no_typos = cavern_typo_check()
+    if no_typos: cavern_check_fix()
+else:
+    cavern_sense_check()
