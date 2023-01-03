@@ -79,6 +79,18 @@ class line:
     def equal_pepi_ppp(self, other):
         return (self.x==other.x and self.y==other.y and self.z==other.z and
                 self.ppp==other.ppp and self.ppp_pin==other.ppp_pin)
+    
+    # returns if this power line corresponds to the given senseline; compares if
+    # z is equal, if True/Mirror (based on x/y) is equal, and if the same LVR+ch
+    # note that senselines don't store x/y/z info, so this needs to input manually!
+    def corresponds_sense(self, sl, sl_truemir, sl_z):
+        truemir_pow = true_mirror(self.x, self.y, self.z)
+        # recall that you combine Y splices here, but you don't for the sense! (for now)
+        # also, some lvr channels still carry around the '.0'...
+        chs = self.lvr_ch.split(' Y ')
+        for i in range(len(chs)): chs[i] = str(int(float(chs[i])))
+        return (truemir_pow==sl_truemir and self.z==sl_z and self.lvr==sl.lvr and
+                lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair) in chs)
 
     def set_length(self, length_c, length_a):
         self.length_c = str(length_c)
@@ -481,6 +493,13 @@ def twisted_ret(twisted_src):
     elif src==7: ret = '8'
     else: print('bad twisted src')
     return ret
+
+def twistpair_order(tp):
+    if not tp in ['1-2', '4-5', '3-6', '7-8']: return -1
+    if tp=='1-2': return 1
+    if tp=='4-5': return 2
+    if tp=='3-6': return 3
+    if tp=='7-8': return 4
 
 def petr_filename_to_xyz(file):
     # all filenames have same length; get rid of any parent folders
@@ -1005,34 +1024,48 @@ def organize_cctb_table(ppp_corrected_cavern_lines, z, truemir):
 # outputs a list of rows to be printed for cctb sense line testing tables. one
 # sheet per true/mir PEPI type and per mag/IP (so 4 sheets total)
 # order individual sheets by PPP connector
-def organize_cctb_sense_table(senselines, truemir):
+def organize_cctb_sense_table(senselines, truemir, power_lines_ref):
     rows_mag = []
     rows_ip = []
     res = []
     for sl in senselines:
+        z = 'mag'
+        if int(sl.lvr) > 36: z = 'ip'
         row = []
         if truemir=='True': ppp = sl.ppp_true
         elif truemir=='Mirror': ppp = sl.ppp_mir
         else: print('you formatted truemir wrong')
-        row = [ppp, f' {sl.in_twistpair}', sl.in_spltr_lab(), sl.out_spltr_lab(),
-               sl.lvr_con, sl.lvr,
-               lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair), '', '', '',
+        cor_pl = line('n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a',
+                      'n/a', 'n/a')
+        pl_count = 0
+        for pl in power_lines_ref:
+            # print(f'PL: {pl.z} {true_mirror(pl.x, pl.y, pl.z)} {pl.lvr} {pl.lvr_ch}')
+            # print(f'SL: {z} {truemir} {sl.lvr} {lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair)}')
+            if pl.corresponds_sense(sl, truemir, z):
+                cor_pl = pl
+                pl_count += 1
+        if pl_count < 1:
+            print(f'\nCouldnt find corresponding power line for {z} {truemir} '+
+                  f'LVR{sl.lvr} ch{lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair)}\n')
+        if pl_count > 1:
+            print(f'\Found multiple corresponding power lines for {z} {truemir} '+
+                  f'LVR{sl.lvr} ch{lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair)}\n')
+        row = [cor_pl.flex, cor_pl.load, ppp, f' {sl.in_twistpair}', sl.in_label, 
+               sl.in_spltr_lab(), sl.out_spltr_lab(), sl.lvr_con, sl.lvr,
+               lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair), cor_pl.msa, '', '',
                '', '']
         if int(sl.lvr) <= 36: rows_mag.append(row)
         else: rows_ip.append(row)
     for rows in [rows_mag, rows_ip]:
-        # order rows based on PPP connector (and twisted pair)
-        rows = sorted(rows, key=lambda r: r[1])
-        rows_with_ppp_refcol = [r+[int(r[0][1:])] for r in rows]
-        rows = sorted(rows_with_ppp_refcol, key=lambda r: r[-1])
-        rows = [r[:-1] for r in rows] # drop refcol
-        rows_with_ppp_refcol = [r+[r[0][:1]] for r in rows]
-        rows = sorted(rows_with_ppp_refcol, key=lambda r: r[-1])
-        rows = [r[:-1] for r in rows] # drop refcol
-        rows.insert(0, ['PPP Label', 'PPP Twisted Pair', 'Splitter Input',
-                        'Splitter Output', 'LVR Con.', 'LVR Number', 'LVR ch.',
-                        'M/S/A', 'Connector on CCTB', 'Measured Voltage',
-                        'Result', 'Comments'])
+        # order rows based on PPP connector (and twisted pair), and separate DCBs/hybrids
+        rows = sorted(rows, key=lambda r: twistpair_order(r[3][1:]))
+        rows = sorted(rows, key=lambda r: int(r[2][1:]))
+        rows = sorted(rows, key=lambda r: r[2][:1])
+        rows = sorted(rows, key=lambda r: r[0]=='n/a')
+        rows.insert(0, ['Sensed Flex', 'Sensed 4ASIC-group/DCB power', 'PPP Label', 
+                        'PPP Twisted Pair', 'Sense Line', 'Splitter Input', 'Splitter Output', 
+                        'LVR Con.', 'LVR Number', 'LVR ch.', 'M/S/A', 'Connector on CCTB',
+                        'Measured Voltage', 'Result', 'Comments'])
         res.append(rows)
     return res
 
@@ -1391,6 +1424,7 @@ def cavern_sense_check():
     tbb_map = parse_func[tbb_schem](tbb_schem)
     # print(tbb_map)
     senselines = parse_func[cavern_sense](cavern_sense, map_lvr_load)
+    power_lines_ref = parse_func[cavern](cavern)
     # for each sense line, check that the line the tBB claims is being sensed is
     # indeed the power line in Phoebe's map for the associated channel
     for sl in senselines:
@@ -1407,12 +1441,12 @@ def cavern_sense_check():
         lvr_load = load_label_phoebe_to_me(map_lvr_load[lvr_line])
         sense_load = f'{bp}_{tbb_map[tbb_line]}'
         if not lvr_load==sense_load:
-            print(f'\nOn {lvr_line}, (Power) {lvr_load} != (Sense) {sense_load}\n')
+            print(f'\nOn {lvr_line}, (Power Map) {lvr_load} != (Sense) {sense_load}')
     for x in ['C', 'A']:
         for y in ['top', 'bot']:
             for z in ['ip', 'mag']:
                 truemir = true_mirror(x,y,z)
-                cctb_rows = organize_cctb_sense_table(senselines, truemir)
+                cctb_rows = organize_cctb_sense_table(senselines, truemir, power_lines_ref)
                 print(f'\nPrinting CCTB {x}-{y}-{z} sense table...\n')
                 cctb = open(f'output/{x}_{y}_{z}_{truemir}_LVsense_cctb.csv', 'w')
                 cctb_writer = csv.writer(cctb)
