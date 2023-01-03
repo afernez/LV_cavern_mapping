@@ -38,6 +38,7 @@ if (args.doCompare).lower()=='true':
     compare = ['compare/'+file for file in compare]
 schem_ip = 'nominal/PEPI_a_SIDE_g3.NET'
 schem_mag = 'nominal/PEPI_b_SIDE_g3.NET'
+tbb_schem = 'nominal/TelemetryBB_Mirror_FINAL_mpeco.NET'
 cavern_sense = args.sense
 swap_pos = args.swap
 
@@ -152,7 +153,7 @@ class line:
 # basic class that will uniquely identify (with redundancy) sense lines
 # will have one senseline object for 4 actual sense lines: one in each SB; the
 # only true/mir difference is the PPP connector and load served (ie. what the
-# mirror vs true tBB maps to)
+# mirror vs true tBB maps to in the JP notation)
 class senseline:
 
     def __init__(self, crate, slot, lvr, lvr_con, lvr_twistpair, spltr,
@@ -189,12 +190,20 @@ class senseline:
     def get_bp(self):
         return self.in_label.split('_')[0]
 
-    def get_flex_mir(self, tbb_map): return
+    # from tBB schematic! For DCBs I have flex = 1V5 or 2V5
+    def get_flex(self, tbb_map):
+        tbb_twistpair = f'{self.tbb_con}_{self.in_twistpair}'
+        if not tbb_twistpair in tbb_map:
+            print(f'couldnt find {tbb_twistpair}!')
+            return 'n/a'
+        return (tbb_map[tbb_twistpair].split('_'))[0]
 
-    # tbb_map is all mirror; do the swap to true here!
-    def get_flex_true(self, tbb_map): return
-
-    def get_load(self): return
+    def get_load(self, tbb_map):
+        tbb_twistpair = f'{self.tbb_con}_{self.in_twistpair}'
+        if not tbb_twistpair in tbb_map:
+            print(f'couldnt find {tbb_twistpair}!')
+            return 'n/a'
+        return (tbb_map[tbb_twistpair].split('_'))[1]
 
     def get_msa(self, lines): return
 
@@ -271,7 +280,7 @@ def spltr2(out_port, out_twistpair):
         if out_twistpair=='1-2': return ['1', '1-2']
         if out_twistpair=='4-5': return ['1', '4-5']
         if out_twistpair=='3-6': return ['2', '3-6']
-        if out_twistpair=='7-8': return ['1', '1-2']
+        if out_twistpair=='7-8': return ['1', '7-8']
     elif out_port=='b':
         if out_twistpair=='1-2': return ['3', '1-2']
         if out_twistpair=='4-5': return ['3', '4-5']
@@ -320,6 +329,17 @@ def spltr6(out_port, out_twistpair):
         if out_twistpair=='3-6': return ['3', '7-8']
     else:
         return False
+
+# convert how Phoebe labels loads to my convention (for sense check)
+def load_label_phoebe_to_me(lab):
+    splt = lab.split('_')
+    if 'dcb' in lab.lower():
+        if '25' in lab: # 2V5 only
+            return f'{splt[3]}_2V5_{splt[2]}-{splt[1]}'
+        else: # 1V5 only
+            return f'{splt[2]}_1V5_{splt[1]}'
+    else: # hybrids only
+        return f'{splt[2]}_{splt[3]}_{splt[4]}'
 
 # just going to copy & paste to steal Mark's parsing functions... and edit
 # slightly
@@ -451,6 +471,16 @@ def ppp_ret_pin(src_pin):
     src = int(src_pin)
     ret = src+8
     return str(ret)
+
+def twisted_ret(twisted_src):
+    src = int(twisted_src)
+    ret = 'n/a'
+    if src==1: ret = '2'
+    elif src==4: ret = '5'
+    elif src==3: ret = '6'
+    elif src==7: ret = '8'
+    else: print('bad twisted src')
+    return ret
 
 def petr_filename_to_xyz(file):
     # all filenames have same length; get rid of any parent folders
@@ -842,10 +872,46 @@ def parse_cavern_sense(file, power_map):
                     spltr_in_pair[1], label_in, ppp_true, ppp_mir, tbb_con))
     return senselines
 
+# parse tBB netlist, returning a map from tBB connector+twisted pair to sensed
+# load
+def parse_tbb(netlist):
+    tbb_con_load = {}
+    with open(netlist) as nl:
+        con = 'J0' # not a real connector on tBB
+        cons = [f'J{num}' for num in range(1,22)]
+        rows = nl.readlines()
+        for ind in range(len(rows)):
+            row = rows[ind]
+            row_split = row.split()
+            # if you find a connector, list all the lines
+            if (len(row_split)>=2) and (row_split[-2] in cons):
+                con = row_split[-2]
+                for con_ind in [ind+1, ind+4, ind+3, ind+7]: # only P
+                    con_row = rows[con_ind]
+                    if not f'Net{con}' in con_row: # active sense line
+                        con_row_split = (con_row.split()[2]).split('_')
+                        flex = 'n/a' # dcb
+                        load = 'n/a' # set explicitly for hybrids and dcbs
+                        if 'JP' in con_row_split[0]: # hybrid
+                            flex = bp_con_JP_to_alt(con_row_split[0], True)
+                            load = con_row_split[2]
+                            if 'WEST' in con_row: load += 'W'
+                            if 'EAST' in con_row: load += 'E'
+                        else: # dcb
+                            load = f'{con_row_split[0][2:]}' # 1V5
+                            # may as well take advantage of 'flex' to store redundant info
+                            flex = con_row_split[2]
+                            if '2V5' in con_row:
+                                load = f'{con_row_split[0][2:]}-{con_row_split[1]}'
+                                flex = con_row_split[3]
+                        src = con_ind - ind
+                        tbb_con_load[f'{con}_{src}-{twisted_ret(src)}'] = f'{flex}_{load}'
+    return tbb_con_load
+
 
 # Associate files with a function for parsing
 parse_func = {}
-files = [nominal, cavern, swap_pos, schem_ip, schem_mag, cavern_sense] + compare
+files = [nominal, cavern, swap_pos, schem_ip, schem_mag, cavern_sense, tbb_schem] + compare
 for file in files:
     if 'surface_LV_power_tests' in file: parse_func[file]=parse_surface
     elif 'LVR_PPP_Underground' in file: parse_func[file]=parse_cavern
@@ -858,6 +924,7 @@ for file in files:
     elif 'CTM_LVR' in file: parse_func[file]=parse_check_petr_lvr
     elif 'CTI_LVR' in file: parse_func[file]=parse_check_petr_lvr
     elif 'underground_LVsense_layout' in file: parse_func[file]=parse_cavern_sense
+    elif 'TelemetryBB_Mirror_FINAL_mpeco' in file: parse_func[file]=parse_tbb
     else:
         if file=='NA': continue
         print(f'\n\nDON\'T RECONGNIZE {file} FORMAT\n\n')
@@ -1321,7 +1388,26 @@ def cavern_sense_check():
     for mag_lvr_load in mag_map_lvr_load:
         map_lvr_load[mag_lvr_load] = mag_map_lvr_load[mag_lvr_load]
     # print(map_lvr_load)
+    tbb_map = parse_func[tbb_schem](tbb_schem)
+    # print(tbb_map)
     senselines = parse_func[cavern_sense](cavern_sense, map_lvr_load)
+    # for each sense line, check that the line the tBB claims is being sensed is
+    # indeed the power line in Phoebe's map for the associated channel
+    for sl in senselines:
+        tbb_line = f'{sl.tbb_con}_{sl.in_twistpair}'
+        bp = ((sl.in_label).split('_'))[0]
+        if not tbb_line in tbb_map:
+            print('\n\n!!! Couldnt find tBB {tbb_line}...\n\n')
+            continue
+        lvr_line = f'{sl.lvr}_{lvr_ch_to_pin(lvr_twistpair_to_ch(sl.lvr_con, sl.lvr_twistpair))}'
+        if not lvr_line in map_lvr_load:
+            print('\n\n!!! Couldnt find LVR {lvr_line}...\n\n')
+            continue
+        # print(f'My map+tBB: {bp}_{tbb_map[tbb_line]}, Phoebe power map: {map_lvr_load[lvr_line]}')
+        lvr_load = load_label_phoebe_to_me(map_lvr_load[lvr_line])
+        sense_load = f'{bp}_{tbb_map[tbb_line]}'
+        if not lvr_load==sense_load:
+            print(f'\nOn {lvr_line}, (Power) {lvr_load} != (Sense) {sense_load}\n')
     for x in ['C', 'A']:
         for y in ['top', 'bot']:
             for z in ['ip', 'mag']:
@@ -1335,7 +1421,6 @@ def cavern_sense_check():
                 else: print('...')
                 for row in cctb_rows: cctb_writer.writerow(row)
                 cctb.close()
-
 
 if cavern_sense == 'NA':
     no_typos = cavern_typo_check()
